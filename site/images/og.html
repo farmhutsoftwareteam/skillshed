@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Share card source: rendered to site/public/og.png (1200x630) by site/images/render.sh. -->
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&display=swap" rel="stylesheet">
+<style>
+:root { --bg: #1c1c1c; --surface: #262626; --ink: #f1f1ef; --accent: #8fa68e; --accent-ink: #1c1c1c; --field: #c8c5ba; }
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 1200px; height: 630px; background: var(--bg); font-family: Switzer, sans-serif; -webkit-font-smoothing: antialiased; }
+.board { position: absolute; inset: 12px; display: grid; grid-template-columns: 1.15fr 1fr; grid-template-rows: 1fr 0.78fr; gap: 10px; }
+.tile { border-radius: 10px; overflow: hidden; position: relative; }
+.name { background: var(--field); color: #1c1c1c; display: flex; align-items: flex-end; padding: 28px 32px; }
+.name h1 { font-weight: 600; font-size: 132px; line-height: 0.85; letter-spacing: -0.055em; }
+.photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); }
+.say { background: var(--surface); color: var(--ink); padding: 30px 32px; font-size: 38px; line-height: 1.12; letter-spacing: -0.02em; }
+.act { background: var(--accent); color: var(--accent-ink); padding: 28px 30px; display: flex; flex-direction: column; justify-content: space-between; }
+.act p { font-size: 30px; line-height: 1.15; letter-spacing: -0.02em; }
+.act code { display: block; background: var(--accent-ink); color: var(--ink); border-radius: 8px; padding: 14px 16px; font: 17px ui-monospace, Menlo, monospace; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+</style>
+</head>
+<body>
+<div class="board">
+  <div class="tile name"><h1>Skillshed</h1></div>
+  <div class="tile photo"><img src="../public/img/tools-on-pegboard.jpg" alt=""></div>
+  <div class="tile say">Vetted agent skills for Claude Code and Codex.</div>
+  <div class="tile act"><p>Switched on per project. Pinned and scanned.</p><code>skillshed.munyamakosa.com</code></div>
+</div>
+</body>
+</html>

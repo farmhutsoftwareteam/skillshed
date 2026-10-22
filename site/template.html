@@ -3,12 +3,35 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Skillshed: agent skills for Claude Code and Codex</title>
-<meta name="description" content="{{SKILL_COUNT}} vetted agent skills for Claude Code and Codex, installed with one command. Packs switch on per project; upstream skills are pinned and scanned for prompt injection.">
-<meta property="og:title" content="Skillshed">
-<meta property="og:description" content="Vetted agent skills for Claude Code and Codex, switched on per project.">
+<title>Skillshed: vetted agent skills for Claude Code and Codex</title>
+<meta name="description" content="{{DESCRIPTION}}">
+<link rel="canonical" href="{{SITE}}/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Munyaradzi Makosa">
 <meta name="theme-color" content="#1c1c1c">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Skillshed">
+<meta property="og:url" content="{{SITE}}/">
+<meta property="og:title" content="Skillshed: vetted agent skills for Claude Code and Codex">
+<meta property="og:description" content="{{SHARE_DESCRIPTION}}">
+<meta property="og:image" content="{{SITE}}/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Skillshed: vetted agent skills for Claude Code and Codex, shown beside a pegboard of tools">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Skillshed: vetted agent skills for Claude Code and Codex">
+<meta name="twitter:description" content="{{SHARE_DESCRIPTION}}">
+<meta name="twitter:image" content="{{SITE}}/og.png">
+<meta name="twitter:image:alt" content="Skillshed: vetted agent skills for Claude Code and Codex, shown beside a pegboard of tools">
+
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="alternate" type="text/plain" href="llms.txt" title="Skillshed for language models">
+<script type="application/ld+json">{{JSONLD}}</script>
 <link rel="preconnect" href="https://api.fontshare.com">
 <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
 <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&display=swap" rel="stylesheet">
@@ -242,8 +265,10 @@ footer { padding: 120px var(--margin) var(--margin); }
   .close .flank.r { grid-column: 2; grid-row: 2; }
   .close .copyline { flex-direction: column; align-items: stretch; padding: 12px; }
   footer { padding-top: 80px; }
-  .blocks { height: 22svh; min-height: 140px; flex-wrap: wrap; }
-  .blocks span { flex: 1 0 18%; font-size: 13vw; height: 48%; }
+  /* Two rows of blocks; each row has its own height so nothing spills over the links. */
+  .blocks { height: auto; min-height: 0; flex-wrap: wrap; align-items: flex-end; }
+  .blocks span { flex: 1 0 18%; font-size: 13vw; height: 18vw !important; }
+  .blocks span:nth-child(2n) { height: 22vw !important; }
   .foot div { grid-column: span 6; }
   .foot div.contact { grid-column: 1 / -1; }
 }
@@ -264,7 +289,7 @@ footer { padding: 120px var(--margin) var(--margin); }
     <div class="tile name-tile"><h1>Skillshed</h1></div>
 
     <figure class="tile photo shutter">
-      <img src="img/tools-on-pegboard.jpg" width="1600" height="1068" alt="Pliers, wrenches and screwdrivers hanging on a pegboard in a workshop">
+      <img src="img/tools-on-pegboard.jpg" fetchpriority="high" width="1600" height="1068" alt="Pliers, wrenches and screwdrivers hanging on a pegboard in a workshop">
     </figure>
 
     <div class="tile frag second" aria-label="Skills available to Claude Code in a project">
