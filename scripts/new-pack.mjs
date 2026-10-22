@@ -20,7 +20,7 @@ const manifest = {
   description,
   author: { name: 'Munyaradzi Makosa', url: 'https://github.com/farmhutsoftwareteam' },
   repository: 'https://github.com/farmhutsoftwareteam/skillshed',
-  license: 'UNLICENSED',
+  license: 'MIT',
 };
 for (const d of ['.claude-plugin', '.codex-plugin']) {
   mkdirSync(join(dir, d), { recursive: true });

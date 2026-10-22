@@ -167,3 +167,7 @@ A third-party skill is instructions your agent follows with your permissions. Th
 4. **No code execution while syncing.** `sync-vendor.mjs` only fetches and copies files. It never runs anything from the fetched repo.
 
 The scanner is a tripwire, not proof of safety. Anything it flags (and any new `scripts/`) still needs a human read before you merge.
+
+## License
+
+[MIT](LICENSE) for this repo's own skills and scripts. Vendored third-party skills keep their upstream licenses, which are copied in [`licenses/`](licenses/).
