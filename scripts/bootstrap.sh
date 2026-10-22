@@ -51,7 +51,11 @@ fi
 echo
 if command -v codex >/dev/null; then
   echo "Codex: $(command -v codex)"
-  run codex plugin marketplace add "$SOURCE"
+  # Codex clones owner/repo over HTTPS, which fails for a private repo
+  # without a credential helper; use SSH like the rest of the git setup.
+  CODEX_SOURCE="$SOURCE"
+  [[ "$SOURCE" != /* && "$SOURCE" != *:* ]] && CODEX_SOURCE="git@github.com:$SOURCE.git"
+  run codex plugin marketplace add "$CODEX_SOURCE"
   [[ "$SOURCE" != /* ]] && run codex plugin marketplace upgrade "$MARKET"
   run codex plugin add "$CORE@$MARKET"
   CONFIG="$HOME/.codex/config.toml"
