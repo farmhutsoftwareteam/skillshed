@@ -1,0 +1,96 @@
+diff --git a/.gitignore b/.gitignore
+index 4c66df9..c4ef797 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -5,3 +5,6 @@ web-build/
+ *.jks
+ *.mobileprovision
+ .env*.local
++
++# Google Play service account key (used by eas submit)
++secrets/
+diff --git a/README.md b/README.md
+index 894aca7..6020882 100644
+--- a/README.md
++++ b/README.md
+@@ -1,3 +1,22 @@
+ # Tidy
+ 
+ A to-do list app built with Expo Router. Tasks sync with the Tidy API over HTTPS.
++
++## Releasing
++
++Store builds use EAS: `eas build --profile production --auto-submit`.
++
++Build numbers (iOS `buildNumber`, Android `versionCode`) are managed remotely by EAS and
++auto-incremented on every production build; don't add them to `app.json`. Bump the
++user-facing `version` in `app.json` for each new release.
++
++Before the first release, fill in:
++
++- `submit.production.ios.ascAppId` in `eas.json`: the numeric Apple ID of the app in
++  App Store Connect (App Information → Apple ID).
++- `secrets/google-play-service-account.json`: the Google Play service account key. It is
++  gitignored; never commit it.
++
++Google Play only accepts API uploads once the app exists in Play Console and a first build
++has been uploaded manually. Android submissions go to the production track as a draft;
++roll them out from Play Console.
+diff --git a/app.json b/app.json
+index 5e697fe..880c5a8 100644
+--- a/app.json
++++ b/app.json
+@@ -9,11 +9,13 @@
+     "userInterfaceStyle": "automatic",
+     "ios": {
+       "bundleIdentifier": "com.acmeapps.tidy",
+-      "buildNumber": "1",
+-      "supportsTablet": true
++      "supportsTablet": true,
++      "config": {
++        "usesNonExemptEncryption": false
++      }
+     },
+     "android": {
+-      "versionCode": 1,
++      "package": "com.acmeapps.tidy",
+       "adaptiveIcon": {
+         "foregroundImage": "./assets/adaptive-icon.png",
+         "backgroundColor": "#ffffff"
+diff --git a/eas.json b/eas.json
+index a998ee4..b067bc6 100644
+--- a/eas.json
++++ b/eas.json
+@@ -1,6 +1,7 @@
+ {
+   "cli": {
+-    "version": ">= 12.0.0"
++    "version": ">= 12.0.0",
++    "appVersionSource": "remote"
+   },
+   "build": {
+     "development": {
+@@ -14,12 +15,19 @@
+       }
+     },
+     "production": {
+-      "android": {
+-        "buildType": "apk"
+-      }
++      "autoIncrement": true
+     }
+   },
+   "submit": {
+-    "production": {}
++    "production": {
++      "ios": {
++        "ascAppId": "TODO_REPLACE_WITH_APP_STORE_CONNECT_APP_ID"
++      },
++      "android": {
++        "serviceAccountKeyPath": "./secrets/google-play-service-account.json",
++        "track": "production",
++        "releaseStatus": "draft"
++      }
++    }
+   }
+ }

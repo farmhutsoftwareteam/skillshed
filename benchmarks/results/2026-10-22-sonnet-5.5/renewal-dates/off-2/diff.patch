@@ -1,0 +1,50 @@
+diff --git a/src/dates.js b/src/dates.js
+index 7697658..ef6e042 100644
+--- a/src/dates.js
++++ b/src/dates.js
+@@ -10,7 +10,10 @@ export function formatDate(date) {
+ }
+ 
+ export function addMonths(date, months) {
+-  const next = new Date(date.getTime());
+-  next.setUTCMonth(next.getUTCMonth() + months);
+-  return next;
++  const target = date.getUTCMonth() + months;
++  const year = date.getUTCFullYear() + Math.floor(target / 12);
++  const month = ((target % 12) + 12) % 12;
++  // Day 0 of the following month is the last day of the target month.
++  const lastDay = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
++  return new Date(Date.UTC(year, month, Math.min(date.getUTCDate(), lastDay)));
+ }
+diff --git a/src/schedule.js b/src/schedule.js
+index 621b7f0..573232a 100644
+--- a/src/schedule.js
++++ b/src/schedule.js
+@@ -7,10 +7,10 @@ export function renewalDates(start, plan, count) {
+   const step = PLAN_MONTHS[plan];
+   if (!step) throw new Error(`unknown plan: ${plan}`);
+   const dates = [];
+-  let current = start;
+-  for (let i = 0; i < count; i++) {
+-    current = addMonths(current, step);
+-    dates.push(current);
++  // Always offset from the start date so a clamped day (31 Jan -> 29 Feb)
++  // doesn't stick for later renewals (29 Feb -> 31 Mar).
++  for (let i = 1; i <= count; i++) {
++    dates.push(addMonths(start, step * i));
+   }
+   return dates;
+ }
+diff --git a/test/schedule.test.js b/test/schedule.test.js
+index 1f7ef34..e721bd6 100644
+--- a/test/schedule.test.js
++++ b/test/schedule.test.js
+@@ -16,3 +16,8 @@ test("annual renewals land on the same date each year", () => {
+ test("unknown plans are rejected", () => {
+   assert.throws(() => renewalDates(parseDate("2024-01-01"), "weekly", 1), /unknown plan/);
+ });
++
++test("short months clamp to the last day, without drifting", () => {
++  assert.deepEqual(dates("2024-01-31", "monthly", 3), ["2024-02-29", "2024-03-31", "2024-04-30"]);
++  assert.deepEqual(dates("2024-02-29", "annual", 2), ["2025-02-28", "2026-02-28"]);
++});

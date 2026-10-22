@@ -1,0 +1,125 @@
+{
+  "task": "expo-release",
+  "arm": "off",
+  "rep": 1,
+  "pack": "expo",
+  "packsOn": [
+    "core",
+    "matt"
+  ],
+  "packsOff": [
+    "expo"
+  ],
+  "exit": 0,
+  "seconds": 18,
+  "model": "claude-sonnet-5-5",
+  "skillsLoaded": [
+    "core:find-skill",
+    "core:security-audit",
+    "core:skill-router",
+    "core:vet-skill",
+    "matt:ask-matt",
+    "matt:code-review",
+    "matt:codebase-design",
+    "matt:diagnosing-bugs",
+    "matt:domain-modeling",
+    "matt:git-guardrails-claude-code",
+    "matt:grill-me",
+    "matt:grill-with-docs",
+    "matt:grilling",
+    "matt:handoff",
+    "matt:implement",
+    "matt:implement-spec",
+    "matt:improve-codebase-architecture",
+    "matt:migrate-to-shoehorn",
+    "matt:pr",
+    "matt:prototype",
+    "matt:research",
+    "matt:retro",
+    "matt:scaffold-exercises",
+    "matt:setup-matt-pocock-skills",
+    "matt:setup-pre-commit",
+    "matt:tdd",
+    "matt:teach",
+    "matt:to-questionnaire",
+    "matt:to-spec",
+    "matt:to-tickets",
+    "matt:triage",
+    "matt:wait-what",
+    "matt:wayfinder",
+    "matt:wizard",
+    "matt:writing-for-agents"
+  ],
+  "skillsUsed": [],
+  "packSkillsUsed": [],
+  "costUsd": 0.0894268,
+  "turns": 4,
+  "isError": false,
+  "checks": [
+    {
+      "id": "configs-parse",
+      "group": "correctness",
+      "label": "app.json and eas.json parse, and a production build profile exists",
+      "pass": true,
+      "detail": "development, preview, production"
+    },
+    {
+      "id": "android-aab",
+      "group": "correctness",
+      "label": "Production Android builds an app bundle, not an APK (Play rejects APKs)",
+      "pass": true,
+      "detail": "buildType: app-bundle"
+    },
+    {
+      "id": "store-distribution",
+      "group": "correctness",
+      "label": "Production builds are store builds (no internal distribution or dev client)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "auto-increment",
+      "group": "correctness",
+      "label": "Production builds bump the build number automatically on both platforms",
+      "pass": true,
+      "detail": "{\"ios\":true,\"android\":true}"
+    },
+    {
+      "id": "remote-versions",
+      "group": "practice",
+      "label": "Build numbers live on EAS (cli.appVersionSource \"remote\"), so CI builds can't reuse one",
+      "pass": true,
+      "detail": "appVersionSource: remote"
+    },
+    {
+      "id": "identifiers",
+      "group": "correctness",
+      "label": "iOS bundle ID kept as is, and a valid Android package is set",
+      "pass": false,
+      "detail": "ios: com.acmeapps.tidy, android: undefined"
+    },
+    {
+      "id": "submit-profiles",
+      "group": "correctness",
+      "label": "submit.production covers iOS (with an ascAppId slot) and Android",
+      "pass": true,
+      "detail": "{\"ascAppId\":\"REPLACE_WITH_APP_STORE_CONNECT_APP_ID\",\"android\":[\"serviceAccountKeyPath\",\"track\",\"releaseStatus\"]}"
+    },
+    {
+      "id": "keys-ignored",
+      "group": "correctness",
+      "label": "Key files referenced from eas.json are git-ignored",
+      "pass": true,
+      "detail": "not ignored: none"
+    },
+    {
+      "id": "export-compliance",
+      "group": "practice",
+      "label": "Declares no non-exempt encryption (HTTPS only), so TestFlight builds don't wait on the compliance question",
+      "pass": false,
+      "detail": "value: undefined"
+    }
+  ],
+  "passed": 7,
+  "total": 9
+}

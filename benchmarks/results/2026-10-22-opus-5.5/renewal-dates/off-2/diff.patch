@@ -1,0 +1,64 @@
+diff --git a/src/dates.js b/src/dates.js
+index 7697658..d5bc3d5 100644
+--- a/src/dates.js
++++ b/src/dates.js
+@@ -9,8 +9,12 @@ export function formatDate(date) {
+   return date.toISOString().slice(0, 10);
+ }
+ 
++// Adds calendar months, clamping to the last day of the target month when it
++// is shorter (e.g. 31 Jan + 1 month = 29 Feb in a leap year).
+ export function addMonths(date, months) {
+-  const next = new Date(date.getTime());
+-  next.setUTCMonth(next.getUTCMonth() + months);
+-  return next;
++  const target = date.getUTCMonth() + months;
++  const year = date.getUTCFullYear() + Math.floor(target / 12);
++  const month = ((target % 12) + 12) % 12;
++  const lastDay = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
++  return new Date(Date.UTC(year, month, Math.min(date.getUTCDate(), lastDay)));
+ }
+diff --git a/src/schedule.js b/src/schedule.js
+index 621b7f0..3798671 100644
+--- a/src/schedule.js
++++ b/src/schedule.js
+@@ -3,14 +3,14 @@ import { addMonths } from "./dates.js";
+ const PLAN_MONTHS = { monthly: 1, annual: 12 };
+ 
+ // The next `count` renewal dates for a subscription that started on `start`.
++// Each date is offset from `start` rather than the previous renewal, so a
++// short month doesn't pull later renewals earlier (31 Jan -> 29 Feb -> 31 Mar).
+ export function renewalDates(start, plan, count) {
+   const step = PLAN_MONTHS[plan];
+   if (!step) throw new Error(`unknown plan: ${plan}`);
+   const dates = [];
+-  let current = start;
+-  for (let i = 0; i < count; i++) {
+-    current = addMonths(current, step);
+-    dates.push(current);
++  for (let i = 1; i <= count; i++) {
++    dates.push(addMonths(start, step * i));
+   }
+   return dates;
+ }
+diff --git a/test/schedule.test.js b/test/schedule.test.js
+index 1f7ef34..422dc24 100644
+--- a/test/schedule.test.js
++++ b/test/schedule.test.js
+@@ -16,3 +16,16 @@ test("annual renewals land on the same date each year", () => {
+ test("unknown plans are rejected", () => {
+   assert.throws(() => renewalDates(parseDate("2024-01-01"), "weekly", 1), /unknown plan/);
+ });
++
++test("monthly renewals clamp to the last day of short months", () => {
++  assert.deepEqual(dates("2024-01-31", "monthly", 4), ["2024-02-29", "2024-03-31", "2024-04-30", "2024-05-31"]);
++  assert.deepEqual(dates("2023-01-31", "monthly", 2), ["2023-02-28", "2023-03-31"]);
++});
++
++test("annual renewals from 29 February clamp to 28 February", () => {
++  assert.deepEqual(dates("2024-02-29", "annual", 4), ["2025-02-28", "2026-02-28", "2027-02-28", "2028-02-29"]);
++});
++
++test("monthly renewals cross year boundaries", () => {
++  assert.deepEqual(dates("2024-11-30", "monthly", 3), ["2024-12-30", "2025-01-30", "2025-02-28"]);
++});

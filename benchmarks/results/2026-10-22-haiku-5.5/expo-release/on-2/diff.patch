@@ -1,0 +1,65 @@
+diff --git a/.gitignore b/.gitignore
+index 4c66df9..ae994b7 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -3,5 +3,6 @@ node_modules/
+ dist/
+ web-build/
+ *.jks
++secrets/
+ *.mobileprovision
+ .env*.local
+diff --git a/app.json b/app.json
+index 5e697fe..f6bf97d 100644
+--- a/app.json
++++ b/app.json
+@@ -9,11 +9,10 @@
+     "userInterfaceStyle": "automatic",
+     "ios": {
+       "bundleIdentifier": "com.acmeapps.tidy",
+-      "buildNumber": "1",
+       "supportsTablet": true
+     },
+     "android": {
+-      "versionCode": 1,
++      "package": "com.acmeapps.tidy",
+       "adaptiveIcon": {
+         "foregroundImage": "./assets/adaptive-icon.png",
+         "backgroundColor": "#ffffff"
+diff --git a/eas.json b/eas.json
+index a998ee4..8575022 100644
+--- a/eas.json
++++ b/eas.json
+@@ -1,6 +1,7 @@
+ {
+   "cli": {
+-    "version": ">= 12.0.0"
++    "version": ">= 16.0.1",
++    "appVersionSource": "remote"
+   },
+   "build": {
+     "development": {
+@@ -14,12 +15,21 @@
+       }
+     },
+     "production": {
++      "autoIncrement": true,
+       "android": {
+-        "buildType": "apk"
++        "buildType": "app-bundle"
+       }
+     }
+   },
+   "submit": {
+-    "production": {}
++    "production": {
++      "ios": {
++        "ascAppId": "REPLACE_WITH_APP_STORE_CONNECT_APP_ID"
++      },
++      "android": {
++        "serviceAccountKeyPath": "./secrets/google-play-service-account.json",
++        "track": "production"
++      }
++    }
+   }
+ }

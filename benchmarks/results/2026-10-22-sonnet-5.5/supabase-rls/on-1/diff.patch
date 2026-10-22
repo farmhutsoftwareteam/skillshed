@@ -1,0 +1,108 @@
+diff --git a/supabase/migrations/20260102000000_enable_rls.sql b/supabase/migrations/20260102000000_enable_rls.sql
+new file mode 100644
+index 0000000..82e7fb2
+--- /dev/null
++++ b/supabase/migrations/20260102000000_enable_rls.sql
+@@ -0,0 +1,102 @@
++-- Row-level security for teams, team_members and projects.
++--
++-- Model: members can read their teams' data; only team admins can write
++-- projects and manage membership. Anonymous users get nothing.
++
++-- Membership helpers live in a schema that is not exposed through the Data API.
++-- They are SECURITY DEFINER so that policies on team_members can check
++-- membership without recursing into team_members' own RLS.
++create schema if not exists private;
++revoke all on schema private from public;
++grant usage on schema private to authenticated;
++
++create or replace function private.is_team_member(_team_id uuid)
++returns boolean
++language sql
++stable
++security definer
++set search_path = ''
++as $$
++  select exists (
++    select 1
++    from public.team_members tm
++    where tm.team_id = _team_id
++      and tm.user_id = (select auth.uid())
++  );
++$$;
++
++create or replace function private.is_team_admin(_team_id uuid)
++returns boolean
++language sql
++stable
++security definer
++set search_path = ''
++as $$
++  select exists (
++    select 1
++    from public.team_members tm
++    where tm.team_id = _team_id
++      and tm.user_id = (select auth.uid())
++      and tm.role = 'admin'
++  );
++$$;
++
++revoke execute on function private.is_team_member(uuid) from public, anon;
++revoke execute on function private.is_team_admin(uuid) from public, anon;
++grant execute on function private.is_team_member(uuid) to authenticated;
++grant execute on function private.is_team_admin(uuid) to authenticated;
++
++-- Enable RLS.
++alter table public.teams enable row level security;
++alter table public.team_members enable row level security;
++alter table public.projects enable row level security;
++
++-- Signed-out visitors: no access at all.
++revoke all on public.teams, public.team_members, public.projects, public.project_overview from anon;
++
++-- teams: members can read. No client-side writes (create teams server-side).
++create policy "members can view their teams"
++  on public.teams for select
++  to authenticated
++  using ( (select private.is_team_member(id)) );
++
++-- team_members: members see co-members; admins add/remove.
++create policy "members can view team members"
++  on public.team_members for select
++  to authenticated
++  using ( (select private.is_team_member(team_id)) );
++
++create policy "admins can add team members"
++  on public.team_members for insert
++  to authenticated
++  with check ( (select private.is_team_admin(team_id)) );
++
++create policy "admins can remove team members"
++  on public.team_members for delete
++  to authenticated
++  using ( (select private.is_team_admin(team_id)) );
++
++-- projects: members read; admins create/edit/delete.
++create policy "members can view team projects"
++  on public.projects for select
++  to authenticated
++  using ( (select private.is_team_member(team_id)) );
++
++create policy "admins can create team projects"
++  on public.projects for insert
++  to authenticated
++  with check ( (select private.is_team_admin(team_id)) );
++
++create policy "admins can update team projects"
++  on public.projects for update
++  to authenticated
++  using ( (select private.is_team_admin(team_id)) )
++  with check ( (select private.is_team_admin(team_id)) );
++
++create policy "admins can delete team projects"
++  on public.projects for delete
++  to authenticated
++  using ( (select private.is_team_admin(team_id)) );
++
++-- Views bypass RLS by default; run it with the caller's permissions instead.
++alter view public.project_overview set (security_invoker = true);

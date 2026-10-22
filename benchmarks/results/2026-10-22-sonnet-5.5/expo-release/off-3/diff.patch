@@ -1,0 +1,65 @@
+diff --git a/.gitignore b/.gitignore
+index 4c66df9..e884597 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -5,3 +5,6 @@ web-build/
+ *.jks
+ *.mobileprovision
+ .env*.local
++
++# Play service account key (placeholder path used in eas.json)
++google-service-account.json
+diff --git a/app.json b/app.json
+index 5e697fe..728d2ee 100644
+--- a/app.json
++++ b/app.json
+@@ -9,11 +9,9 @@
+     "userInterfaceStyle": "automatic",
+     "ios": {
+       "bundleIdentifier": "com.acmeapps.tidy",
+-      "buildNumber": "1",
+       "supportsTablet": true
+     },
+     "android": {
+-      "versionCode": 1,
+       "adaptiveIcon": {
+         "foregroundImage": "./assets/adaptive-icon.png",
+         "backgroundColor": "#ffffff"
+diff --git a/eas.json b/eas.json
+index a998ee4..14a0da0 100644
+--- a/eas.json
++++ b/eas.json
+@@ -1,6 +1,7 @@
+ {
+   "cli": {
+-    "version": ">= 12.0.0"
++    "version": ">= 12.0.0",
++    "appVersionSource": "remote"
+   },
+   "build": {
+     "development": {
+@@ -14,12 +15,22 @@
+       }
+     },
+     "production": {
++      "autoIncrement": true,
+       "android": {
+-        "buildType": "apk"
++        "buildType": "app-bundle"
+       }
+     }
+   },
+   "submit": {
+-    "production": {}
++    "production": {
++      "ios": {
++        "ascAppId": "REPLACE_WITH_APP_STORE_CONNECT_APP_ID"
++      },
++      "android": {
++        "serviceAccountKeyPath": "./google-service-account.json",
++        "track": "internal",
++        "releaseStatus": "completed"
++      }
++    }
+   }
+ }

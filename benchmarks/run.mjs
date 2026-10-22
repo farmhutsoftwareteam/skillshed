@@ -31,6 +31,11 @@ const USE_PACK = path.join(REPO, "scripts", "use-pack.sh");
 // when the pack under test is one of them.
 const ALWAYS_ON = ["core", "matt"];
 
+// Results get committed, so swap the runner's identity out of them: the home
+// directory, and the email Claude Code may pass to the agent (one run used it
+// as the appleId in eas.json).
+const EMAILS = [process.env.CLAUDE_CODE_USER_EMAIL, spawnSync("git", ["config", "user.email"], { encoding: "utf8" }).stdout.trim()].filter(Boolean);
+
 const args = parseArgs(process.argv.slice(2));
 const allTasks = fs.readdirSync(path.join(BENCH, "tasks")).filter((t) => fs.existsSync(path.join(BENCH, "tasks", t, "task.json")));
 const tasks = args.tasks ? args.tasks.split(",") : allTasks;
@@ -94,7 +99,7 @@ async function runJob({ task, arm, rep }) {
   }
 
   git(work, "add", "-A");
-  fs.writeFileSync(path.join(runDir, "diff.patch"), git(work, "diff", "--cached", "HEAD", "--", ".", ":(exclude).claude", ":(exclude).codex"));
+  fs.writeFileSync(path.join(runDir, "diff.patch"), git(work, "diff", "--cached", "HEAD", "--", ".", ":(exclude).claude", ":(exclude).codex") + "\n");
   const grade = spawnSync(process.execPath, [path.join(taskDir, "grade.mjs"), work, transcript], { cwd: BENCH, encoding: "utf8", timeout: 300_000 });
   let score;
   try {
@@ -102,6 +107,7 @@ async function runJob({ task, arm, rep }) {
   } catch {
     score = { task, checks: [], passed: 0, total: 0, graderError: (grade.stderr || grade.stdout).slice(-2000) };
   }
+  for (const f of [transcript, path.join(runDir, "diff.patch")]) redact(f);
   const stats = transcriptStats(transcript, meta.pack);
   const result = { task, arm, rep, pack: meta.pack, packsOn: on, packsOff: off, exit, seconds: Math.round((Date.now() - started) / 1000), ...stats, ...score };
   fs.writeFileSync(path.join(runDir, "result.json"), JSON.stringify(result, null, 2) + "\n");
@@ -163,6 +169,13 @@ function transcriptStats(file, pack) {
   }
   s.packSkillsUsed = s.skillsUsed.filter((x) => x.startsWith(`${pack}:`));
   return s;
+}
+
+function redact(file) {
+  let s = fs.readFileSync(file, "utf8");
+  for (const e of EMAILS) s = s.split(e).join("you@example.com");
+  s = s.split(os.homedir()).join("~");
+  fs.writeFileSync(file, s);
 }
 
 function git(cwd, ...a) {

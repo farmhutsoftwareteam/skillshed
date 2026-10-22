@@ -1,0 +1,48 @@
+diff --git a/.gitignore b/.gitignore
+index 4c66df9..ce6ecec 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -5,3 +5,5 @@ web-build/
+ *.jks
+ *.mobileprovision
+ .env*.local
++google-service-account*.json
++*.p8
+diff --git a/eas.json b/eas.json
+index a998ee4..a5c0b34 100644
+--- a/eas.json
++++ b/eas.json
+@@ -1,6 +1,7 @@
+ {
+   "cli": {
+-    "version": ">= 12.0.0"
++    "version": ">= 12.0.0",
++    "appVersionSource": "remote"
+   },
+   "build": {
+     "development": {
+@@ -14,12 +15,22 @@
+       }
+     },
+     "production": {
++      "autoIncrement": true,
+       "android": {
+-        "buildType": "apk"
++        "buildType": "app-bundle"
+       }
+     }
+   },
+   "submit": {
+-    "production": {}
++    "production": {
++      "ios": {
++        "ascAppId": "TODO_APP_STORE_CONNECT_APP_ID"
++      },
++      "android": {
++        "serviceAccountKeyPath": "./google-service-account.json",
++        "track": "production",
++        "releaseStatus": "draft"
++      }
++    }
+   }
+ }

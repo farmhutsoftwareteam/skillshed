@@ -53,7 +53,8 @@ check(checks, "original-tests", "correctness", "The original tests still pass, u
   const dir = copyOf("orig");
   fs.rmSync(path.join(dir, "test"), { recursive: true, force: true });
   fs.cpSync(path.join(fixture, "test"), path.join(dir, "test"), { recursive: true });
-  const r = runTests(dir, ["test/"]);
+  // Pass files, not the directory: Node 24 treats a directory argument as a file.
+  const r = runTests(dir, testFiles(fixture));
   return [r.ok, r.ok ? "" : r.out];
 });
 
@@ -91,6 +92,9 @@ check(checks, "regression-test", "correctness", "Agent's new or changed tests pa
   return [onFix.ok && !onOld.ok, `${agentTests.join(", ")}: fix ${onFix.ok ? "passes" : "fails"}, original ${onOld.ok ? "passes" : "fails"}`];
 });
 
+const WRITES = /open\([^)]*['"][wa]['"]|writeFileSync|sed -i|perl -[a-z]*i|\btee\b|>\s*\S|apply_patch|git apply/;
+const kind = (rel) => (/(^|\/)test\/|\.test\./.test(rel) ? "test" : rel.startsWith("src/") ? "src" : "other");
+
 check(checks, "test-first", "practice", "A failing test was written before the code was changed (from the transcript)", () => {
   if (!transcript || !fs.existsSync(transcript)) return [false, "no transcript"];
   const edits = [];
@@ -99,9 +103,13 @@ check(checks, "test-first", "practice", "A failing test was written before the c
     const msg = JSON.parse(line);
     if (msg.type !== "assistant") continue;
     for (const c of msg.message?.content ?? []) {
-      if (c.type === "tool_use" && ["Write", "Edit", "MultiEdit"].includes(c.name) && c.input?.file_path) {
-        const rel = path.relative(work, c.input.file_path);
-        edits.push(/(^|\/)test\/|\.test\./.test(rel) ? "test" : rel.startsWith("src/") ? "src" : "other");
+      if (c.type !== "tool_use") continue;
+      if (["Write", "Edit", "MultiEdit"].includes(c.name) && c.input?.file_path) {
+        edits.push(kind(path.relative(fs.realpathSync(work), fs.existsSync(c.input.file_path) ? fs.realpathSync(c.input.file_path) : c.input.file_path)));
+      } else if (c.name === "Bash" && WRITES.test(c.input?.command ?? "")) {
+        // A shell edit (heredoc script, sed -i, redirect): count the files it
+        // names, in the order it names them.
+        for (const m of (c.input.command.match(/(?:^|[\s'"(=])((?:src|test)\/[\w./-]+\.m?js)/g) ?? [])) edits.push(kind(m.trim().replace(/^['"(=]/, "")));
       }
     }
   }

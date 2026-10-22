@@ -1,0 +1,72 @@
+diff --git a/.gitignore b/.gitignore
+index 4c66df9..e6c60bb 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -5,3 +5,4 @@ web-build/
+ *.jks
+ *.mobileprovision
+ .env*.local
++google-service-account*.json
+diff --git a/app.json b/app.json
+index 5e697fe..e254a4e 100644
+--- a/app.json
++++ b/app.json
+@@ -9,17 +9,17 @@
+     "userInterfaceStyle": "automatic",
+     "ios": {
+       "bundleIdentifier": "com.acmeapps.tidy",
+-      "buildNumber": "1",
+       "supportsTablet": true
+     },
+     "android": {
+-      "versionCode": 1,
+       "adaptiveIcon": {
+         "foregroundImage": "./assets/adaptive-icon.png",
+         "backgroundColor": "#ffffff"
+       }
+     },
+-    "plugins": ["expo-router"],
++    "plugins": [
++      "expo-router"
++    ],
+     "extra": {
+       "eas": {
+         "projectId": "6f1c2a9e-3b7d-4e1a-9c55-2d8f0b4a7e13"
+diff --git a/eas.json b/eas.json
+index a998ee4..705f27e 100644
+--- a/eas.json
++++ b/eas.json
+@@ -1,6 +1,7 @@
+ {
+   "cli": {
+-    "version": ">= 12.0.0"
++    "version": ">= 16.0.1",
++    "appVersionSource": "remote"
+   },
+   "build": {
+     "development": {
+@@ -14,12 +15,22 @@
+       }
+     },
+     "production": {
++      "autoIncrement": true,
+       "android": {
+-        "buildType": "apk"
++        "buildType": "app-bundle"
+       }
+     }
+   },
+   "submit": {
+-    "production": {}
++    "production": {
++      "ios": {
++        "appleId": "you@example.com",
++        "ascAppId": "REPLACE_WITH_APP_STORE_CONNECT_APP_ID"
++      },
++      "android": {
++        "serviceAccountKeyPath": "./google-service-account.json",
++        "track": "internal"
++      }
++    }
+   }
+ }

@@ -1,0 +1,126 @@
+diff --git a/supabase/migrations/20261022120000_row_level_security.sql b/supabase/migrations/20261022120000_row_level_security.sql
+new file mode 100644
+index 0000000..570cb9f
+--- /dev/null
++++ b/supabase/migrations/20261022120000_row_level_security.sql
+@@ -0,0 +1,120 @@
++-- Row-level security for teams, team membership and projects.
++--
++-- Rules:
++--   * Signed-in users see the teams they belong to, those teams' members and
++--     those teams' projects.
++--   * Only a team's admins can create, edit or delete that team's projects and
++--     add, change or remove its members.
++--   * Everything else is invisible and immutable to a user. Signed-out visitors
++--     (the `anon` role) get no access at all.
++
++-- Membership checks used by the policies below. They run as the owner so that
++-- evaluating a policy on team_members does not re-trigger team_members' own
++-- policies (which would recurse). They only ever answer for auth.uid(), so
++-- they reveal nothing about other users.
++create or replace function public.is_team_member(p_team_id uuid)
++returns boolean
++language sql
++stable
++security definer
++set search_path = ''
++as $$
++  select exists (
++    select 1
++    from public.team_members tm
++    where tm.team_id = p_team_id
++      and tm.user_id = (select auth.uid())
++  );
++$$;
++
++create or replace function public.is_team_admin(p_team_id uuid)
++returns boolean
++language sql
++stable
++security definer
++set search_path = ''
++as $$
++  select exists (
++    select 1
++    from public.team_members tm
++    where tm.team_id = p_team_id
++      and tm.user_id = (select auth.uid())
++      and tm.role = 'admin'
++  );
++$$;
++
++revoke execute on function public.is_team_member(uuid) from public, anon;
++revoke execute on function public.is_team_admin(uuid) from public, anon;
++grant execute on function public.is_team_member(uuid) to authenticated;
++grant execute on function public.is_team_admin(uuid) to authenticated;
++
++-- Signed-out visitors get nothing.
++revoke all on public.teams, public.team_members, public.projects from anon;
++
++alter table public.teams enable row level security;
++alter table public.team_members enable row level security;
++alter table public.projects enable row level security;
++
++-- teams
++-- Members can read their teams. Admins can rename them. Creating and deleting
++-- teams is not granted to clients; do that through the service role or a
++-- future, explicit policy.
++create policy teams_select_member on public.teams
++  for select to authenticated
++  using (public.is_team_member(id));
++
++create policy teams_update_admin on public.teams
++  for update to authenticated
++  using (public.is_team_admin(id))
++  with check (public.is_team_admin(id));
++
++-- team_members
++-- Members can see who else is on their teams. Only admins can add, change or
++-- remove memberships. The with-check on insert and update stops an admin of
++-- one team from attaching a row to a team they do not administer.
++create policy team_members_select_member on public.team_members
++  for select to authenticated
++  using (public.is_team_member(team_id));
++
++create policy team_members_insert_admin on public.team_members
++  for insert to authenticated
++  with check (public.is_team_admin(team_id));
++
++create policy team_members_update_admin on public.team_members
++  for update to authenticated
++  using (public.is_team_admin(team_id))
++  with check (public.is_team_admin(team_id));
++
++create policy team_members_delete_admin on public.team_members
++  for delete to authenticated
++  using (public.is_team_admin(team_id));
++
++-- projects
++-- Members can read their team's projects. Only admins can create, edit or
++-- delete them. The with-check on insert and update means the target team must
++-- also be one the user administers, so a project cannot be moved into a team
++-- the user does not run.
++create policy projects_select_member on public.projects
++  for select to authenticated
++  using (public.is_team_member(team_id));
++
++create policy projects_insert_admin on public.projects
++  for insert to authenticated
++  with check (public.is_team_admin(team_id));
++
++create policy projects_update_admin on public.projects
++  for update to authenticated
++  using (public.is_team_admin(team_id))
++  with check (public.is_team_admin(team_id));
++
++create policy projects_delete_admin on public.projects
++  for delete to authenticated
++  using (public.is_team_admin(team_id));
++
++-- project_overview
++-- Views run with the owner's privileges by default, which would bypass the
++-- policies above and expose every project and team name to anyone with access
++-- to the view. security_invoker makes the view apply the caller's RLS instead.
++-- Requires Postgres 15 or later.
++alter view public.project_overview set (security_invoker = true);
++revoke all on public.project_overview from anon;

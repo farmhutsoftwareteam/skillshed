@@ -1,0 +1,154 @@
+{
+  "task": "supabase-rls",
+  "arm": "on",
+  "rep": 3,
+  "pack": "supabase",
+  "packsOn": [
+    "core",
+    "matt",
+    "supabase"
+  ],
+  "packsOff": [],
+  "exit": 0,
+  "seconds": 87,
+  "model": "claude-opus-5-5",
+  "skillsLoaded": [
+    "core:find-skill",
+    "core:security-audit",
+    "core:skill-router",
+    "core:vet-skill",
+    "matt:ask-matt",
+    "matt:code-review",
+    "matt:codebase-design",
+    "matt:diagnosing-bugs",
+    "matt:domain-modeling",
+    "matt:git-guardrails-claude-code",
+    "matt:grill-me",
+    "matt:grill-with-docs",
+    "matt:grilling",
+    "matt:handoff",
+    "matt:implement",
+    "matt:implement-spec",
+    "matt:improve-codebase-architecture",
+    "matt:migrate-to-shoehorn",
+    "matt:pr",
+    "matt:prototype",
+    "matt:research",
+    "matt:retro",
+    "matt:scaffold-exercises",
+    "matt:setup-matt-pocock-skills",
+    "matt:setup-pre-commit",
+    "matt:tdd",
+    "matt:teach",
+    "matt:to-questionnaire",
+    "matt:to-spec",
+    "matt:to-tickets",
+    "matt:triage",
+    "matt:wait-what",
+    "matt:wayfinder",
+    "matt:wizard",
+    "matt:writing-for-agents",
+    "supabase:supabase",
+    "supabase:supabase-postgres-best-practices"
+  ],
+  "skillsUsed": [],
+  "packSkillsUsed": [],
+  "costUsd": 0.30104559999999997,
+  "turns": 6,
+  "isError": false,
+  "checks": [
+    {
+      "id": "migrations-apply",
+      "group": "correctness",
+      "label": "All migrations apply on a Supabase-like Postgres",
+      "pass": true,
+      "detail": "2 files"
+    },
+    {
+      "id": "rls-enabled",
+      "group": "correctness",
+      "label": "RLS is enabled on teams, team_members and projects",
+      "pass": true,
+      "detail": "projects, team_members, teams"
+    },
+    {
+      "id": "member-reads-own",
+      "group": "correctness",
+      "label": "A member sees their team, co-members and projects",
+      "pass": true,
+      "detail": "{\"projects\":1,\"teams\":1,\"members\":2}"
+    },
+    {
+      "id": "isolation",
+      "group": "correctness",
+      "label": "Users outside a team, and signed-out visitors, see none of it",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "member-cannot-write-projects",
+      "group": "correctness",
+      "label": "A non-admin member cannot create, edit or delete projects",
+      "pass": true,
+      "detail": "{\"insert\":2,\"update\":\"Red project\",\"delete\":1}"
+    },
+    {
+      "id": "admin-can-write-projects",
+      "group": "correctness",
+      "label": "An admin can create, edit and delete their team's projects",
+      "pass": true,
+      "detail": "{\"insert\":3,\"update\":\"renamed\",\"delete\":0}"
+    },
+    {
+      "id": "admin-confined",
+      "group": "correctness",
+      "label": "An admin cannot touch another team's projects or move a project out",
+      "pass": true,
+      "detail": "{\"insertOther\":2,\"moved\":false,\"editedOther\":false}"
+    },
+    {
+      "id": "no-self-escalation",
+      "group": "correctness",
+      "label": "Members cannot add people, join teams or promote themselves",
+      "pass": true,
+      "detail": "{\"memberAdds\":false,\"outsiderJoins\":false,\"selfPromote\":\"member\",\"memberKicks\":false,\"adminJoinsOtherTeam\":false}"
+    },
+    {
+      "id": "admin-manages-members",
+      "group": "correctness",
+      "label": "An admin can add and remove members of their team",
+      "pass": true,
+      "detail": "{\"add\":4,\"remove\":2}"
+    },
+    {
+      "id": "view-no-leak",
+      "group": "correctness",
+      "label": "The project_overview view does not bypass RLS",
+      "pass": true,
+      "detail": "{\"bob\":1,\"dave\":0,\"anon\":\"error\"}"
+    },
+    {
+      "id": "definer-functions-safe",
+      "group": "correctness",
+      "label": "No SECURITY DEFINER function in the exposed public schema; each pins search_path",
+      "pass": true,
+      "detail": "2 definer functions, all fine"
+    },
+    {
+      "id": "uid-wrapped",
+      "group": "performance",
+      "label": "Policies call auth.uid() as (select auth.uid()), evaluated once per query",
+      "pass": true,
+      "detail": "0 bare auth.uid() calls in 8 policies"
+    },
+    {
+      "id": "member-lookup-index",
+      "group": "performance",
+      "label": "team_members has an index led by user_id for policy lookups",
+      "pass": true,
+      "detail": "btree (team_id, user_id); btree (user_id)"
+    }
+  ],
+  "passed": 13,
+  "total": 13
+}

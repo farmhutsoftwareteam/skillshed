@@ -1,0 +1,48 @@
+diff --git a/.gitignore b/.gitignore
+index 4c66df9..324410e 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -4,4 +4,5 @@ dist/
+ web-build/
+ *.jks
+ *.mobileprovision
++google-play-service-account.json
+ .env*.local
+diff --git a/eas.json b/eas.json
+index a998ee4..e075e3a 100644
+--- a/eas.json
++++ b/eas.json
+@@ -1,6 +1,7 @@
+ {
+   "cli": {
+-    "version": ">= 12.0.0"
++    "version": ">= 12.0.0",
++    "appVersionSource": "remote"
+   },
+   "build": {
+     "development": {
+@@ -14,12 +15,22 @@
+       }
+     },
+     "production": {
++      "autoIncrement": true,
++      "distribution": "store",
+       "android": {
+-        "buildType": "apk"
++        "buildType": "app-bundle"
+       }
+     }
+   },
+   "submit": {
+-    "production": {}
++    "production": {
++      "ios": {
++        "ascAppId": "REPLACE_WITH_APP_STORE_CONNECT_APP_ID"
++      },
++      "android": {
++        "serviceAccountKeyPath": "./google-play-service-account.json",
++        "track": "production"
++      }
++    }
+   }
+ }

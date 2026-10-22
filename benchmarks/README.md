@@ -59,6 +59,9 @@ capped at $3) and writes to `benchmarks/results/<timestamp>/`:
 - `<task>/<arm>-<n>/result.json`: the score for each check, skills loaded and used, cost, time
 - `summary.md` and `summary.json`: per-arm tables
 
+Transcripts and diffs are committed, so the runner replaces your home
+directory with `~` and your email with `you@example.com` before saving them.
+
 Useful flags: `--tasks supabase-rls`, `--reps 1`, `--model sonnet`,
 `--parallel 1`, `--claude /path/to/claude`. To check the runner and graders
 without spending anything, `--agent reference` grades the reference solutions

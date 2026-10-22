@@ -1,0 +1,119 @@
+diff --git a/supabase/migrations/20261022120000_enable_team_row_level_security.sql b/supabase/migrations/20261022120000_enable_team_row_level_security.sql
+new file mode 100644
+index 0000000..b6bc520
+--- /dev/null
++++ b/supabase/migrations/20261022120000_enable_team_row_level_security.sql
+@@ -0,0 +1,113 @@
++-- Row-level security for teams, team membership and projects.
++--
++-- Rules:
++--   * Signed-in members can read their teams, the members of those teams and
++--     the teams' projects.
++--   * Only a team's admins can create, edit or delete projects and add or
++--     remove team members.
++--   * Everyone else (other teams, signed-out visitors) sees and changes nothing.
++
++-- Membership checks live in security definer functions. A policy on
++-- team_members that queried team_members directly would recurse into its own
++-- policy. The functions run as the owner, so they read membership without
++-- RLS, and the search_path is pinned so they cannot be redirected.
++create or replace function public.is_team_member(p_team_id uuid)
++returns boolean
++language sql
++stable
++security definer
++set search_path = ''
++as $$
++  select exists (
++    select 1
++    from public.team_members tm
++    where tm.team_id = p_team_id
++      and tm.user_id = (select auth.uid())
++  );
++$$;
++
++create or replace function public.is_team_admin(p_team_id uuid)
++returns boolean
++language sql
++stable
++security definer
++set search_path = ''
++as $$
++  select exists (
++    select 1
++    from public.team_members tm
++    where tm.team_id = p_team_id
++      and tm.user_id = (select auth.uid())
++      and tm.role = 'admin'
++  );
++$$;
++
++revoke all on function public.is_team_member(uuid) from public, anon;
++revoke all on function public.is_team_admin(uuid) from public, anon;
++grant execute on function public.is_team_member(uuid) to authenticated;
++grant execute on function public.is_team_admin(uuid) to authenticated;
++
++-- Turn on RLS. With RLS enabled and no policy for a command, that command is
++-- denied, so only the policies below grant access.
++alter table public.teams enable row level security;
++alter table public.team_members enable row level security;
++alter table public.projects enable row level security;
++
++-- Signed-out visitors get no table privileges at all.
++revoke all on public.teams from anon;
++revoke all on public.team_members from anon;
++revoke all on public.projects from anon;
++
++-- Teams: members can read their own teams. No policy for insert, update or
++-- delete, so no one can change teams through the API yet.
++create policy "teams: members can read"
++  on public.teams for select
++  to authenticated
++  using ((select public.is_team_member(id)));
++
++-- Team members: members can see who else is on their teams. Only admins can
++-- add or remove members. There is no update policy, so roles cannot be
++-- changed through the API.
++create policy "team_members: members can read"
++  on public.team_members for select
++  to authenticated
++  using ((select public.is_team_member(team_id)));
++
++create policy "team_members: admins can add"
++  on public.team_members for insert
++  to authenticated
++  with check ((select public.is_team_admin(team_id)));
++
++create policy "team_members: admins can remove"
++  on public.team_members for delete
++  to authenticated
++  using ((select public.is_team_admin(team_id)));
++
++-- Projects: members can read their team's projects. Admins can create, edit
++-- and delete them. The update check also stops an admin moving a project into
++-- a team they do not administer.
++create policy "projects: members can read"
++  on public.projects for select
++  to authenticated
++  using ((select public.is_team_member(team_id)));
++
++create policy "projects: admins can create"
++  on public.projects for insert
++  to authenticated
++  with check ((select public.is_team_admin(team_id)));
++
++create policy "projects: admins can update"
++  on public.projects for update
++  to authenticated
++  using ((select public.is_team_admin(team_id)))
++  with check ((select public.is_team_admin(team_id)));
++
++create policy "projects: admins can delete"
++  on public.projects for delete
++  to authenticated
++  using ((select public.is_team_admin(team_id)));
++
++-- The view runs as its owner by default, which bypasses RLS on projects and
++-- teams. Make it run as the caller so the policies above apply to it.
++alter view public.project_overview set (security_invoker = true);
++revoke all on public.project_overview from anon;

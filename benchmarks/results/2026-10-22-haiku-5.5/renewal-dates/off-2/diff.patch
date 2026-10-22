@@ -1,0 +1,73 @@
+diff --git a/src/dates.js b/src/dates.js
+index 7697658..f99abbf 100644
+--- a/src/dates.js
++++ b/src/dates.js
+@@ -9,8 +9,12 @@ export function formatDate(date) {
+   return date.toISOString().slice(0, 10);
+ }
+ 
++// Adds calendar months, clamping to the last day of the target month when the
++// original day doesn't exist there (31 Jan + 1 month = 29 Feb in a leap year).
+ export function addMonths(date, months) {
+-  const next = new Date(date.getTime());
+-  next.setUTCMonth(next.getUTCMonth() + months);
+-  return next;
++  const year = date.getUTCFullYear();
++  const month = date.getUTCMonth() + months;
++  // Day 0 of the following month is the last day of `month`; Date.UTC normalises overflow.
++  const lastDay = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
++  return new Date(Date.UTC(year, month, Math.min(date.getUTCDate(), lastDay)));
+ }
+diff --git a/src/schedule.js b/src/schedule.js
+index 621b7f0..5d70df8 100644
+--- a/src/schedule.js
++++ b/src/schedule.js
+@@ -7,10 +7,10 @@ export function renewalDates(start, plan, count) {
+   const step = PLAN_MONTHS[plan];
+   if (!step) throw new Error(`unknown plan: ${plan}`);
+   const dates = [];
+-  let current = start;
+-  for (let i = 0; i < count; i++) {
+-    current = addMonths(current, step);
+-    dates.push(current);
++  // Always count from the original start, so a clamped date (e.g. 29 Feb) doesn't
++  // pull later renewals onto the clamped day (they return to 31 Mar, not 29 Mar).
++  for (let i = 1; i <= count; i++) {
++    dates.push(addMonths(start, step * i));
+   }
+   return dates;
+ }
+diff --git a/test/invoices.test.js b/test/invoices.test.js
+index b714ed7..b6d4d52 100644
+--- a/test/invoices.test.js
++++ b/test/invoices.test.js
+@@ -14,3 +14,10 @@ test("annual plans are billed at ten months' price", () => {
+   assert.equal(first.amountCents, 99000);
+   assert.equal(first.date, "2025-05-01");
+ });
++
++test("invoices for a 31 January monthly subscription fall on month-end", () => {
++  assert.deepEqual(
++    upcomingInvoices({ start: "2024-01-31", plan: "monthly", tier: "pro" }, 2).map((i) => i.date),
++    ["2024-02-29", "2024-03-31"],
++  );
++});
+diff --git a/test/schedule.test.js b/test/schedule.test.js
+index 1f7ef34..975494f 100644
+--- a/test/schedule.test.js
++++ b/test/schedule.test.js
+@@ -13,6 +13,14 @@ test("annual renewals land on the same date each year", () => {
+   assert.deepEqual(dates("2023-06-10", "annual", 2), ["2024-06-10", "2025-06-10"]);
+ });
+ 
++test("monthly renewals clamp to the last day of short months", () => {
++  assert.deepEqual(dates("2024-01-31", "monthly", 4), ["2024-02-29", "2024-03-31", "2024-04-30", "2024-05-31"]);
++});
++
++test("annual renewals from 29 February clamp to 28 February in non-leap years", () => {
++  assert.deepEqual(dates("2024-02-29", "annual", 3), ["2025-02-28", "2026-02-28", "2027-02-28"]);
++});
++
+ test("unknown plans are rejected", () => {
+   assert.throws(() => renewalDates(parseDate("2024-01-01"), "weekly", 1), /unknown plan/);
+ });

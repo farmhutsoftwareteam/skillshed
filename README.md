@@ -54,6 +54,10 @@ You won't get the `skillshed` command this way.
 
 Agents read every enabled skill's description on every request, within a small budget (about 1% of context in Claude Code, 2% in Codex). Past that budget, skills quietly stop triggering, which is why most packs are off by default. To change which packs are on everywhere, edit `ALWAYS_ON` in `scripts/bootstrap.sh`.
 
+## Does it help?
+
+[`benchmarks/`](benchmarks/) runs real tasks with and without each pack and grades the results by running code. In the [first results](benchmarks/RESULTS.md), the `supabase` pack took Haiku 5.5 from 85% to 97% on a row-level-security task: without it, every run left its security-definer helpers callable by any visitor. On the Expo release and bug-fix tasks the packs made no measurable difference, and Opus 5.5 did nearly as well without any pack. The write-up includes the cases where the packs didn't help.
+
 ## Everyday use
 
 ```bash
@@ -118,6 +122,7 @@ scripts/
   refresh-catalog.mjs               re-snapshot skill-issue.in
   new-pack.mjs                      create an off-by-default pack
 catalog/skill-issue.json            skill-issue.in snapshot (untrusted data)
+benchmarks/                         with/without-pack tasks, graders, runner, results
 .github/workflows/
   check.yml                         CI on every PR
   sync-vendor.yml                   weekly upstream sync, opens a PR

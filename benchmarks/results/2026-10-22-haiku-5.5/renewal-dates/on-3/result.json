@@ -1,0 +1,116 @@
+{
+  "task": "renewal-dates",
+  "arm": "on",
+  "rep": 3,
+  "pack": "matt",
+  "packsOn": [
+    "core",
+    "matt"
+  ],
+  "packsOff": [],
+  "exit": 0,
+  "seconds": 22,
+  "model": "claude-haiku-5-5",
+  "skillsLoaded": [
+    "core:find-skill",
+    "core:security-audit",
+    "core:skill-router",
+    "core:vet-skill",
+    "matt:ask-matt",
+    "matt:code-review",
+    "matt:codebase-design",
+    "matt:diagnosing-bugs",
+    "matt:domain-modeling",
+    "matt:git-guardrails-claude-code",
+    "matt:grill-me",
+    "matt:grill-with-docs",
+    "matt:grilling",
+    "matt:handoff",
+    "matt:implement",
+    "matt:implement-spec",
+    "matt:improve-codebase-architecture",
+    "matt:migrate-to-shoehorn",
+    "matt:pr",
+    "matt:prototype",
+    "matt:research",
+    "matt:retro",
+    "matt:scaffold-exercises",
+    "matt:setup-matt-pocock-skills",
+    "matt:setup-pre-commit",
+    "matt:tdd",
+    "matt:teach",
+    "matt:to-questionnaire",
+    "matt:to-spec",
+    "matt:to-tickets",
+    "matt:triage",
+    "matt:wait-what",
+    "matt:wayfinder",
+    "matt:wizard",
+    "matt:writing-for-agents"
+  ],
+  "skillsUsed": [],
+  "packSkillsUsed": [],
+  "costUsd": 0.0074268,
+  "turns": 9,
+  "isError": false,
+  "checks": [
+    {
+      "id": "original-tests",
+      "group": "correctness",
+      "label": "The original tests still pass, unmodified",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "clamp",
+      "group": "correctness",
+      "label": "Held-out: renewals in short months fall on the month's last day",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "anchor-monthly",
+      "group": "correctness",
+      "label": "Held-out: monthly renewals return to the 31st after a short month (no drift)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "anchor-annual",
+      "group": "correctness",
+      "label": "Held-out: a 29 Feb annual start renews on 29 Feb in leap years",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "ordinary-dates",
+      "group": "correctness",
+      "label": "Held-out: ordinary dates and invoice lines are unchanged",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "timezone-stable",
+      "group": "correctness",
+      "label": "Held-out results are the same in Auckland and Los Angeles as in UTC",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "regression-test",
+      "group": "correctness",
+      "label": "Agent's new or changed tests pass on the fix and fail on the original code",
+      "pass": true,
+      "detail": "test/schedule.test.js: fix passes, original fails"
+    },
+    {
+      "id": "test-first",
+      "group": "practice",
+      "label": "A failing test was written before the code was changed (from the transcript)",
+      "pass": true,
+      "detail": "edit order: test > src > src"
+    }
+  ],
+  "passed": 8,
+  "total": 8
+}

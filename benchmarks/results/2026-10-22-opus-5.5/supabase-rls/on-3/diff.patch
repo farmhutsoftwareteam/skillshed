@@ -1,0 +1,121 @@
+diff --git a/supabase/migrations/20261022000000_enable_rls.sql b/supabase/migrations/20261022000000_enable_rls.sql
+new file mode 100644
+index 0000000..bf9a083
+--- /dev/null
++++ b/supabase/migrations/20261022000000_enable_rls.sql
+@@ -0,0 +1,115 @@
++-- Lock down team data with row-level security.
++--
++-- * Members of a team can read the team, its members and its projects.
++-- * Only a team's admins can insert/update/delete its projects and
++--   add/remove its members.
++-- * Signed-out visitors (anon) get nothing.
++
++-- Membership helpers. These are security definer so policies on
++-- team_members can consult team_members without recursing into its own RLS.
++-- They live in a schema the Data API does not expose, so they can't be
++-- called as RPCs to probe other teams' membership.
++create schema if not exists private;
++revoke all on schema private from public;
++grant usage on schema private to authenticated;
++
++create function private.is_team_member(_team_id uuid)
++returns boolean
++language sql
++stable
++security definer
++set search_path = ''
++as $$
++  select exists (
++    select 1
++    from public.team_members tm
++    where tm.team_id = _team_id
++      and tm.user_id = (select auth.uid())
++  );
++$$;
++
++create function private.is_team_admin(_team_id uuid)
++returns boolean
++language sql
++stable
++security definer
++set search_path = ''
++as $$
++  select exists (
++    select 1
++    from public.team_members tm
++    where tm.team_id = _team_id
++      and tm.user_id = (select auth.uid())
++      and tm.role = 'admin'
++  );
++$$;
++
++revoke all on function private.is_team_member(uuid) from public;
++revoke all on function private.is_team_admin(uuid) from public;
++grant execute on function private.is_team_member(uuid) to authenticated;
++grant execute on function private.is_team_admin(uuid) to authenticated;
++
++-- The helpers look memberships up by user.
++create index team_members_user_id_idx on public.team_members (user_id);
++
++-- Enable RLS. With no policy for a role/command, access is denied.
++alter table public.teams enable row level security;
++alter table public.team_members enable row level security;
++alter table public.projects enable row level security;
++
++-- Signed-out visitors get no table privileges at all.
++revoke all on public.teams, public.team_members, public.projects from anon;
++
++-- teams: members can read. No client-side writes are granted here.
++create policy "Members can view their teams"
++  on public.teams for select
++  to authenticated
++  using ((select private.is_team_member(id)));
++
++-- team_members: members see co-members; admins add and remove members.
++create policy "Members can view members of their teams"
++  on public.team_members for select
++  to authenticated
++  using ((select private.is_team_member(team_id)));
++
++create policy "Admins can add team members"
++  on public.team_members for insert
++  to authenticated
++  with check ((select private.is_team_admin(team_id)));
++
++create policy "Admins can remove team members"
++  on public.team_members for delete
++  to authenticated
++  using ((select private.is_team_admin(team_id)));
++
++-- projects: members read; admins create, edit and delete.
++alter table public.projects alter column created_by set default auth.uid();
++
++create policy "Members can view their teams' projects"
++  on public.projects for select
++  to authenticated
++  using ((select private.is_team_member(team_id)));
++
++create policy "Admins can create projects"
++  on public.projects for insert
++  to authenticated
++  with check (
++    (select private.is_team_admin(team_id))
++    and created_by = (select auth.uid())
++  );
++
++-- with check stops an admin moving a project into a team they don't admin.
++create policy "Admins can update projects"
++  on public.projects for update
++  to authenticated
++  using ((select private.is_team_admin(team_id)))
++  with check ((select private.is_team_admin(team_id)));
++
++create policy "Admins can delete projects"
++  on public.projects for delete
++  to authenticated
++  using ((select private.is_team_admin(team_id)));
++
++-- The view would otherwise run with its owner's rights and bypass RLS.
++alter view public.project_overview set (security_invoker = true);
++revoke all on public.project_overview from anon;

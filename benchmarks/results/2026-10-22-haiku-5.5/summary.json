@@ -1,0 +1,467 @@
+{
+  "expo-release": {
+    "pack": "expo",
+    "arms": {
+      "off": {
+        "runs": 3,
+        "scores": [
+          "7/9",
+          "8/9",
+          "7/9"
+        ],
+        "meanScore": 0.8148148148148148,
+        "packSkillUsedIn": 0,
+        "meanCostUsd": 0.007801079999999999,
+        "meanSeconds": 31,
+        "errors": 0,
+        "checks": {
+          "configs-parse": {
+            "label": "app.json and eas.json parse, and a production build profile exists",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "android-aab": {
+            "label": "Production Android builds an app bundle, not an APK (Play rejects APKs)",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "store-distribution": {
+            "label": "Production builds are store builds (no internal distribution or dev client)",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "auto-increment": {
+            "label": "Production builds bump the build number automatically on both platforms",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "remote-versions": {
+            "label": "Build numbers live on EAS (cli.appVersionSource \"remote\"), so CI builds can't reuse one",
+            "group": "practice",
+            "passed": 3,
+            "runs": 3
+          },
+          "identifiers": {
+            "label": "iOS bundle ID kept as is, and a valid Android package is set",
+            "group": "correctness",
+            "passed": 1,
+            "runs": 3
+          },
+          "submit-profiles": {
+            "label": "submit.production covers iOS (with an ascAppId slot) and Android",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "keys-ignored": {
+            "label": "Key files referenced from eas.json are git-ignored",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "export-compliance": {
+            "label": "Declares no non-exempt encryption (HTTPS only), so TestFlight builds don't wait on the compliance question",
+            "group": "practice",
+            "passed": 0,
+            "runs": 3
+          }
+        }
+      },
+      "on": {
+        "runs": 3,
+        "scores": [
+          "8/9",
+          "8/9",
+          "7/9"
+        ],
+        "meanScore": 0.8518518518518517,
+        "packSkillUsedIn": 3,
+        "meanCostUsd": 0.009355896666666667,
+        "meanSeconds": 32.666666666666664,
+        "errors": 0,
+        "checks": {
+          "configs-parse": {
+            "label": "app.json and eas.json parse, and a production build profile exists",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "android-aab": {
+            "label": "Production Android builds an app bundle, not an APK (Play rejects APKs)",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "store-distribution": {
+            "label": "Production builds are store builds (no internal distribution or dev client)",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "auto-increment": {
+            "label": "Production builds bump the build number automatically on both platforms",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "remote-versions": {
+            "label": "Build numbers live on EAS (cli.appVersionSource \"remote\"), so CI builds can't reuse one",
+            "group": "practice",
+            "passed": 3,
+            "runs": 3
+          },
+          "identifiers": {
+            "label": "iOS bundle ID kept as is, and a valid Android package is set",
+            "group": "correctness",
+            "passed": 2,
+            "runs": 3
+          },
+          "submit-profiles": {
+            "label": "submit.production covers iOS (with an ascAppId slot) and Android",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "keys-ignored": {
+            "label": "Key files referenced from eas.json are git-ignored",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "export-compliance": {
+            "label": "Declares no non-exempt encryption (HTTPS only), so TestFlight builds don't wait on the compliance question",
+            "group": "practice",
+            "passed": 0,
+            "runs": 3
+          }
+        }
+      }
+    }
+  },
+  "renewal-dates": {
+    "pack": "matt",
+    "arms": {
+      "off": {
+        "runs": 3,
+        "scores": [
+          "7/8",
+          "7/8",
+          "7/8"
+        ],
+        "meanScore": 0.875,
+        "packSkillUsedIn": 0,
+        "meanCostUsd": 0.006981043333333333,
+        "meanSeconds": 24.666666666666668,
+        "errors": 0,
+        "checks": {
+          "original-tests": {
+            "label": "The original tests still pass, unmodified",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "clamp": {
+            "label": "Held-out: renewals in short months fall on the month's last day",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "anchor-monthly": {
+            "label": "Held-out: monthly renewals return to the 31st after a short month (no drift)",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "anchor-annual": {
+            "label": "Held-out: a 29 Feb annual start renews on 29 Feb in leap years",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "ordinary-dates": {
+            "label": "Held-out: ordinary dates and invoice lines are unchanged",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "timezone-stable": {
+            "label": "Held-out results are the same in Auckland and Los Angeles as in UTC",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "regression-test": {
+            "label": "Agent's new or changed tests pass on the fix and fail on the original code",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "test-first": {
+            "label": "A failing test was written before the code was changed (from the transcript)",
+            "group": "practice",
+            "passed": 0,
+            "runs": 3
+          }
+        }
+      },
+      "on": {
+        "runs": 3,
+        "scores": [
+          "7/8",
+          "7/8",
+          "8/8"
+        ],
+        "meanScore": 0.9166666666666666,
+        "packSkillUsedIn": 0,
+        "meanCostUsd": 0.007418166666666667,
+        "meanSeconds": 24.666666666666668,
+        "errors": 0,
+        "checks": {
+          "original-tests": {
+            "label": "The original tests still pass, unmodified",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "clamp": {
+            "label": "Held-out: renewals in short months fall on the month's last day",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "anchor-monthly": {
+            "label": "Held-out: monthly renewals return to the 31st after a short month (no drift)",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "anchor-annual": {
+            "label": "Held-out: a 29 Feb annual start renews on 29 Feb in leap years",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "ordinary-dates": {
+            "label": "Held-out: ordinary dates and invoice lines are unchanged",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "timezone-stable": {
+            "label": "Held-out results are the same in Auckland and Los Angeles as in UTC",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "regression-test": {
+            "label": "Agent's new or changed tests pass on the fix and fail on the original code",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "test-first": {
+            "label": "A failing test was written before the code was changed (from the transcript)",
+            "group": "practice",
+            "passed": 1,
+            "runs": 3
+          }
+        }
+      }
+    }
+  },
+  "supabase-rls": {
+    "pack": "supabase",
+    "arms": {
+      "off": {
+        "runs": 3,
+        "scores": [
+          "11/13",
+          "11/13",
+          "11/13"
+        ],
+        "meanScore": 0.8461538461538461,
+        "packSkillUsedIn": 0,
+        "meanCostUsd": 0.01652646333333333,
+        "meanSeconds": 90,
+        "errors": 0,
+        "checks": {
+          "migrations-apply": {
+            "label": "All migrations apply on a Supabase-like Postgres",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "rls-enabled": {
+            "label": "RLS is enabled on teams, team_members and projects",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "member-reads-own": {
+            "label": "A member sees their team, co-members and projects",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "isolation": {
+            "label": "Users outside a team, and signed-out visitors, see none of it",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "member-cannot-write-projects": {
+            "label": "A non-admin member cannot create, edit or delete projects",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "admin-can-write-projects": {
+            "label": "An admin can create, edit and delete their team's projects",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "admin-confined": {
+            "label": "An admin cannot touch another team's projects or move a project out",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "no-self-escalation": {
+            "label": "Members cannot add people, join teams or promote themselves",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "admin-manages-members": {
+            "label": "An admin can add and remove members of their team",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "view-no-leak": {
+            "label": "The project_overview view does not bypass RLS",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "definer-functions-safe": {
+            "label": "No SECURITY DEFINER function in the exposed public schema; each pins search_path",
+            "group": "correctness",
+            "passed": 0,
+            "runs": 3
+          },
+          "uid-wrapped": {
+            "label": "Policies call auth.uid() as (select auth.uid()), evaluated once per query",
+            "group": "performance",
+            "passed": 3,
+            "runs": 3
+          },
+          "member-lookup-index": {
+            "label": "team_members has an index led by user_id for policy lookups",
+            "group": "performance",
+            "passed": 0,
+            "runs": 3
+          }
+        }
+      },
+      "on": {
+        "runs": 3,
+        "scores": [
+          "13/13",
+          "12/13",
+          "13/13"
+        ],
+        "meanScore": 0.9743589743589745,
+        "packSkillUsedIn": 3,
+        "meanCostUsd": 0.01445942,
+        "meanSeconds": 78.66666666666667,
+        "errors": 0,
+        "checks": {
+          "migrations-apply": {
+            "label": "All migrations apply on a Supabase-like Postgres",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "rls-enabled": {
+            "label": "RLS is enabled on teams, team_members and projects",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "member-reads-own": {
+            "label": "A member sees their team, co-members and projects",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "isolation": {
+            "label": "Users outside a team, and signed-out visitors, see none of it",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "member-cannot-write-projects": {
+            "label": "A non-admin member cannot create, edit or delete projects",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "admin-can-write-projects": {
+            "label": "An admin can create, edit and delete their team's projects",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "admin-confined": {
+            "label": "An admin cannot touch another team's projects or move a project out",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "no-self-escalation": {
+            "label": "Members cannot add people, join teams or promote themselves",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "admin-manages-members": {
+            "label": "An admin can add and remove members of their team",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "view-no-leak": {
+            "label": "The project_overview view does not bypass RLS",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "definer-functions-safe": {
+            "label": "No SECURITY DEFINER function in the exposed public schema; each pins search_path",
+            "group": "correctness",
+            "passed": 3,
+            "runs": 3
+          },
+          "uid-wrapped": {
+            "label": "Policies call auth.uid() as (select auth.uid()), evaluated once per query",
+            "group": "performance",
+            "passed": 3,
+            "runs": 3
+          },
+          "member-lookup-index": {
+            "label": "team_members has an index led by user_id for policy lookups",
+            "group": "performance",
+            "passed": 2,
+            "runs": 3
+          }
+        }
+      }
+    }
+  }
+}

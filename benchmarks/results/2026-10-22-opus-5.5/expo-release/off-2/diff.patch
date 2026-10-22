@@ -1,0 +1,69 @@
+diff --git a/.gitignore b/.gitignore
+index 4c66df9..6987ff2 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -5,3 +5,6 @@ web-build/
+ *.jks
+ *.mobileprovision
+ .env*.local
++
++# Google Play service account key used by EAS Submit
++secrets/
+diff --git a/app.json b/app.json
+index 5e697fe..880c5a8 100644
+--- a/app.json
++++ b/app.json
+@@ -9,11 +9,13 @@
+     "userInterfaceStyle": "automatic",
+     "ios": {
+       "bundleIdentifier": "com.acmeapps.tidy",
+-      "buildNumber": "1",
+-      "supportsTablet": true
++      "supportsTablet": true,
++      "config": {
++        "usesNonExemptEncryption": false
++      }
+     },
+     "android": {
+-      "versionCode": 1,
++      "package": "com.acmeapps.tidy",
+       "adaptiveIcon": {
+         "foregroundImage": "./assets/adaptive-icon.png",
+         "backgroundColor": "#ffffff"
+diff --git a/eas.json b/eas.json
+index a998ee4..1aa10f4 100644
+--- a/eas.json
++++ b/eas.json
+@@ -1,6 +1,7 @@
+ {
+   "cli": {
+-    "version": ">= 12.0.0"
++    "version": ">= 12.0.0",
++    "appVersionSource": "remote"
+   },
+   "build": {
+     "development": {
+@@ -14,12 +15,19 @@
+       }
+     },
+     "production": {
+-      "android": {
+-        "buildType": "apk"
+-      }
++      "autoIncrement": true
+     }
+   },
+   "submit": {
+-    "production": {}
++    "production": {
++      "ios": {
++        "ascAppId": "REPLACE_WITH_APP_STORE_CONNECT_APP_ID"
++      },
++      "android": {
++        "serviceAccountKeyPath": "./secrets/google-play-service-account.json",
++        "track": "production",
++        "releaseStatus": "draft"
++      }
++    }
+   }
+ }
