@@ -3,9 +3,10 @@
 Munya's personal agent skills, packaged as one plugin marketplace that works in both **Claude Code** and **Codex**.
 
 - **core** is always on: `skill-router`, `find-skill` and `vet-skill`.
-- **Packs** are installed but switched off, and each project turns on only the packs it needs:
-  - stack packs: `nextjs-vercel`, `supabase`, `expo`, `inngest`
-  - `matt`: Matt Pocock's 31 stable skills, tracking upstream
+- **`matt`** is also always on: Matt Pocock's 31 stable skills, tracking upstream. They add about 1,300 tokens to every session.
+- **Stack packs** (`nextjs-vercel`, `supabase`, `expo`, `inngest`) are installed but switched off, and each project turns on only the ones it needs.
+
+To change which packs are always on, edit `ALWAYS_ON` in `scripts/bootstrap.sh`.
 
 Agents read every enabled skill's description on every request, within a small budget (about 1% of context in Claude Code, 2% in Codex). Past that budget, skills quietly stop triggering. Keeping most skills off by default is the point.
 
@@ -25,7 +26,7 @@ gh repo clone farmhutsoftwareteam/munya-skills ~/Developer/farmhutsoftwareteam/m
 
 - Adds the `munya` marketplace to both tools from GitHub.
 - Installs every plugin.
-- Enables `core` and disables the stack packs.
+- Enables the `ALWAYS_ON` packs (`core`, `matt`) and disables the rest.
 - Turns on Claude Code auto-update for this marketplace.
 
 It is safe to re-run. To install from a local checkout instead (for example while developing), run `scripts/bootstrap.sh "$PWD"`.

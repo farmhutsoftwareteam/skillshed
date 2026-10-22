@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Installs the munya marketplace into Claude Code and Codex on this Mac.
-# core is enabled everywhere; stack packs are installed but disabled, and
-# turned on per project with scripts/use-pack.sh.
+# Packs in ALWAYS_ON are enabled everywhere; the rest are installed but
+# disabled, and turned on per project with scripts/use-pack.sh.
 #
 #   scripts/bootstrap.sh                 # from GitHub (default source)
 #   scripts/bootstrap.sh "$PWD"          # from this local checkout
@@ -11,11 +11,11 @@ set -uo pipefail
 
 SOURCE="${1:-farmhutsoftwareteam/munya-skills}"
 MARKET=munya
-CORE=core
-# Every pack in this checkout except core.
+ALWAYS_ON=(core matt)
+# Every other pack in this checkout.
 PACKS=()
 for d in "$(cd "$(dirname "$0")/.." && pwd)"/plugins/*/; do
-  p="$(basename "$d")"; [ "$p" = "$CORE" ] || PACKS+=("$p")
+  p="$(basename "$d")"; [[ " ${ALWAYS_ON[*]} " == *" $p "* ]] || PACKS+=("$p")
 done
 
 [ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -33,7 +33,10 @@ if [ -n "$CLAUDE" ]; then
   echo "Claude Code: $CLAUDE"
   run "$CLAUDE" plugin marketplace add "$SOURCE" --scope user
   run "$CLAUDE" plugin marketplace update "$MARKET"
-  run "$CLAUDE" plugin install "$CORE@$MARKET" --scope user -y
+  for p in "${ALWAYS_ON[@]}"; do
+    run "$CLAUDE" plugin install "$p@$MARKET" --scope user -y
+    "$CLAUDE" plugin enable "$p@$MARKET" --scope user >/dev/null 2>&1  # no-op if already on
+  done
   for p in "${PACKS[@]}"; do
     run "$CLAUDE" plugin install "$p@$MARKET" --scope user -y
     run "$CLAUDE" plugin disable "$p@$MARKET" --scope user
@@ -61,8 +64,11 @@ if command -v codex >/dev/null; then
   [[ "$SOURCE" != /* && "$SOURCE" != *:* ]] && CODEX_SOURCE="git@github.com:$SOURCE.git"
   run codex plugin marketplace add "$CODEX_SOURCE"
   [[ "$SOURCE" != /* ]] && run codex plugin marketplace upgrade "$MARKET"
-  run codex plugin add "$CORE@$MARKET"
   CONFIG="$HOME/.codex/config.toml"
+  for p in "${ALWAYS_ON[@]}"; do
+    run codex plugin add "$p@$MARKET"
+    sed -i '' "/^\[plugins\.\"$p@$MARKET\"\]/,/^\[/ s/^enabled = false/enabled = true/" "$CONFIG"
+  done
   for p in "${PACKS[@]}"; do
     run codex plugin add "$p@$MARKET"
     # codex has no disable command: flip the entry `plugin add` just wrote.
