@@ -1,0 +1,71 @@
+name: vet-submission
+
+# Scans a skill submitted through the "Submit a skill" issue form and posts
+# the findings as a comment. The issue body is untrusted: it is only read
+# from an environment variable and must match a strict source pattern.
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  vet:
+    if: contains(github.event.issue.labels.*.name, 'skill-submission')
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ISSUE_BODY: ${{ github.event.issue.body }}
+      ISSUE: ${{ github.event.issue.number }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Read the source from the form
+        id: source
+        run: |
+          node -e '
+            const body = process.env.ISSUE_BODY || "";
+            const m = body.match(/### Skill source\s+([^\n]+)/);
+            const s = (m ? m[1] : "").trim();
+            const ok = /^[\w.-]+\/[\w.-]+(@[\w.-]+)?$/.test(s)
+              || /^https:\/\/(www\.)?skills\.sh\/[\w.-]+\/[\w.-]+\/[\w.-]+\/?$/.test(s)
+              || /^https:\/\/github\.com\/[\w.-]+\/[\w.-]+(\/tree\/[\w.\/-]+)?\/?$/.test(s);
+            require("fs").appendFileSync(process.env.GITHUB_OUTPUT, `source=${ok ? s : ""}\n`);
+          '
+
+      - name: Scan it
+        id: vet
+        if: steps.source.outputs.source != ''
+        env:
+          SOURCE: ${{ steps.source.outputs.source }}
+        run: |
+          set +e
+          node scripts/personal.mjs vet "$SOURCE" --report "$RUNNER_TEMP/scan.md" > "$RUNNER_TEMP/vet.txt" 2>&1
+          echo "status=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Comment
+        env:
+          SOURCE: ${{ steps.source.outputs.source }}
+          STATUS: ${{ steps.vet.outputs.status }}
+        run: |
+          {
+            if [ -z "$SOURCE" ]; then
+              echo "Couldn't read a skill source from this issue. Use \`owner/repo@skill\`, a skills.sh URL, or a GitHub tree URL to the skill folder, then edit the issue to re-run the scan."
+            else
+              echo "Automated scan of \`$SOURCE\`:"
+              echo
+              if [ -f "$RUNNER_TEMP/scan.md" ]; then cat "$RUNNER_TEMP/scan.md"; else echo '```'; tail -20 "$RUNNER_TEMP/vet.txt"; echo '```'; fi
+              echo
+              if [ "$STATUS" = 0 ]; then
+                echo "No high-severity findings. A maintainer will read every file before adding it."
+              else
+                echo "**High-severity findings or the fetch failed.** It won't be added until these are explained or fixed."
+              fi
+            fi
+          } > "$RUNNER_TEMP/comment.md"
+          gh issue comment "$ISSUE" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/comment.md"

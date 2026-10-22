@@ -1,0 +1,49 @@
+name: Submit a skill
+description: Suggest a skill for Skillshed. A bot scans it for prompt injection and posts the result here.
+title: "Submit skill: "
+labels: ["skill-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for sharing a skill. A workflow fetches it, scans every file and comments the findings on this issue. A maintainer then reads it and, if it fits, pins it into a pack.
+
+        Your own skill: put it in a public GitHub repo first (any folder with a `SKILL.md`). Check it yourself with `skillshed vet <source>`.
+  - type: input
+    id: source
+    attributes:
+      label: Skill source
+      description: "owner/repo@skill-name, a skills.sh URL, or a GitHub URL to the skill folder (https://github.com/owner/repo/tree/main/path/to/skill)."
+      placeholder: owner/repo@skill-name
+    validations:
+      required: true
+  - type: dropdown
+    id: pack
+    attributes:
+      label: Which pack
+      options:
+        - core (always on, everyday)
+        - matt
+        - nextjs-vercel
+        - supabase
+        - expo
+        - inngest
+        - A new pack (say which below)
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: What it does and when you use it
+      description: One or two sentences. Who would turn it on, and for what task?
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: The skill's repo has a licence that allows redistribution (MIT, Apache-2.0, BSD, CC0 or similar).
+          required: true
+        - label: I wrote it or I have used it, and it does only what its description says.
+          required: true

@@ -64,6 +64,22 @@ skillshed find remotion      # search skill-issue.in + skills.sh for new skills
 skillshed update             # pull the latest and refresh both tools
 ```
 
+### Your own skills
+
+```bash
+skillshed new release-notes "Use when writing release notes"   # start your own
+skillshed add anthropics/skills@frontend-design                # add any skill, for you only
+skillshed mine                                                 # list them
+skillshed remove frontend-design
+skillshed vet owner/repo@skill                                 # scan without installing
+```
+
+Personal skills go into `~/.agents/skills` (Codex) with a link from `~/.claude/skills` (Claude Code). They are always on, and are scanned and pinned like shared skills; the lock lives in `~/.config/skillshed/personal.lock.json`.
+
+### Share a skill
+
+[Submit it here](https://github.com/farmhutsoftwareteam/skillshed/issues/new?template=submit-skill.yml). A workflow scans it and replies on the issue, then a maintainer reviews it. See [CONTRIBUTING.md](CONTRIBUTING.md).
+
 `use` writes `"supabase@skillshed": true` to `.claude/settings.json` and `[plugins."supabase@skillshed"] enabled = true` to `.codex/config.toml`. Commit both files so the project brings its packs to every machine. Codex reads the project file only in projects you have trusted.
 
 ## Finding new skills
@@ -97,6 +113,8 @@ scripts/
   scan-skills.mjs                   prompt-injection / supply-chain scan
   sync-vendor.mjs                   add / update / remove vendored skills
   find-skill.mjs                    search skill-issue.in snapshot + skills.sh
+  personal.mjs                      your own skills: add / new / list / remove / vet
+  fetch.mjs                         shared GitHub fetch helpers
   refresh-catalog.mjs               re-snapshot skill-issue.in
   new-pack.mjs                      create an off-by-default pack
 catalog/skill-issue.json            skill-issue.in snapshot (untrusted data)

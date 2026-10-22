@@ -67,7 +67,24 @@ const today = new Date().toISOString().slice(0, 10);
 const description = `Install ${all.length} vetted agent skills for Claude Code and Codex with one command. Packs switch on per project; upstream skills are pinned and scanned.`;
 const shareDescription = 'One install for Claude Code and Codex. Packs switch on per project; upstream skills are pinned to a commit and scanned for prompt injection.';
 
-// Structured data describes only what the page shows: the tool and the site.
+// Questions shown on the page; the FAQPage data below repeats them exactly.
+// Answers are plain text with `code` spans.
+const faq = [
+  ['What is an agent skill?', 'A skill is a folder with a SKILL.md file: instructions, and sometimes scripts, that an AI coding agent loads when a task matches the skill\'s description. Claude Code and Codex both read the open Agent Skills format, so the same skill works in both.'],
+  ['What does Skillshed add?', 'It gathers vetted skills into one plugin marketplace that Claude Code and Codex both understand, installs it with one command, keeps the always-on list short so skills keep triggering, and pins every third-party skill to a commit after scanning it for prompt injection.'],
+  ['Why are most packs off?', `Agents read every enabled skill's description on every request, within a budget of about 1 to 2% of context. Past that, skills quietly stop triggering. Core and Matt Pocock's skills stay on; stack packs switch on only in projects that use them, with \`skillshed use supabase\`.`],
+  ['Can I add my own skills?', 'Yes. `skillshed new my-skill "Use when ..."` starts one, and `skillshed add owner/repo@skill` adds any skill from GitHub or skills.sh for you only. Both go into your own skill folders for Claude Code and Codex, scanned and pinned.'],
+  ['How do I share a skill with everyone?', 'Check it with `skillshed vet owner/repo@skill`, then submit it on GitHub. A workflow scans it and replies on the issue; a person reads every file before pinning it into a pack.'],
+  ['Is it safe?', 'No scanner can prove a skill is safe. Skillshed narrows the risk: every upstream skill is pinned to a commit and content hash, scanned for hidden text, override phrasing and data exfiltration, and only updated through pull requests a person merges.'],
+  ['How do I update or remove it?', '`skillshed update` pulls the latest skills into both tools. To remove it, run `claude plugin marketplace remove skillshed` and `codex plugin marketplace remove skillshed`, then delete `~/.skillshed`.'],
+  ['What does it cost?', 'Nothing. Skillshed is MIT licensed, and the skills it carries keep their own open-source licences.'],
+];
+const codeSpans = (t) => esc(t).replace(/`([^`]+)`/g, '<code>$1</code>');
+const faqHtml = faq
+  .map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p class="a">${codeSpans(a)}</p></details>`)
+  .join('\n');
+
+// Structured data describes only what the page shows: the tool, the site and its questions.
 const jsonld = JSON.stringify({
   '@context': 'https://schema.org',
   '@graph': [
@@ -89,6 +106,11 @@ const jsonld = JSON.stringify({
       author: { '@type': 'Person', name: 'Munyaradzi Makosa', url: 'https://munyamakosa.com' },
     },
     { '@type': 'WebSite', '@id': `${SITE_URL}/#site`, name: 'Skillshed', url: `${SITE_URL}/`, about: { '@id': `${SITE_URL}/#app` } },
+    {
+      '@type': 'FAQPage',
+      '@id': `${SITE_URL}/#faq`,
+      mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a.replace(/`/g, '') } })),
+    },
   ],
 }).replace(/</g, '\\u003c');
 
@@ -97,6 +119,7 @@ const html = readFileSync(join(SITE, 'template.html'), 'utf8')
   .replaceAll('{{DESCRIPTION}}', esc(description))
   .replaceAll('{{SHARE_DESCRIPTION}}', esc(shareDescription))
   .replace('{{JSONLD}}', jsonld)
+  .replace('{{FAQ}}', faqHtml)
   .replaceAll('{{REPO}}', REPO)
   .replaceAll('{{SKILL_COUNT}}', String(all.length))
   .replaceAll('{{PACK_COUNT}}', String(packs.length))

@@ -14,6 +14,17 @@ usage: skillshed <command>
   off <pack>...       turn packs off for the current project
   find <keywords>     search skill-issue.in and skills.sh for new skills
   update              pull the latest skills and refresh Claude Code / Codex
+
+Your own skills (only on this machine, always on):
+  add <source>        add a third-party skill for you only, scanned and pinned
+                      source: owner/repo@skill, a skills.sh URL or a GitHub tree URL
+  new <name> "<Use when ...>"   start a skill of your own
+  mine                list your personal skills
+  remove <name>       remove a personal skill
+  vet <source|folder> scan a skill for prompt injection without installing it
+
+Share a skill with everyone: https://github.com/farmhutsoftwareteam/skillshed/issues/new?template=submit-skill.yml
+
   dir                 print where Skillshed is installed
 
 Packs on everywhere: see ALWAYS_ON in $ROOT/scripts/bootstrap.sh
@@ -31,9 +42,12 @@ case "$cmd" in
   use) exec "$ROOT/scripts/use-pack.sh" "$@" ;;
   off) exec "$ROOT/scripts/use-pack.sh" --off "$@" ;;
   find) exec node "$ROOT/scripts/find-skill.mjs" "$@" ;;
+  add|new|remove|vet) exec node "$ROOT/scripts/personal.mjs" "$cmd" "$@" ;;
+  mine) exec node "$ROOT/scripts/personal.mjs" list ;;
   update)
     git -C "$ROOT" pull -q --ff-only
-    exec "$ROOT/scripts/bootstrap.sh" ;;
+    "$ROOT/scripts/bootstrap.sh"
+    exec node "$ROOT/scripts/personal.mjs" update ;;
   dir) echo "$ROOT" ;;
   help|-h|--help) usage ;;
   *) usage; exit 1 ;;

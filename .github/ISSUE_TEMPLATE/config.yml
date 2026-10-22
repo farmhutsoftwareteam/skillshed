@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: How Skillshed vets skills
+    url: https://github.com/farmhutsoftwareteam/skillshed#security-prompt-injection-and-supply-chain
+    about: Pinning, scanning and reviewed updates.

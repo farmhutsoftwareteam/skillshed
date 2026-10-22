@@ -171,6 +171,32 @@ pre, code { font-family: var(--code); }
 .cell.wide [data-ui] { margin-right: 0; border-top-right-radius: 0; }
 .cell.flip.wide [data-ui] { border-bottom-right-radius: 0; }
 
+/* ---------- Make it yours: two tiles ---------- */
+.yours { padding: 0 var(--margin); margin-top: 200px; }
+.yours h2 { font-size: clamp(2rem, 1.6rem + 1.6vw, 2.5rem); padding: 0 14px; margin-bottom: 56px; }
+.yours-grid { display: grid; grid-template-columns: 7fr 5fr; gap: var(--gap); }
+.yours .tile { padding: 32px; min-height: 420px; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; }
+.yours h3 { font: 600 var(--step-lead)/1.15 var(--display); letter-spacing: -0.03em; margin-bottom: 10px; }
+.yours p { max-width: 46ch; }
+.yours [data-ui] { border-radius: var(--radius); padding: 18px 20px; }
+.yours .share { background: var(--field-1); color: var(--field-1-ink); }
+.yours .share .btn { align-self: flex-start; background: var(--accent-ink); color: var(--ink); }
+@media (hover: hover) and (pointer: fine) { .yours .share .btn:hover { background: #333; } }
+
+/* ---------- FAQ: heading held left, answers as bands ---------- */
+.faq { padding: 0 var(--margin); margin-top: 200px; display: grid; grid-template-columns: 4fr 8fr; gap: 40px; align-items: start; }
+.faq h2 { font-size: clamp(2rem, 1.6rem + 1.6vw, 2.5rem); padding: 0 14px; position: sticky; top: 24px; }
+.faq h2 span { display: block; color: var(--muted); }
+.qa { display: grid; gap: 4px; }
+.qa details { background: var(--surface); border-radius: var(--radius); }
+.qa details:nth-child(even) { background: #2c2c2c; }
+.qa summary { cursor: pointer; list-style: none; padding: 22px 24px; font: 600 var(--step-body)/1.3 var(--display); letter-spacing: -0.01em; display: flex; justify-content: space-between; gap: 16px; }
+.qa summary::-webkit-details-marker { display: none; }
+.qa summary::after { content: "+"; color: var(--muted); transition: transform 160ms var(--ease-out); }
+.qa details[open] summary::after { transform: rotate(45deg); }
+.qa .a { padding: 0 24px 24px; max-width: 64ch; }
+.qa code { font-size: 0.88em; background: var(--term); padding: 2px 6px; border-radius: 4px; }
+
 /* ---------- Close: the action tile ---------- */
 .close { display: grid; grid-template-columns: repeat(12, 1fr); gap: 12px; margin-top: 200px; overflow: hidden; }
 .close .flank { height: 360px; border-radius: var(--radius); position: relative; overflow: hidden; margin-top: 0; margin-bottom: 0; }
@@ -222,6 +248,8 @@ footer { padding: 120px var(--margin) var(--margin); }
 /* ---------- Tablet and phone ---------- */
 @media (max-width: 1000px) {
   .cells { grid-template-columns: 1fr 1fr; }
+  .faq { grid-template-columns: 1fr; gap: 24px; }
+  .faq h2 { position: static; }
   .wall-body { grid-template-columns: 1fr; gap: 12px; }
   .tabs { position: static; grid-template-columns: repeat(3, 1fr); }
   .fields { grid-template-columns: 1fr 1fr; }
@@ -258,6 +286,12 @@ footer { padding: 120px var(--margin) var(--margin); }
   .cell [data-ui], .cell.flip [data-ui] { border-radius: var(--radius) var(--radius) 0 0; }
   .cell:nth-child(even) [data-ui] { margin: 0 -12px 0 24px; }
   .cell:nth-child(odd) [data-ui] { margin: 0 24px 0 -12px; }
+  .yours, .faq { margin-top: 120px; }
+  .yours h2 { padding: 0 8px; margin-bottom: 32px; }
+  .yours-grid, .faq { grid-template-columns: 1fr; }
+  .yours .tile { min-height: 0; padding: 22px; }
+  .faq { gap: 24px; }
+  .faq h2 { position: static; padding: 0 8px; }
   .close { grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 120px; padding: 0 var(--margin); }
   .close .act { grid-column: 1 / -1; grid-row: 1; height: auto; min-height: 300px; padding: 24px; }
   .close .flank { height: 120px; margin: 0 !important; }
@@ -281,7 +315,7 @@ footer { padding: 120px var(--margin) var(--margin); }
   <div class="topbar">
     <div class="links">
       <a class="name" href="/">Skillshed</a>
-      <nav aria-label="Sections"><a href="#how">How it works</a><a href="#wall">Skills</a><a href="#safe">Safety</a><a href="https://github.com/{{REPO}}">GitHub</a></nav>
+      <nav aria-label="Sections"><a href="#how">How it works</a><a href="#wall">Skills</a><a href="#safe">Safety</a><a href="#yours">Add yours</a><a href="#faq">FAQ</a><a href="https://github.com/{{REPO}}">GitHub</a></nav>
     </div>
     <a class="btn" href="#install">Install</a>
   </div>
@@ -440,6 +474,34 @@ match: expo / eas-app-stores
 <span class="warn">expo is off in this project</span>
 turn it on: skillshed use expo</pre></div>
     </article>
+  </div>
+</section>
+
+<section id="yours" class="yours" aria-labelledby="yours-h">
+  <h2 id="yours-h" class="rise"><span>Bring your own tools</span></h2>
+  <div class="yours-grid">
+    <article class="tile mine">
+      <div><h3>Just for you</h3><p>Start a skill of your own, or add any skill from GitHub or skills.sh for yourself only. It is scanned and pinned like the shared ones, lives in your own skill folders, and works in Claude Code and Codex.</p></div>
+      <div data-ui><pre><span class="dim">$</span> <span class="hi">skillshed new release-notes "Use when writing release notes"</span>
+created ~/.agents/skills/release-notes/SKILL.md
+<span class="dim">$</span> <span class="hi">skillshed add anthropics/skills@frontend-design</span>
+<span class="ok">0 high</span>, 0 medium across 1 skill
+added frontend-design @ dbd4588
+<span class="dim">$</span> <span class="hi">skillshed mine</span>
+frontend-design  anthropics/skills @ dbd4588 tracks main
+release-notes    (yours)</pre></div>
+    </article>
+    <article class="tile share">
+      <div><h3>For everyone</h3><p>Know a skill others should have, or wrote one? Submit it. A bot scans every file and replies on the issue, then a person reads it before it is pinned into a pack.</p></div>
+      <a class="btn" href="https://github.com/{{REPO}}/issues/new?template=submit-skill.yml">Submit a skill</a>
+    </article>
+  </div>
+</section>
+
+<section id="faq" class="faq" aria-labelledby="faq-h">
+  <h2 id="faq-h" class="rise"><span>Questions</span>asked plainly</h2>
+  <div class="qa">
+{{FAQ}}
   </div>
 </section>
 

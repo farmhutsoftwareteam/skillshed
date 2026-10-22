@@ -19,6 +19,7 @@ All commands run from the skillshed checkout (`~/.skillshed`).
    This searches the skill-issue.in snapshot (`catalog/skill-issue.json`) and skills.sh. A result marked "whole collection" is a repo of many skills. Pick the one skill you need from it, with `<repo>@<skill>` or a GitHub tree URL. Don't add the whole collection.
 3. Show the user the top 1-3 candidates: name, source repo, installs or stars, and what it does. Let them choose. Don't add anything they didn't pick.
 4. Vet the chosen skill with the `vet-skill` skill before adding it.
+   If the user wants it only for themselves (or can't push to this repo), stop here and run `skillshed add <source>`: it scans, pins and installs it into their personal skill folders for Claude Code and Codex. To share it, point them to `skillshed vet <source>` and the "Submit a skill" form instead.
 5. Choose a pack. Use an existing stack pack when one fits (`ls plugins`). Otherwise create a new one, which is off by default:
    `node scripts/new-pack.mjs <name> "<Pack: what it covers. Enable per project.>"`
 6. Add, pinned in `vendor.lock.json` and scanned automatically:
