@@ -109,6 +109,10 @@ if (cmd === 'add') {
   const name = opt('--name') ?? src.skill ?? basename(path);
   const owned = existsSync(join(ROOT, 'plugins', pack, 'skills', name)) && !lock.skills[name];
   if (owned) throw new Error(`${name} already exists as an owned skill in ${pack}`);
+  const prev = lock.skills[name];
+  if (prev && (prev.pack !== pack || prev.source !== src.repo || prev.path !== path)) {
+    throw new Error(`${name} is already vendored from ${prev.source}/${prev.path} in ${prev.pack}; pass --name <other-name>`);
+  }
   const dest = join(ROOT, 'plugins', pack, 'skills', name);
   install(tmp, path, dest);
   rmSync(tmp, { recursive: true, force: true });

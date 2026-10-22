@@ -2,8 +2,10 @@
 
 Munya's personal agent skills, packaged as one plugin marketplace that works in both **Claude Code** and **Codex**.
 
-- **core** is always on. It holds the `skill-router` and a few everyday skills.
-- **Stack packs** (`nextjs-vercel`, `supabase`, `expo`, `inngest`) are installed but switched off. Each project turns on only the packs it needs.
+- **core** is always on: `skill-router`, `find-skill` and `vet-skill`.
+- **Packs** are installed but switched off, and each project turns on only the packs it needs:
+  - stack packs: `nextjs-vercel`, `supabase`, `expo`, `inngest`
+  - `matt`: Matt Pocock's 31 stable skills, tracking upstream
 
 Agents read every enabled skill's description on every request, within a small budget (about 1% of context in Claude Code, 2% in Codex). Past that budget, skills quietly stop triggering. Keeping most skills off by default is the point.
 
@@ -44,6 +46,17 @@ To turn a pack off again, use `use-pack.sh --off <pack>`.
 
 If a task needs a skill whose pack is off, `core:skill-router` finds it in its index, reads it from the local copy, and tells you which pack to enable.
 
+## Finding new skills
+
+There is no bulk import. The skill-issue.in directory alone resolves to about 8,500 skills, too many to vet or review. Instead, `core:find-skill` pulls skills in on demand:
+
+- **Search:** `node scripts/find-skill.mjs <keywords>` searches a snapshot of skill-issue.in (`catalog/skill-issue.json`, about 313 entries, refreshed by the weekly sync) and the live skills.sh index.
+- **Pick:** you choose from what it finds.
+- **Vet:** it vets the pick with `vet-skill`.
+- **Pin:** `sync-vendor.mjs add` puts the skill into a pack, pinned in the lock and scanned.
+
+To create a pack for a new area, run `node scripts/new-pack.mjs <name> "<description>"`. Then re-run `bootstrap.sh` so each Mac installs it, disabled.
+
 ## Layout
 
 ```
@@ -60,6 +73,10 @@ scripts/
   check.mjs                         lint, lock hashes, router index (--write)
   scan-skills.mjs                   prompt-injection / supply-chain scan
   sync-vendor.mjs                   add / update / remove vendored skills
+  find-skill.mjs                    search skill-issue.in snapshot + skills.sh
+  refresh-catalog.mjs               re-snapshot skill-issue.in
+  new-pack.mjs                      create an off-by-default pack
+catalog/skill-issue.json            skill-issue.in snapshot (untrusted data)
 .github/workflows/
   check.yml                         CI on every PR
   sync-vendor.yml                   weekly upstream sync, opens a PR

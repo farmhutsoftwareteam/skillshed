@@ -34,6 +34,12 @@
       "source": "./plugins/inngest",
       "description": "Stack pack: Inngest durable functions and events. Enable per project.",
       "category": "coding"
+    },
+    {
+      "name": "matt",
+      "source": "./plugins/matt",
+      "description": "Pack: Matt Pocock's engineering and productivity skills (TDD, specs, PRs, triage, grilling). Enable per project.",
+      "category": "productivity"
     }
   ]
 }

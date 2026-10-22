@@ -1,4 +1,284 @@
 {
   "version": 1,
-  "skills": {}
+  "skills": {
+    "ask-matt": {
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/ask-matt",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "99224d8d3f3c059def3e0e3f5c2b851c38dcf81ec9cdb991e01eeb4a5ae84d2e"
+    },
+    "code-review": {
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/code-review",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "bb3048304e5c783c09783326a9e8f8ba55a31e810f511a792238bb8ad45a0978"
+    },
+    "codebase-design": {
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/codebase-design",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "07246bd43eadfb50ac686aee5297d2cb808bf5ad00fb2ed289416b4b79e7850c"
+    },
+    "diagnosing-bugs": {
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/diagnosing-bugs",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "9b24ecaf15dd8d5594f973c590c6904d90dd3b50f8853fefd2341b7fd4a156bf"
+    },
+    "domain-modeling": {
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/domain-modeling",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "467f5e92529c2a4637440dce99841814b0864a8528714188ec91b78d900df540"
+    },
+    "git-guardrails-claude-code": {
+      "source": "mattpocock/skills",
+      "path": "skills/misc/git-guardrails-claude-code",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "92c1c7a61a0edc6c3c6a35e5301da9f422c2226a6f15ce9215cc9b4bba2b098e"
+    },
+    "grill-me": {
+      "source": "mattpocock/skills",
+      "path": "skills/productivity/grill-me",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "fe33aaa8e8dcd606107b1bfe3109f257b4a7e0f4907afd6506b62ccfb73cd1d3"
+    },
+    "grill-with-docs": {
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/grill-with-docs",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "9e8f732b806727978f1ad8d2fb9ce4467da68f7482d63c4bb5a73f2b1a0c797c"
+    },
+    "grilling": {
+      "source": "mattpocock/skills",
+      "path": "skills/productivity/grilling",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "90b54c72a48114f62072de27e1bef0c61d55f0959044725c593ed9fc72197755"
+    },
+    "handoff": {
+      "source": "mattpocock/skills",
+      "path": "skills/productivity/handoff",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "16e5b77eadb689d69c816bfe52cae6b5f425180340b77235ab8a3f402cf4b6f3"
+    },
+    "implement": {
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/implement",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "c7c4d38c8dd9a05fcad046f79aeb275c7f31a87d7bceb4f3a133f125e6f4bfbb"
+    },
+    "implement-spec": {
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/implement-spec",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "f5df654e389b0983a98df35bf83dced720fed5ec87436da18bcfb38ea60ecc7b"
+    },
+    "improve-codebase-architecture": {
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/improve-codebase-architecture",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "741b4015c0edbcd5ffb9c926abab6cd52946bd296af2792c4694c759f4bd2554"
+    },
+    "migrate-to-shoehorn": {
+      "source": "mattpocock/skills",
+      "path": "skills/misc/migrate-to-shoehorn",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "be9b2a0f6e0cd5186997e1eee2b92a7b9ed5e98f9f4b6b19a05edc67542f7f06"
+    },
+    "pr": {
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/pr",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "e6edd6e5d192d995ed3dd25cd279efa6c8be860b3d24aa7f0c5d5e51a0cd2d52"
+    },
+    "prototype": {
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/prototype",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "090ae76b97353255ca29be783d69bcc1029e0195bdf43118d0b6f7ea9acc89b0"
+    },
+    "research": {
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/research",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "d293faf4e4da791b8046cd2eed5b4dce46f591f1a26be4099a55b968b5dbe9c9"
+    },
+    "retro": {
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/retro",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "e13af4f6dfecd777815adde57811398dc59d0118692a70d996968b59e3d13db8"
+    },
+    "scaffold-exercises": {
+      "source": "mattpocock/skills",
+      "path": "skills/misc/scaffold-exercises",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "aa52a864ead89a2c03a84b0a74a899599f1d6fd5efc0af51ff31a30d667fa9f8"
+    },
+    "setup-matt-pocock-skills": {
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/setup-matt-pocock-skills",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "f1442885e269d489b91b2a289e4619a0385eb3503121ea1f92769268bf08c123"
+    },
+    "setup-pre-commit": {
+      "source": "mattpocock/skills",
+      "path": "skills/misc/setup-pre-commit",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "b7455a91310ae0aa9b02b2642533fe60f17a1443d45bc0b455cc3136f2d85c8b"
+    },
+    "tdd": {
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/tdd",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "ef3cbb31aa8b1f8a3f9b6a042c230dc9312019e84cdc6337f60890f177fd5764"
+    },
+    "teach": {
+      "source": "mattpocock/skills",
+      "path": "skills/productivity/teach",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "7bd8a41095f71c5e76892427f1db17eaa744372611b748db50a93dfa25fc62ca"
+    },
+    "to-questionnaire": {
+      "source": "mattpocock/skills",
+      "path": "skills/productivity/to-questionnaire",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "619879fbd0e99ffacb9ae4a23a8c44393a37cb6d90b59a5ce8f5ace1be5baae0"
+    },
+    "to-spec": {
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/to-spec",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "cc5d718c2f810f4c9b081ea888af3ad3eb73bb8db6fc9fa92c3b1729637b7d56"
+    },
+    "to-tickets": {
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/to-tickets",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "7cca8cd2afe55d1cd8bfc986df6a4cb4ad54411452575200804494b03c871ede"
+    },
+    "triage": {
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/triage",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "bf09f37fa24ab64324497772a25a1e0a9b22d06ccb238fefd0cfb12eee473c3d"
+    },
+    "wait-what": {
+      "source": "mattpocock/skills",
+      "path": "skills/productivity/wait-what",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "aeda379d44a811ede92435e0af812ba599c3f3fb617c208a7ed3d0226072ba8d"
+    },
+    "wayfinder": {
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/wayfinder",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "d7224a1241800092e128af0544017b1a78f412c3fc26e810521f3674a1184c93"
+    },
+    "wizard": {
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/wizard",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "93fc955828a4d1086f8ac15c67d894d540db821b5eca0feca2e24d8856b784e3"
+    },
+    "writing-for-agents": {
+      "source": "mattpocock/skills",
+      "path": "skills/productivity/writing-for-agents",
+      "ref": "main",
+      "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
+      "pack": "matt",
+      "pinned": false,
+      "computedHash": "8365ebe1d0c343d3d46970526f30fcf7c5e0c5e49fd39a3c882977024626ff3c"
+    }
+  }
 }

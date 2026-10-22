@@ -12,7 +12,11 @@ set -uo pipefail
 SOURCE="${1:-farmhutsoftwareteam/munya-skills}"
 MARKET=munya
 CORE=core
-PACKS=(nextjs-vercel supabase expo inngest)
+# Every pack in this checkout except core.
+PACKS=()
+for d in "$(cd "$(dirname "$0")/.." && pwd)"/plugins/*/; do
+  p="$(basename "$d")"; [ "$p" = "$CORE" ] || PACKS+=("$p")
+done
 
 [ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 

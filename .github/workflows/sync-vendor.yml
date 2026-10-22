@@ -26,6 +26,9 @@ jobs:
       - name: Pull upstream changes
         run: node scripts/sync-vendor.mjs update --summary "$RUNNER_TEMP/summary.md"
 
+      - name: Refresh skill-issue.in catalog
+        run: node scripts/refresh-catalog.mjs || echo "catalog refresh failed, keeping the old snapshot"
+
       - name: Rebuild router index
         run: node scripts/check.mjs --write || true
 
@@ -43,7 +46,7 @@ jobs:
             echo
             echo "Ask Claude: \`/core:vet-skill\` on this PR."
             echo
-            echo "## Changes"
+            echo "## Skill changes"
             cat "$RUNNER_TEMP/summary.md"
             echo
             echo "## Check: $check_status"
