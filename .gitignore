@@ -5,3 +5,4 @@ site/dist/
 .vercel
 .env*
 .taste-skill/
+launch/
