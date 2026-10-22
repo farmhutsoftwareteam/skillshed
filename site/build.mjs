@@ -15,6 +15,11 @@ const ALWAYS_ON = readFileSync(join(ROOT, 'scripts/bootstrap.sh'), 'utf8').match
 const marketplace = JSON.parse(readFileSync(join(ROOT, '.claude-plugin/marketplace.json'), 'utf8'));
 const lock = readLock();
 
+// Upstream descriptions are untrusted text: everything below is escaped.
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+// First sentence only, so a band stays one line of reading.
+const firstSentence = (d) => (d.match(/^.*?[.!?](\s|$)/)?.[0] ?? d).trim();
+
 const all = skills()
   .map((s) => {
     const fm = frontmatter(readFileSync(s.file, 'utf8')) ?? {};
@@ -22,49 +27,48 @@ const all = skills()
     return {
       name: s.name,
       pack: s.pack,
-      description: (fm.description ?? '').replace(/\s+/g, ' ').trim(),
-      source: v ? v.source : REPO,
+      description: firstSentence((fm.description ?? '').replace(/\s+/g, ' ').trim()),
+      source: v ? v.source : 'Skillshed',
+      commit: v ? v.commit.slice(0, 7) : '',
       url: v
         ? `https://github.com/${v.source}/tree/${v.commit}/${v.path}`
         : `https://github.com/${REPO}/tree/main/plugins/${s.pack}/skills/${s.name}`,
-      vendored: Boolean(v),
     };
   })
-  .sort((a, b) => a.pack.localeCompare(b.pack) || a.name.localeCompare(b.name));
+  .sort((a, b) => a.name.localeCompare(b.name));
 
-const packs = marketplace.plugins.map((p) => ({
-  name: p.name,
-  description: p.description.replace(/^(Stack pack|Pack): /, '').replace(/\s*(Enable per project|On by default)\.$/, ''),
-  on: ALWAYS_ON.includes(p.name),
-  count: all.filter((s) => s.pack === p.name).length,
-  sources: [...new Set(all.filter((s) => s.pack === p.name).map((s) => s.source))],
-}));
+// Packs in display order: always-on first, then by size.
+const packs = marketplace.plugins
+  .map((p) => ({ name: p.name, on: ALWAYS_ON.includes(p.name), count: all.filter((s) => s.pack === p.name).length }))
+  .sort((a, b) => Number(b.on) - Number(a.on) || b.count - a.count);
 
-const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
-
-const packCards = packs
-  .sort((a, b) => Number(b.on) - Number(a.on) || b.count - a.count)
+const tabs = packs
   .map(
-    (p) => `<article class="pack">
-  <header><h3>${esc(p.name)}</h3><span class="badge ${p.on ? 'on' : 'off'}">${p.on ? 'always on' : 'per project'}</span></header>
-  <p>${esc(p.description)}</p>
-  <footer><span>${p.count} skills</span><span class="src">${p.sources.map(esc).join(' · ')}</span></footer>
-  ${p.on ? '' : `<code class="mini">skillshed use ${esc(p.name)}</code>`}
-</article>`,
+    (p, i) => `<button class="tab" role="tab" data-pack="${esc(p.name)}" aria-selected="${i === 0}">
+  <span class="tab-name">${esc(p.name)}</span><span class="tab-meta">${p.count} skills, ${p.on ? 'always on' : 'per project'}</span>
+</button>`,
   )
   .join('\n');
 
-// Upstream descriptions are untrusted: embed as JSON (with < escaped) and
-// render with textContent on the client, never innerHTML.
-const data = JSON.stringify({ skills: all, packs: packs.map((p) => p.name) }).replace(/</g, '\\u003c');
+const bands = all
+  .map(
+    (s) => `<li class="band" data-pack="${esc(s.pack)}" data-text="${esc(`${s.name} ${s.description} ${s.source}`.toLowerCase())}">
+  <a href="${esc(s.url)}" target="_blank" rel="noopener">
+    <span class="band-name">${esc(s.name)}</span>
+    <span class="band-desc">${esc(s.description)}</span>
+    <span class="band-src">${esc(s.source)}${s.commit ? ` at ${esc(s.commit)}` : ''}</span>
+  </a>
+</li>`,
+  )
+  .join('\n');
 
 const html = readFileSync(join(SITE, 'template.html'), 'utf8')
   .replaceAll('{{REPO}}', REPO)
   .replaceAll('{{SKILL_COUNT}}', String(all.length))
   .replaceAll('{{PACK_COUNT}}', String(packs.length))
-  .replaceAll('{{VENDORED_COUNT}}', String(all.filter((s) => s.vendored).length))
-  .replace('{{PACK_CARDS}}', packCards)
-  .replace('{{DATA}}', data);
+  .replace('{{TABS}}', tabs)
+  .replace('{{BANDS}}', bands)
+  .replace('{{FIRST_PACK}}', esc(packs[0].name));
 
 const out = join(SITE, 'dist');
 rmSync(out, { recursive: true, force: true });
