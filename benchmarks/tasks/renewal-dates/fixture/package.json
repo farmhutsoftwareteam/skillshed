@@ -1,0 +1,8 @@
+{
+  "name": "renewals",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}

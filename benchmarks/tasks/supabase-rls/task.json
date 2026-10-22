@@ -1,0 +1,5 @@
+{
+  "id": "supabase-rls",
+  "pack": "supabase",
+  "title": "Row-level security for a multi-team Supabase schema"
+}

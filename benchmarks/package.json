@@ -1,0 +1,10 @@
+{
+  "name": "skillshed-benchmarks",
+  "private": true,
+  "type": "module",
+  "description": "With-and-without-skills benchmark for Skillshed packs. See README.md.",
+  "engines": { "node": ">=20" },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.8"
+  }
+}

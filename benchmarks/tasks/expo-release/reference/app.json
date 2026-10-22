@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "Tidy",
+    "slug": "tidy",
+    "scheme": "tidy",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "bundleIdentifier": "com.acmeapps.tidy",
+      "buildNumber": "1",
+      "supportsTablet": true,
+      "config": {
+        "usesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.acmeapps.tidy"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "6f1c2a9e-3b7d-4e1a-9c55-2d8f0b4a7e13"
+      }
+    }
+  }
+}
