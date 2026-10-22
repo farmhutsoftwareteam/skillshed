@@ -77,4 +77,4 @@ fi
 
 echo
 echo "Done. Restart Claude Code / Codex sessions to load skills."
-echo "Turn a stack pack on in a project: $(cd "$(dirname "$0")" && pwd)/use-pack.sh <pack>"
+echo "Turn a pack on in a project: skillshed use <pack>"
