@@ -9,9 +9,9 @@
 <meta property="og:description" content="Vetted agent skills for Claude Code and Codex, switched on per project.">
 <meta name="theme-color" content="#1c1c1c">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@500;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #1c1c1c;
@@ -26,8 +26,8 @@
   --field-1-ink: #1c1c1c;
   --term: #141414;
 
-  --display: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
-  --text: "Source Serif 4", Georgia, serif;
+  --display: Switzer, "Helvetica Neue", Arial, sans-serif;
+  --text: Switzer, "Helvetica Neue", Arial, sans-serif;
   --code: ui-monospace, "SF Mono", Menlo, Consolas, monospace; /* taste-skill-ignore: terminal fragments are literal code */
 
   --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
@@ -43,15 +43,15 @@
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--bg); color: var(--ink); font: 400 var(--step-body)/1.55 var(--text); -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 var(--step-body)/1.5 var(--text); letter-spacing: -0.005em; -webkit-font-smoothing: antialiased; }
 a { color: inherit; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 ::selection { background: var(--accent); color: var(--accent-ink); }
-h1, h2, h3 { font-family: var(--display); font-weight: 700; margin: 0; letter-spacing: -0.035em; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; margin: 0; letter-spacing: -0.04em; line-height: 0.95; }
 p { margin: 0; }
 pre, code { font-family: var(--code); }
 .tile { border-radius: var(--radius); background: var(--surface); padding: 22px; position: relative; overflow: hidden; }
-.btn { display: inline-flex; align-items: center; justify-content: center; font: 700 var(--step-small)/1 var(--display); letter-spacing: 0; text-decoration: none; border: 0; border-radius: var(--radius); padding: 14px 18px; cursor: pointer; background: var(--accent); color: var(--accent-ink); transition: transform 120ms var(--ease-out), background-color 160ms ease; }
+.btn { display: inline-flex; align-items: center; justify-content: center; font: 600 var(--step-small)/1 var(--display); letter-spacing: 0; text-decoration: none; border: 0; border-radius: var(--radius); padding: 14px 18px; cursor: pointer; background: var(--accent); color: var(--accent-ink); transition: transform 120ms var(--ease-out), background-color 160ms ease; }
 .btn:active { transform: scale(0.97); }
 @media (hover: hover) and (pointer: fine) { .btn:hover { background: var(--accent-strong); } }
 
@@ -65,12 +65,10 @@ pre, code { font-family: var(--code); }
 
 /* ---------- Board: nav + two-by-two ---------- */
 .board { padding: var(--margin); display: grid; gap: var(--gap); }
-.topbar { display: grid; grid-template-columns: 60px 1fr auto; gap: var(--gap); height: 60px; }
+.topbar { display: grid; grid-template-columns: 1fr auto; gap: var(--gap); height: 60px; }
 .topbar > * { border-radius: var(--radius); }
-.mark { background: var(--ink); display: grid; place-items: center; }
-.mark svg { width: 30px; height: 30px; }
 .links { background: var(--surface); display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 0 22px; }
-.links .name { font: 700 var(--step-small)/1 var(--display); }
+.links .name { font: 600 22px/1 var(--display); letter-spacing: -0.045em; text-decoration: none; }
 .links nav { display: flex; gap: 28px; font: 500 var(--step-small)/1 var(--display); }
 .links nav a { text-decoration: none; color: var(--muted); transition: color 160ms ease; }
 @media (hover: hover) { .links nav a:hover { color: var(--ink); } }
@@ -79,7 +77,7 @@ pre, code { font-family: var(--code); }
 
 .quad { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: var(--gap); height: max(640px, calc(100svh - 60px - var(--gap) - 2 * var(--margin))); }
 .name-tile { background: var(--field-1); color: var(--field-1-ink); display: flex; align-items: flex-end; padding: 24px; }
-.name-tile h1 { font-size: clamp(64px, 8.6vw, 168px); line-height: 0.92; letter-spacing: -0.05em; text-transform: uppercase; }
+.name-tile h1 { font-size: clamp(64px, 9.4vw, 180px); line-height: 0.9; letter-spacing: -0.055em; }
 .frag { padding: 0; }
 .frag [data-ui] { position: absolute; inset: 0; padding: 26px 28px; overflow: hidden; }
 .frag .bar { display: flex; gap: 6px; margin-bottom: 18px; }
@@ -118,7 +116,7 @@ pre, code { font-family: var(--code); }
 .wall-body { display: grid; grid-template-columns: 220px 1fr; gap: 40px; margin-top: 56px; align-items: start; }
 .tabs { display: grid; gap: 6px; position: sticky; top: 16px; }
 .tab { text-align: left; border: 0; border-radius: var(--radius); background: var(--surface); color: var(--ink); padding: 14px 16px; min-height: 64px; cursor: pointer; display: grid; gap: 2px; transition: background-color 160ms ease; }
-.tab-name { font: 700 var(--step-body)/1.2 var(--display); }
+.tab-name { font: 600 var(--step-body)/1.2 var(--display); }
 .tab-meta { font: 400 var(--step-small)/1.3 var(--text); color: var(--muted); }
 .tab[aria-selected="true"] { background: var(--ink); color: var(--bg); }
 .tab[aria-selected="true"] .tab-meta { color: #4a4a48; }
@@ -130,7 +128,7 @@ pre, code { font-family: var(--code); }
 .band a { display: grid; grid-template-columns: 22% 1fr auto; align-items: center; gap: 24px; min-height: 76px; padding: 12px 20px; border-radius: var(--radius); text-decoration: none; background: var(--surface); transition: background-color 160ms ease; }
 .band:nth-child(even of :not([hidden])) a { background: #2c2c2c; }
 @media (hover: hover) { .band a:hover { background: var(--surface-2); } }
-.band-name { font: 700 var(--step-body)/1.25 var(--display); letter-spacing: -0.01em; overflow-wrap: anywhere; }
+.band-name { font: 600 var(--step-body)/1.25 var(--display); letter-spacing: -0.01em; overflow-wrap: anywhere; }
 .band-desc { font-size: var(--step-body); line-height: 1.45; max-width: 62ch; }
 .band-src { font-size: var(--step-small); color: var(--muted); text-align: right; white-space: nowrap; }
 .band[hidden] { display: none; }
@@ -141,7 +139,7 @@ pre, code { font-family: var(--code); }
 .cells { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); }
 .cell { background: var(--surface); border-radius: var(--radius); height: 440px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
 .cell .txt { padding: 24px; }
-.cell h3 { font: 700 var(--step-body)/1.25 var(--display); letter-spacing: -0.01em; margin-bottom: 8px; }
+.cell h3 { font: 600 var(--step-body)/1.25 var(--display); letter-spacing: -0.01em; margin-bottom: 8px; }
 .cell .txt p { line-height: 1.5; max-width: 34ch; }
 .cell [data-ui] { padding: 18px 20px; margin: 0 24px; border-radius: var(--radius) var(--radius) 0 0; }
 .cell.flip { flex-direction: column-reverse; }
@@ -162,7 +160,7 @@ pre, code { font-family: var(--code); }
 /* ---------- Footer: the mark, built large ---------- */
 footer { padding: 120px var(--margin) var(--margin); }
 .blocks { display: flex; gap: 4px; align-items: flex-end; height: 34svh; min-height: 220px; }
-.blocks span { flex: 1; display: flex; align-items: flex-end; justify-content: center; border-radius: var(--radius); background: var(--surface); color: var(--bg); font: 700 clamp(48px, 9vw, 150px)/0.8 var(--display); text-transform: uppercase; padding-bottom: 0.06em; overflow: hidden; }
+.blocks span { flex: 1; display: flex; align-items: flex-end; justify-content: center; border-radius: var(--radius); background: var(--surface); color: var(--bg); font: 600 clamp(48px, 9vw, 150px)/0.8 var(--display); letter-spacing: -0.04em; padding-bottom: 0.06em; overflow: hidden; }
 .blocks span:nth-child(3n+1) { background: var(--field-1); }
 .blocks span:nth-child(3n+2) { background: var(--accent); }
 .blocks span:nth-child(3n) { background: #3b3d39; color: var(--field-1); }
@@ -170,7 +168,7 @@ footer { padding: 120px var(--margin) var(--margin); }
 .foot div { grid-column: span 2; display: grid; gap: 6px; align-content: start; }
 .foot div.contact { grid-column: 9 / 13; }
 .foot .credits { color: var(--muted); margin-top: 8px; }
-.foot h3 { font: 700 var(--step-small)/1.3 var(--display); letter-spacing: 0; margin-bottom: 4px; }
+.foot h3 { font: 600 var(--step-small)/1.3 var(--display); letter-spacing: 0; margin-bottom: 4px; }
 .foot a { text-decoration: none; color: var(--muted); }
 @media (hover: hover) { .foot a:hover { color: var(--ink); } }
 .last { display: flex; justify-content: space-between; align-items: center; margin-top: 56px; padding: 0 14px; color: var(--muted); font-size: var(--step-small); }
@@ -206,7 +204,7 @@ footer { padding: 120px var(--margin) var(--margin); }
 }
 @media (max-width: 760px) {
   :root { --margin: 8px; --gap: 6px; }
-  .topbar { grid-template-columns: 60px 1fr auto; }
+  .topbar { grid-template-columns: 1fr auto; }
   .topbar .btn { padding: 0 18px; }
   .links { grid-template-columns: 1fr; }
   .links nav { display: none; }
@@ -255,11 +253,8 @@ footer { padding: 120px var(--margin) var(--margin); }
 
 <div class="board">
   <div class="topbar">
-    <a class="mark" href="/" aria-label="Skillshed home">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 14 16 4l12 10v14H4z" fill="#1c1c1c"/><path d="M11 28V18h10v10" fill="#8fa68e"/></svg>
-    </a>
     <div class="links">
-      <span class="name">Skillshed</span>
+      <a class="name" href="/">Skillshed</a>
       <nav aria-label="Sections"><a href="#how">How it works</a><a href="#wall">Skills</a><a href="#safe">Safety</a><a href="https://github.com/{{REPO}}">GitHub</a></nav>
     </div>
     <a class="btn" href="#install">Install</a>
