@@ -50,6 +50,8 @@ process.on('uncaughtException', (e) => {
 });
 
 const lock = readLock();
+// The date a person-reviewed PR brings new content in; shown on the site.
+const today = new Date().toISOString().slice(0, 10);
 
 if (cmd === 'add') {
   const pack = opt('--pack');
@@ -71,7 +73,7 @@ if (cmd === 'add') {
     console.error(`\nRemoved ${name}: high-severity scan findings. Review them; re-run with --accept-risk only if they are false positives.`);
     process.exit(1);
   }
-  lock.skills[name] = { source: src.repo, path, ref, commit, pack, pinned: flag('--pin'), computedHash: hashDir(dest) };
+  lock.skills[name] = { source: src.repo, path, ref, commit, pack, pinned: flag('--pin'), computedHash: hashDir(dest), reviewed: today };
   writeLock(lock);
   console.log(`added ${name} -> plugins/${pack}/skills/${name} @ ${commit.slice(0, 7)} (${flag('--pin') ? 'pinned' : `tracks ${ref}`})`);
   console.log('Next: node scripts/check.mjs --write');
@@ -95,7 +97,7 @@ if (cmd === 'add') {
     const computedHash = hashDir(dest);
     if (computedHash === e.computedHash) { lock.skills[name] = { ...e, commit }; continue; }
     lines.push(`- **${name}** (${e.pack}): [\`${e.commit.slice(0, 7)}...${commit.slice(0, 7)}\`](https://github.com/${e.source}/compare/${e.commit}...${commit}) in \`${e.source}/${e.path}\``);
-    lock.skills[name] = { ...e, commit, computedHash };
+    lock.skills[name] = { ...e, commit, computedHash, reviewed: today };
   }
   writeLock(lock);
   const summary = lines.length ? lines.join('\n') : 'No upstream changes.';

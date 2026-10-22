@@ -15,6 +15,8 @@ That's it. (The same script is at `https://raw.githubusercontent.com/farmhutsoft
 - installs every pack: `core` and `matt` on, the rest off
 - puts a `skillshed` command on your PATH
 
+The installer finishes by checking each tool it found: every pack installed, `core` and `matt` on, the rest off. It exits with an error, and says what is wrong, if any of that fails or no tool was found. Run the same check any time with `skillshed doctor`.
+
 Restart any open Claude Code or Codex sessions afterwards. Re-running the installer, or `skillshed update`, updates everything.
 
 <details>
@@ -66,6 +68,7 @@ skillshed use supabase       # turn a pack on for the project you're in
 skillshed off supabase       # and off again
 skillshed find remotion      # search skill-issue.in + skills.sh for new skills
 skillshed update             # pull the latest and refresh both tools
+skillshed doctor             # check every pack is installed, and on or off as expected
 ```
 
 ### Your own skills
@@ -78,7 +81,7 @@ skillshed remove frontend-design
 skillshed vet owner/repo@skill                                 # scan without installing
 ```
 
-Personal skills go into `~/.agents/skills` (Codex) with a link from `~/.claude/skills` (Claude Code). They are always on, and are scanned and pinned like shared skills; the lock lives in `~/.config/skillshed/personal.lock.json`.
+Personal skills go into `~/.agents/skills` (Codex) with a link from `~/.claude/skills` (Claude Code). They are always on. Added skills are scanned before they install and pinned to a commit, but unlike the shared packs no person reviews them, and `skillshed update` moves them to the latest upstream commit that passes the scan unless you added them with `--pin`. The lock lives in `~/.config/skillshed/personal.lock.json`.
 
 ### Share a skill
 
@@ -112,6 +115,7 @@ bin/skillshed                    the skillshed command
 licenses/                           upstream licenses for vendored skills
 scripts/
   bootstrap.sh                      add marketplace + packs to both tools
+  doctor.sh                         check both tools have every pack, on or off as expected
   use-pack.sh                       per-project packs
   check.mjs                         lint, lock hashes, router index (--write)
   scan-skills.mjs                   prompt-injection / supply-chain scan

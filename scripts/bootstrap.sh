@@ -7,6 +7,7 @@
 #   scripts/bootstrap.sh "$PWD"          # from this local checkout
 #
 # Safe to re-run: existing marketplaces and plugins are left in place.
+# Ends by running scripts/doctor.sh, and exits non-zero unless it passes.
 set -uo pipefail
 
 SOURCE="${1:-farmhutsoftwareteam/skillshed}"
@@ -26,7 +27,14 @@ find_claude() {
   ls -d "$HOME/Library/Application Support/Claude/claude-code"/*/*/claude.app/Contents/MacOS/claude 2>/dev/null | sort -V | tail -1
 }
 
-run() { local cmd="$1"; shift; echo "  \$ ${cmd##*/} $*"; "$cmd" "$@" 2>&1 | sed 's/^/    /'; }
+FAILED=()
+run() {
+  local cmd="$1"; shift; echo "  \$ ${cmd##*/} $*"
+  "$cmd" "$@" 2>&1 | sed 's/^/    /'
+  local s=${PIPESTATUS[0]}
+  [ "$s" -eq 0 ] || { echo "    exit $s"; FAILED+=("${cmd##*/} $*"); }
+  return "$s"
+}
 
 CLAUDE="$(find_claude)"
 if [ -n "$CLAUDE" ]; then
@@ -39,7 +47,7 @@ if [ -n "$CLAUDE" ]; then
   done
   for p in "${PACKS[@]}"; do
     run "$CLAUDE" plugin install "$p@$MARKET" --scope user -y
-    run "$CLAUDE" plugin disable "$p@$MARKET" --scope user
+    "$CLAUDE" plugin disable "$p@$MARKET" --scope user >/dev/null 2>&1  # errors if already off
   done
   # Third-party marketplaces don't auto-update by default; this one should.
   if [[ "$SOURCE" != /* ]]; then
@@ -52,7 +60,7 @@ if [ -n "$CLAUDE" ]; then
     ' "$MARKET" && echo "  auto-update on for $MARKET"
   fi
 else
-  echo "Claude Code not found: install it (https://claude.com/claude-code) and re-run."
+  echo "Claude Code not found: skipped (https://claude.com/claude-code)."
 fi
 
 echo
@@ -72,9 +80,18 @@ if command -v codex >/dev/null; then
   done
   echo "  stack packs disabled in $CONFIG"
 else
-  echo "Codex not found: brew install --cask codex, then re-run."
+  echo "Codex not found: skipped (brew install --cask codex)."
 fi
 
 echo
-echo "Done. Restart Claude Code / Codex sessions to load skills."
-echo "Turn a pack on in a project: skillshed use <pack>"
+if [ ${#FAILED[@]} -gt 0 ]; then
+  echo "Commands that failed:"
+  printf '  %s\n' "${FAILED[@]}"
+  echo
+fi
+echo "Checking the result:"
+"$(dirname "$0")/doctor.sh" || exit 1
+if [ ${#FAILED[@]} -gt 0 ]; then
+  echo "Packs are in place, but the commands listed above failed; their output is further up."
+  exit 1
+fi

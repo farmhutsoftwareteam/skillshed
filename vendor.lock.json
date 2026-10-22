@@ -8,7 +8,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "99224d8d3f3c059def3e0e3f5c2b851c38dcf81ec9cdb991e01eeb4a5ae84d2e"
+      "computedHash": "99224d8d3f3c059def3e0e3f5c2b851c38dcf81ec9cdb991e01eeb4a5ae84d2e",
+      "reviewed": "2026-10-22"
     },
     "code-review": {
       "source": "mattpocock/skills",
@@ -17,7 +18,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "bb3048304e5c783c09783326a9e8f8ba55a31e810f511a792238bb8ad45a0978"
+      "computedHash": "bb3048304e5c783c09783326a9e8f8ba55a31e810f511a792238bb8ad45a0978",
+      "reviewed": "2026-10-22"
     },
     "codebase-design": {
       "source": "mattpocock/skills",
@@ -26,7 +28,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "07246bd43eadfb50ac686aee5297d2cb808bf5ad00fb2ed289416b4b79e7850c"
+      "computedHash": "07246bd43eadfb50ac686aee5297d2cb808bf5ad00fb2ed289416b4b79e7850c",
+      "reviewed": "2026-10-22"
     },
     "diagnosing-bugs": {
       "source": "mattpocock/skills",
@@ -35,7 +38,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "9b24ecaf15dd8d5594f973c590c6904d90dd3b50f8853fefd2341b7fd4a156bf"
+      "computedHash": "9b24ecaf15dd8d5594f973c590c6904d90dd3b50f8853fefd2341b7fd4a156bf",
+      "reviewed": "2026-10-22"
     },
     "domain-modeling": {
       "source": "mattpocock/skills",
@@ -44,7 +48,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "467f5e92529c2a4637440dce99841814b0864a8528714188ec91b78d900df540"
+      "computedHash": "467f5e92529c2a4637440dce99841814b0864a8528714188ec91b78d900df540",
+      "reviewed": "2026-10-22"
     },
     "eas-app-stores": {
       "source": "expo/skills",
@@ -53,7 +58,8 @@
       "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "d4c69109097871da140e99b0e7eb1b97bb196d65dcd7aafea34bce171d448024"
+      "computedHash": "d4c69109097871da140e99b0e7eb1b97bb196d65dcd7aafea34bce171d448024",
+      "reviewed": "2026-10-22"
     },
     "eas-hosting": {
       "source": "expo/skills",
@@ -62,7 +68,8 @@
       "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "4d65f701ce39b804c8c8ab42750e06de2197d2af4771572f49e7cc300c34fe63"
+      "computedHash": "4d65f701ce39b804c8c8ab42750e06de2197d2af4771572f49e7cc300c34fe63",
+      "reviewed": "2026-10-22"
     },
     "eas-observe": {
       "source": "expo/skills",
@@ -71,7 +78,8 @@
       "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "8ea33cd346455e0ac48dc2b9cbdade783492da9ce5107574e9234731d8639d72"
+      "computedHash": "8ea33cd346455e0ac48dc2b9cbdade783492da9ce5107574e9234731d8639d72",
+      "reviewed": "2026-10-22"
     },
     "eas-simulator": {
       "source": "expo/skills",
@@ -80,7 +88,8 @@
       "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "4eef2514f766ea1c999d5ad0e2bb16236f773cb3e9f347fe836a39b633e0b0ee"
+      "computedHash": "4eef2514f766ea1c999d5ad0e2bb16236f773cb3e9f347fe836a39b633e0b0ee",
+      "reviewed": "2026-10-22"
     },
     "eas-update": {
       "source": "expo/skills",
@@ -89,7 +98,8 @@
       "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "20d44da54edda9616f2c3bb09750d78c03ea81bc932c990e94864c323b09ba53"
+      "computedHash": "20d44da54edda9616f2c3bb09750d78c03ea81bc932c990e94864c323b09ba53",
+      "reviewed": "2026-10-22"
     },
     "eas-update-insights": {
       "source": "expo/skills",
@@ -98,7 +108,8 @@
       "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "6c2320500d744b8ea906e4362bf1d4a2d4f376ff6c5de04f8df14ff5aba45f1e"
+      "computedHash": "6c2320500d744b8ea906e4362bf1d4a2d4f376ff6c5de04f8df14ff5aba45f1e",
+      "reviewed": "2026-10-22"
     },
     "eas-workflows": {
       "source": "expo/skills",
@@ -107,7 +118,8 @@
       "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "873787f285b21e1f1749c9c79f77a979de65b22755c5947457a9579b1466dadd"
+      "computedHash": "873787f285b21e1f1749c9c79f77a979de65b22755c5947457a9579b1466dadd",
+      "reviewed": "2026-10-22"
     },
     "expo-animation": {
       "source": "expo/skills",
@@ -116,7 +128,8 @@
       "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "39eac91b7b45ffdbf861cd29bbe820cabf6dc2a874b4978cde5682e81d224d5d"
+      "computedHash": "39eac91b7b45ffdbf861cd29bbe820cabf6dc2a874b4978cde5682e81d224d5d",
+      "reviewed": "2026-10-22"
     },
     "expo-app-clip": {
       "source": "expo/skills",
@@ -125,7 +138,8 @@
       "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "0ebda7c05912331dac26caa5f401cc7a171b70d586a028ac5e39cb8cd6ff831d"
+      "computedHash": "0ebda7c05912331dac26caa5f401cc7a171b70d586a028ac5e39cb8cd6ff831d",
+      "reviewed": "2026-10-22"
     },
     "expo-brownfield": {
       "source": "expo/skills",
@@ -134,7 +148,8 @@
       "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "3df19129843d6648873ee06b4eb42f3078f6d99af501f6aae926eb3574b9df4b"
+      "computedHash": "3df19129843d6648873ee06b4eb42f3078f6d99af501f6aae926eb3574b9df4b",
+      "reviewed": "2026-10-22"
     },
     "expo-data-fetching": {
       "source": "expo/skills",
@@ -143,7 +158,8 @@
       "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "f212e2e7768b7103aebde89a2610263e9ed91e2a525a4cb82ee5d07873a9b9d0"
+      "computedHash": "f212e2e7768b7103aebde89a2610263e9ed91e2a525a4cb82ee5d07873a9b9d0",
+      "reviewed": "2026-10-22"
     },
     "expo-design-system": {
       "source": "expo/skills",
@@ -152,7 +168,8 @@
       "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "a4ad63aa97b9e5aab2e5727234594d4bfadd04571bf5bcb7909f843e84d9db8c"
+      "computedHash": "a4ad63aa97b9e5aab2e5727234594d4bfadd04571bf5bcb7909f843e84d9db8c",
+      "reviewed": "2026-10-22"
     },
     "expo-dev-client": {
       "source": "expo/skills",
@@ -161,7 +178,8 @@
       "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "7cef5a76b8692cb5eccd2b0667964ac8784c5d78d344033746aac3f7b5fd7e25"
+      "computedHash": "7cef5a76b8692cb5eccd2b0667964ac8784c5d78d344033746aac3f7b5fd7e25",
+      "reviewed": "2026-10-22"
     },
     "expo-dom": {
       "source": "expo/skills",
@@ -170,7 +188,8 @@
       "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "08876d3e611d98d23fd09a585aa1053371b3c2e9d2cc011519bae6b592f74c8b"
+      "computedHash": "08876d3e611d98d23fd09a585aa1053371b3c2e9d2cc011519bae6b592f74c8b",
+      "reviewed": "2026-10-22"
     },
     "expo-examples": {
       "source": "expo/skills",
@@ -179,7 +198,8 @@
       "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "884bcc73bb943eede4028a41b96af6ec30f9cad994eb6821e1a7a4303df86cae"
+      "computedHash": "884bcc73bb943eede4028a41b96af6ec30f9cad994eb6821e1a7a4303df86cae",
+      "reviewed": "2026-10-22"
     },
     "expo-module": {
       "source": "expo/skills",
@@ -188,7 +208,8 @@
       "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "acc1f35eb73e622c1c0e3680c6baf5be26d3e90b7e9e201dcc32dc93efea2846"
+      "computedHash": "acc1f35eb73e622c1c0e3680c6baf5be26d3e90b7e9e201dcc32dc93efea2846",
+      "reviewed": "2026-10-22"
     },
     "expo-native-ui": {
       "source": "expo/skills",
@@ -197,7 +218,8 @@
       "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "fa063f539b3c75b8ca232e9ba1203dde883c20b5eb433c326fe60ed531eb5f36"
+      "computedHash": "fa063f539b3c75b8ca232e9ba1203dde883c20b5eb433c326fe60ed531eb5f36",
+      "reviewed": "2026-10-22"
     },
     "expo-overview": {
       "source": "expo/skills",
@@ -206,7 +228,8 @@
       "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "173a008b1b9a2ea101411d3f783f060cf13e77cdb2d4b0473ac4b3fa7ec707aa"
+      "computedHash": "173a008b1b9a2ea101411d3f783f060cf13e77cdb2d4b0473ac4b3fa7ec707aa",
+      "reviewed": "2026-10-22"
     },
     "expo-project-structure": {
       "source": "expo/skills",
@@ -215,7 +238,8 @@
       "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "8ebe0d95e15d749a352578db6f7cc9e04e6490f3dca9f0449ee726ba1e6fbbed"
+      "computedHash": "8ebe0d95e15d749a352578db6f7cc9e04e6490f3dca9f0449ee726ba1e6fbbed",
+      "reviewed": "2026-10-22"
     },
     "expo-router": {
       "source": "expo/skills",
@@ -224,7 +248,8 @@
       "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "141386684f7c101692bc3efbadd13300ff07fbfbc0286be68d8f3ba594572fa1"
+      "computedHash": "141386684f7c101692bc3efbadd13300ff07fbfbc0286be68d8f3ba594572fa1",
+      "reviewed": "2026-10-22"
     },
     "expo-ui": {
       "source": "expo/skills",
@@ -233,7 +258,8 @@
       "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "5db5ad226596f9d9aeb01df8f0dd2fb3383eb8094cf35947407670d661148226"
+      "computedHash": "5db5ad226596f9d9aeb01df8f0dd2fb3383eb8094cf35947407670d661148226",
+      "reviewed": "2026-10-22"
     },
     "expo-upgrade": {
       "source": "expo/skills",
@@ -242,7 +268,8 @@
       "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "362acf53aeb58e5f79c55ce0abffa354afff771b3fc620ea84c56a8f130c7729"
+      "computedHash": "362acf53aeb58e5f79c55ce0abffa354afff771b3fc620ea84c56a8f130c7729",
+      "reviewed": "2026-10-22"
     },
     "expo-web-to-native": {
       "source": "expo/skills",
@@ -251,7 +278,8 @@
       "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "1a65b0a1cfab6208673f1a30c328e7bfe1eb7788dfb45e5a4329bf142ffbfa03"
+      "computedHash": "1a65b0a1cfab6208673f1a30c328e7bfe1eb7788dfb45e5a4329bf142ffbfa03",
+      "reviewed": "2026-10-22"
     },
     "git-guardrails-claude-code": {
       "source": "mattpocock/skills",
@@ -260,7 +288,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "92c1c7a61a0edc6c3c6a35e5301da9f422c2226a6f15ce9215cc9b4bba2b098e"
+      "computedHash": "92c1c7a61a0edc6c3c6a35e5301da9f422c2226a6f15ce9215cc9b4bba2b098e",
+      "reviewed": "2026-10-22"
     },
     "grill-me": {
       "source": "mattpocock/skills",
@@ -269,7 +298,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "fe33aaa8e8dcd606107b1bfe3109f257b4a7e0f4907afd6506b62ccfb73cd1d3"
+      "computedHash": "fe33aaa8e8dcd606107b1bfe3109f257b4a7e0f4907afd6506b62ccfb73cd1d3",
+      "reviewed": "2026-10-22"
     },
     "grill-with-docs": {
       "source": "mattpocock/skills",
@@ -278,7 +308,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "9e8f732b806727978f1ad8d2fb9ce4467da68f7482d63c4bb5a73f2b1a0c797c"
+      "computedHash": "9e8f732b806727978f1ad8d2fb9ce4467da68f7482d63c4bb5a73f2b1a0c797c",
+      "reviewed": "2026-10-22"
     },
     "grilling": {
       "source": "mattpocock/skills",
@@ -287,7 +318,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "90b54c72a48114f62072de27e1bef0c61d55f0959044725c593ed9fc72197755"
+      "computedHash": "90b54c72a48114f62072de27e1bef0c61d55f0959044725c593ed9fc72197755",
+      "reviewed": "2026-10-22"
     },
     "handoff": {
       "source": "mattpocock/skills",
@@ -296,7 +328,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "16e5b77eadb689d69c816bfe52cae6b5f425180340b77235ab8a3f402cf4b6f3"
+      "computedHash": "16e5b77eadb689d69c816bfe52cae6b5f425180340b77235ab8a3f402cf4b6f3",
+      "reviewed": "2026-10-22"
     },
     "implement": {
       "source": "mattpocock/skills",
@@ -305,7 +338,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "c7c4d38c8dd9a05fcad046f79aeb275c7f31a87d7bceb4f3a133f125e6f4bfbb"
+      "computedHash": "c7c4d38c8dd9a05fcad046f79aeb275c7f31a87d7bceb4f3a133f125e6f4bfbb",
+      "reviewed": "2026-10-22"
     },
     "implement-spec": {
       "source": "mattpocock/skills",
@@ -314,7 +348,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "f5df654e389b0983a98df35bf83dced720fed5ec87436da18bcfb38ea60ecc7b"
+      "computedHash": "f5df654e389b0983a98df35bf83dced720fed5ec87436da18bcfb38ea60ecc7b",
+      "reviewed": "2026-10-22"
     },
     "improve-codebase-architecture": {
       "source": "mattpocock/skills",
@@ -323,7 +358,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "741b4015c0edbcd5ffb9c926abab6cd52946bd296af2792c4694c759f4bd2554"
+      "computedHash": "741b4015c0edbcd5ffb9c926abab6cd52946bd296af2792c4694c759f4bd2554",
+      "reviewed": "2026-10-22"
     },
     "inngest-agent-evals": {
       "source": "inngest/inngest-skills",
@@ -332,7 +368,8 @@
       "commit": "082798a627bbe9c3ed3a6638a9f56116a035f122",
       "pack": "inngest",
       "pinned": false,
-      "computedHash": "f4a813e42d2b3851e916b062a15e84854e4429b50304c96e21f54cd03ef2dfde"
+      "computedHash": "f4a813e42d2b3851e916b062a15e84854e4429b50304c96e21f54cd03ef2dfde",
+      "reviewed": "2026-10-22"
     },
     "inngest-agents": {
       "source": "inngest/inngest-skills",
@@ -341,7 +378,8 @@
       "commit": "082798a627bbe9c3ed3a6638a9f56116a035f122",
       "pack": "inngest",
       "pinned": false,
-      "computedHash": "47cb6397510ec463604963862719a44ec7babc1bdcaa61c2d2d63077f9076e54"
+      "computedHash": "47cb6397510ec463604963862719a44ec7babc1bdcaa61c2d2d63077f9076e54",
+      "reviewed": "2026-10-22"
     },
     "inngest-api": {
       "source": "inngest/inngest-skills",
@@ -350,7 +388,8 @@
       "commit": "082798a627bbe9c3ed3a6638a9f56116a035f122",
       "pack": "inngest",
       "pinned": false,
-      "computedHash": "a8007c1f881d27c18b555c916433a95a8f892cc8a3d6ea5aaf5564a87aa07a74"
+      "computedHash": "a8007c1f881d27c18b555c916433a95a8f892cc8a3d6ea5aaf5564a87aa07a74",
+      "reviewed": "2026-10-22"
     },
     "inngest-api-cli": {
       "source": "inngest/inngest-skills",
@@ -359,7 +398,8 @@
       "commit": "082798a627bbe9c3ed3a6638a9f56116a035f122",
       "pack": "inngest",
       "pinned": false,
-      "computedHash": "4ba6358ee2dc84a992e1e10248b796ba593a654100458dd2871f1a9b5b5fcba2"
+      "computedHash": "4ba6358ee2dc84a992e1e10248b796ba593a654100458dd2871f1a9b5b5fcba2",
+      "reviewed": "2026-10-22"
     },
     "inngest-brownfield-audit": {
       "source": "inngest/inngest-skills",
@@ -368,7 +408,8 @@
       "commit": "082798a627bbe9c3ed3a6638a9f56116a035f122",
       "pack": "inngest",
       "pinned": false,
-      "computedHash": "4f46633ae05254a48d646d3756630fae05e19eaa15ffea5b898edeb3f44579e8"
+      "computedHash": "4f46633ae05254a48d646d3756630fae05e19eaa15ffea5b898edeb3f44579e8",
+      "reviewed": "2026-10-22"
     },
     "inngest-cli": {
       "source": "inngest/inngest-skills",
@@ -377,7 +418,8 @@
       "commit": "082798a627bbe9c3ed3a6638a9f56116a035f122",
       "pack": "inngest",
       "pinned": false,
-      "computedHash": "915bddf09a8bb38753c780d02a196a2cbc0d1f2a65c83837b4368d8b22c852b4"
+      "computedHash": "915bddf09a8bb38753c780d02a196a2cbc0d1f2a65c83837b4368d8b22c852b4",
+      "reviewed": "2026-10-22"
     },
     "inngest-cloud": {
       "source": "inngest/inngest-skills",
@@ -386,7 +428,8 @@
       "commit": "082798a627bbe9c3ed3a6638a9f56116a035f122",
       "pack": "inngest",
       "pinned": false,
-      "computedHash": "03f0a1388c2650669db5e57135f4523820cb057da3584002f42ef68cb2b38dc8"
+      "computedHash": "03f0a1388c2650669db5e57135f4523820cb057da3584002f42ef68cb2b38dc8",
+      "reviewed": "2026-10-22"
     },
     "inngest-durable-functions": {
       "source": "inngest/inngest-skills",
@@ -395,7 +438,8 @@
       "commit": "082798a627bbe9c3ed3a6638a9f56116a035f122",
       "pack": "inngest",
       "pinned": false,
-      "computedHash": "de0eeb6810cc65a2caaa0437d140d971e1efb05475c8fc6db01960e859d758f3"
+      "computedHash": "de0eeb6810cc65a2caaa0437d140d971e1efb05475c8fc6db01960e859d758f3",
+      "reviewed": "2026-10-22"
     },
     "inngest-events": {
       "source": "inngest/inngest-skills",
@@ -404,7 +448,8 @@
       "commit": "082798a627bbe9c3ed3a6638a9f56116a035f122",
       "pack": "inngest",
       "pinned": false,
-      "computedHash": "14bfc909497f6cdee64997f343b38f2a7013f1617b753ffaffe5539a1545bd03"
+      "computedHash": "14bfc909497f6cdee64997f343b38f2a7013f1617b753ffaffe5539a1545bd03",
+      "reviewed": "2026-10-22"
     },
     "inngest-flow-control": {
       "source": "inngest/inngest-skills",
@@ -413,7 +458,8 @@
       "commit": "082798a627bbe9c3ed3a6638a9f56116a035f122",
       "pack": "inngest",
       "pinned": false,
-      "computedHash": "816531118017e7c31d1598689380672b607adb438a0b1e0f4cc169f2f579b03f"
+      "computedHash": "816531118017e7c31d1598689380672b607adb438a0b1e0f4cc169f2f579b03f",
+      "reviewed": "2026-10-22"
     },
     "inngest-middleware": {
       "source": "inngest/inngest-skills",
@@ -422,7 +468,8 @@
       "commit": "082798a627bbe9c3ed3a6638a9f56116a035f122",
       "pack": "inngest",
       "pinned": false,
-      "computedHash": "ea840a90edbf8b5095b349bf20c03530ebcdd038b8976459acc064a5e79fa982"
+      "computedHash": "ea840a90edbf8b5095b349bf20c03530ebcdd038b8976459acc064a5e79fa982",
+      "reviewed": "2026-10-22"
     },
     "inngest-realtime": {
       "source": "inngest/inngest-skills",
@@ -431,7 +478,8 @@
       "commit": "082798a627bbe9c3ed3a6638a9f56116a035f122",
       "pack": "inngest",
       "pinned": false,
-      "computedHash": "bdf03799a3cc1997333ef306d0efb85c4174cc0db8da9595b4e60496a61d73d8"
+      "computedHash": "bdf03799a3cc1997333ef306d0efb85c4174cc0db8da9595b4e60496a61d73d8",
+      "reviewed": "2026-10-22"
     },
     "inngest-setup": {
       "source": "inngest/inngest-skills",
@@ -440,7 +488,8 @@
       "commit": "082798a627bbe9c3ed3a6638a9f56116a035f122",
       "pack": "inngest",
       "pinned": false,
-      "computedHash": "13f7025183bcfea6ebb5e27b1bfa5cbf8f3570847aba144538af12854667d04a"
+      "computedHash": "13f7025183bcfea6ebb5e27b1bfa5cbf8f3570847aba144538af12854667d04a",
+      "reviewed": "2026-10-22"
     },
     "inngest-steps": {
       "source": "inngest/inngest-skills",
@@ -449,7 +498,8 @@
       "commit": "082798a627bbe9c3ed3a6638a9f56116a035f122",
       "pack": "inngest",
       "pinned": false,
-      "computedHash": "f37a3a423739fba256a5cd8cfa35b6121bf3192a0fe2a964e5c41af1036f3de0"
+      "computedHash": "f37a3a423739fba256a5cd8cfa35b6121bf3192a0fe2a964e5c41af1036f3de0",
+      "reviewed": "2026-10-22"
     },
     "inngest-v3-v4-migration": {
       "source": "inngest/inngest-skills",
@@ -458,7 +508,8 @@
       "commit": "082798a627bbe9c3ed3a6638a9f56116a035f122",
       "pack": "inngest",
       "pinned": false,
-      "computedHash": "4fefaed452c6de2ab1d082e2a85a35524c6d205e8fcac00821bbfa49d4d004dd"
+      "computedHash": "4fefaed452c6de2ab1d082e2a85a35524c6d205e8fcac00821bbfa49d4d004dd",
+      "reviewed": "2026-10-22"
     },
     "migrate-to-shoehorn": {
       "source": "mattpocock/skills",
@@ -467,7 +518,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "be9b2a0f6e0cd5186997e1eee2b92a7b9ed5e98f9f4b6b19a05edc67542f7f06"
+      "computedHash": "be9b2a0f6e0cd5186997e1eee2b92a7b9ed5e98f9f4b6b19a05edc67542f7f06",
+      "reviewed": "2026-10-22"
     },
     "next-bundle-optimizer": {
       "source": "vercel/next.js",
@@ -476,7 +528,8 @@
       "commit": "684cf7ea8915613a53e1ed34d88d2cfb093ed57d",
       "pack": "nextjs-vercel",
       "pinned": false,
-      "computedHash": "eb1e054af768adeeef6f953c527edfa4e2a03f36ec576b336ee211e4903c6141"
+      "computedHash": "eb1e054af768adeeef6f953c527edfa4e2a03f36ec576b336ee211e4903c6141",
+      "reviewed": "2026-10-22"
     },
     "next-cache-components-adoption": {
       "source": "vercel/next.js",
@@ -485,7 +538,8 @@
       "commit": "684cf7ea8915613a53e1ed34d88d2cfb093ed57d",
       "pack": "nextjs-vercel",
       "pinned": false,
-      "computedHash": "3f233a4f8fec9aa3f5f3dd183f4d0b76986ab75a31b17efd7fc18368ab7d356f"
+      "computedHash": "3f233a4f8fec9aa3f5f3dd183f4d0b76986ab75a31b17efd7fc18368ab7d356f",
+      "reviewed": "2026-10-22"
     },
     "next-cache-components-optimizer": {
       "source": "vercel/next.js",
@@ -494,7 +548,8 @@
       "commit": "684cf7ea8915613a53e1ed34d88d2cfb093ed57d",
       "pack": "nextjs-vercel",
       "pinned": false,
-      "computedHash": "b1f7d01586035e3b981b5dd9e23fb3a22f2eb21b7702ed4259f4443d7698ff85"
+      "computedHash": "b1f7d01586035e3b981b5dd9e23fb3a22f2eb21b7702ed4259f4443d7698ff85",
+      "reviewed": "2026-10-22"
     },
     "next-dev-loop": {
       "source": "vercel/next.js",
@@ -503,7 +558,8 @@
       "commit": "684cf7ea8915613a53e1ed34d88d2cfb093ed57d",
       "pack": "nextjs-vercel",
       "pinned": false,
-      "computedHash": "c305c83b726212e0284930c65cded2c4a4ab85f9bfccfa83b62274247fe3580e"
+      "computedHash": "c305c83b726212e0284930c65cded2c4a4ab85f9bfccfa83b62274247fe3580e",
+      "reviewed": "2026-10-22"
     },
     "next-partial-prefetching-adoption": {
       "source": "vercel/next.js",
@@ -512,7 +568,8 @@
       "commit": "684cf7ea8915613a53e1ed34d88d2cfb093ed57d",
       "pack": "nextjs-vercel",
       "pinned": false,
-      "computedHash": "44553d39329e8e3c98115b0d67d4b73028626dfb61479a8b541a956c6554e106"
+      "computedHash": "44553d39329e8e3c98115b0d67d4b73028626dfb61479a8b541a956c6554e106",
+      "reviewed": "2026-10-22"
     },
     "next-partial-prefetching-optimizer": {
       "source": "vercel/next.js",
@@ -521,7 +578,8 @@
       "commit": "684cf7ea8915613a53e1ed34d88d2cfb093ed57d",
       "pack": "nextjs-vercel",
       "pinned": false,
-      "computedHash": "2a9c24352cf4c3bd3546ce2b7d9d4eb3ce03026cca6dd69dcda0d69b61469da3"
+      "computedHash": "2a9c24352cf4c3bd3546ce2b7d9d4eb3ce03026cca6dd69dcda0d69b61469da3",
+      "reviewed": "2026-10-22"
     },
     "pr": {
       "source": "mattpocock/skills",
@@ -530,7 +588,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "e6edd6e5d192d995ed3dd25cd279efa6c8be860b3d24aa7f0c5d5e51a0cd2d52"
+      "computedHash": "e6edd6e5d192d995ed3dd25cd279efa6c8be860b3d24aa7f0c5d5e51a0cd2d52",
+      "reviewed": "2026-10-22"
     },
     "prototype": {
       "source": "mattpocock/skills",
@@ -539,7 +598,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "090ae76b97353255ca29be783d69bcc1029e0195bdf43118d0b6f7ea9acc89b0"
+      "computedHash": "090ae76b97353255ca29be783d69bcc1029e0195bdf43118d0b6f7ea9acc89b0",
+      "reviewed": "2026-10-22"
     },
     "research": {
       "source": "mattpocock/skills",
@@ -548,7 +608,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "d293faf4e4da791b8046cd2eed5b4dce46f591f1a26be4099a55b968b5dbe9c9"
+      "computedHash": "d293faf4e4da791b8046cd2eed5b4dce46f591f1a26be4099a55b968b5dbe9c9",
+      "reviewed": "2026-10-22"
     },
     "retro": {
       "source": "mattpocock/skills",
@@ -557,7 +618,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "e13af4f6dfecd777815adde57811398dc59d0118692a70d996968b59e3d13db8"
+      "computedHash": "e13af4f6dfecd777815adde57811398dc59d0118692a70d996968b59e3d13db8",
+      "reviewed": "2026-10-22"
     },
     "scaffold-exercises": {
       "source": "mattpocock/skills",
@@ -566,7 +628,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "aa52a864ead89a2c03a84b0a74a899599f1d6fd5efc0af51ff31a30d667fa9f8"
+      "computedHash": "aa52a864ead89a2c03a84b0a74a899599f1d6fd5efc0af51ff31a30d667fa9f8",
+      "reviewed": "2026-10-22"
     },
     "security-audit": {
       "source": "cloudflare/security-audit-skill",
@@ -575,7 +638,8 @@
       "commit": "c1c8a8c1471069fb0e188eeaff69b8e8db6564a8",
       "pack": "core",
       "pinned": false,
-      "computedHash": "ac796659de231c3ab76f6ee012836072bdc82928fb019199925c9062800e16c1"
+      "computedHash": "ac796659de231c3ab76f6ee012836072bdc82928fb019199925c9062800e16c1",
+      "reviewed": "2026-10-22"
     },
     "setup-matt-pocock-skills": {
       "source": "mattpocock/skills",
@@ -584,7 +648,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "f1442885e269d489b91b2a289e4619a0385eb3503121ea1f92769268bf08c123"
+      "computedHash": "f1442885e269d489b91b2a289e4619a0385eb3503121ea1f92769268bf08c123",
+      "reviewed": "2026-10-22"
     },
     "setup-pre-commit": {
       "source": "mattpocock/skills",
@@ -593,7 +658,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "b7455a91310ae0aa9b02b2642533fe60f17a1443d45bc0b455cc3136f2d85c8b"
+      "computedHash": "b7455a91310ae0aa9b02b2642533fe60f17a1443d45bc0b455cc3136f2d85c8b",
+      "reviewed": "2026-10-22"
     },
     "supabase": {
       "source": "supabase/agent-skills",
@@ -602,7 +668,8 @@
       "commit": "c9be0e931b7930f7d02126d04774d904c381e7d7",
       "pack": "supabase",
       "pinned": false,
-      "computedHash": "3c95d48548a5d37f7e0a99b191e7cd6afb4f0184db733bfe5f740a0909fee4db"
+      "computedHash": "3c95d48548a5d37f7e0a99b191e7cd6afb4f0184db733bfe5f740a0909fee4db",
+      "reviewed": "2026-10-22"
     },
     "supabase-postgres-best-practices": {
       "source": "supabase/agent-skills",
@@ -611,7 +678,8 @@
       "commit": "c9be0e931b7930f7d02126d04774d904c381e7d7",
       "pack": "supabase",
       "pinned": false,
-      "computedHash": "5766a8e9524c3c2a81041409be237c3baf515aa04a135871a21dd351682d173f"
+      "computedHash": "5766a8e9524c3c2a81041409be237c3baf515aa04a135871a21dd351682d173f",
+      "reviewed": "2026-10-22"
     },
     "tdd": {
       "source": "mattpocock/skills",
@@ -620,7 +688,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "ef3cbb31aa8b1f8a3f9b6a042c230dc9312019e84cdc6337f60890f177fd5764"
+      "computedHash": "ef3cbb31aa8b1f8a3f9b6a042c230dc9312019e84cdc6337f60890f177fd5764",
+      "reviewed": "2026-10-22"
     },
     "teach": {
       "source": "mattpocock/skills",
@@ -629,7 +698,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "7bd8a41095f71c5e76892427f1db17eaa744372611b748db50a93dfa25fc62ca"
+      "computedHash": "7bd8a41095f71c5e76892427f1db17eaa744372611b748db50a93dfa25fc62ca",
+      "reviewed": "2026-10-22"
     },
     "to-questionnaire": {
       "source": "mattpocock/skills",
@@ -638,7 +708,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "619879fbd0e99ffacb9ae4a23a8c44393a37cb6d90b59a5ce8f5ace1be5baae0"
+      "computedHash": "619879fbd0e99ffacb9ae4a23a8c44393a37cb6d90b59a5ce8f5ace1be5baae0",
+      "reviewed": "2026-10-22"
     },
     "to-spec": {
       "source": "mattpocock/skills",
@@ -647,7 +718,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "cc5d718c2f810f4c9b081ea888af3ad3eb73bb8db6fc9fa92c3b1729637b7d56"
+      "computedHash": "cc5d718c2f810f4c9b081ea888af3ad3eb73bb8db6fc9fa92c3b1729637b7d56",
+      "reviewed": "2026-10-22"
     },
     "to-tickets": {
       "source": "mattpocock/skills",
@@ -656,7 +728,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "7cca8cd2afe55d1cd8bfc986df6a4cb4ad54411452575200804494b03c871ede"
+      "computedHash": "7cca8cd2afe55d1cd8bfc986df6a4cb4ad54411452575200804494b03c871ede",
+      "reviewed": "2026-10-22"
     },
     "triage": {
       "source": "mattpocock/skills",
@@ -665,7 +738,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "bf09f37fa24ab64324497772a25a1e0a9b22d06ccb238fefd0cfb12eee473c3d"
+      "computedHash": "bf09f37fa24ab64324497772a25a1e0a9b22d06ccb238fefd0cfb12eee473c3d",
+      "reviewed": "2026-10-22"
     },
     "wait-what": {
       "source": "mattpocock/skills",
@@ -674,7 +748,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "aeda379d44a811ede92435e0af812ba599c3f3fb617c208a7ed3d0226072ba8d"
+      "computedHash": "aeda379d44a811ede92435e0af812ba599c3f3fb617c208a7ed3d0226072ba8d",
+      "reviewed": "2026-10-22"
     },
     "wayfinder": {
       "source": "mattpocock/skills",
@@ -683,7 +758,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "d7224a1241800092e128af0544017b1a78f412c3fc26e810521f3674a1184c93"
+      "computedHash": "d7224a1241800092e128af0544017b1a78f412c3fc26e810521f3674a1184c93",
+      "reviewed": "2026-10-22"
     },
     "wizard": {
       "source": "mattpocock/skills",
@@ -692,7 +768,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "93fc955828a4d1086f8ac15c67d894d540db821b5eca0feca2e24d8856b784e3"
+      "computedHash": "93fc955828a4d1086f8ac15c67d894d540db821b5eca0feca2e24d8856b784e3",
+      "reviewed": "2026-10-22"
     },
     "writing-for-agents": {
       "source": "mattpocock/skills",
@@ -701,7 +778,8 @@
       "commit": "bdfcb8f0a8690a1365740a60005d68d242a571a2",
       "pack": "matt",
       "pinned": false,
-      "computedHash": "8365ebe1d0c343d3d46970526f30fcf7c5e0c5e49fd39a3c882977024626ff3c"
+      "computedHash": "8365ebe1d0c343d3d46970526f30fcf7c5e0c5e49fd39a3c882977024626ff3c",
+      "reviewed": "2026-10-22"
     }
   }
 }

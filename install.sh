@@ -24,7 +24,8 @@ else
   git clone -q "https://github.com/$REPO.git" "$HOME_DIR"
 fi
 
-"$HOME_DIR/scripts/bootstrap.sh" "$REPO"
+status=0
+"$HOME_DIR/scripts/bootstrap.sh" "$REPO" || status=$?
 
 # Put the CLI on PATH: first writable dir that is already on PATH, else ~/.local/bin.
 BIN=""
@@ -39,6 +40,12 @@ fi
 ln -sf "$HOME_DIR/bin/skillshed" "$BIN/skillshed"
 
 echo
+if [ "$status" -ne 0 ]; then
+  echo "Skillshed is not fully installed; see the problems above." >&2
+  echo "Fix them, then re-run this installer or run: skillshed doctor" >&2
+  exit "$status"
+fi
 echo "Skillshed installed. Restart Claude Code / Codex sessions to load them."
 echo "  skillshed use supabase   # turn a pack on in the current project"
+echo "  skillshed doctor         # check the install at any time"
 echo "  skillshed help"

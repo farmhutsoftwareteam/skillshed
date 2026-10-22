@@ -17,6 +17,8 @@ const lock = readLock();
 
 // Upstream descriptions are untrusted text: everything below is escaped.
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+// "2026-10-22" -> "22 Oct 2026"
+const day = (iso) => new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 // First sentence only, so a band stays one line of reading.
 const firstSentence = (d) => (d.match(/^.*?[.!?](\s|$)/)?.[0] ?? d).trim();
 
@@ -30,6 +32,7 @@ const all = skills()
       description: firstSentence((fm.description ?? '').replace(/\s+/g, ' ').trim()),
       source: v ? v.source : 'Skillshed',
       commit: v ? v.commit.slice(0, 7) : '',
+      reviewed: v?.reviewed ?? '',
       url: v
         ? `https://github.com/${v.source}/tree/${v.commit}/${v.path}`
         : `https://github.com/${REPO}/tree/main/plugins/${s.pack}/skills/${s.name}`,
@@ -56,7 +59,7 @@ const bands = all
   <a href="${esc(s.url)}" target="_blank" rel="noopener">
     <span class="band-name">${esc(s.name)}</span>
     <span class="band-desc">${esc(s.description)}</span>
-    <span class="band-src">${esc(s.source)}${s.commit ? ` at ${esc(s.commit)}` : ''}</span>
+    <span class="band-src">${esc(s.source)}${s.commit ? ` at ${esc(s.commit)}` : ''}${s.reviewed ? `, reviewed ${esc(day(s.reviewed))}` : ''}</span>
   </a>
 </li>`,
   )
@@ -73,7 +76,8 @@ const faq = [
   ['What is an agent skill?', 'A skill is a folder with a SKILL.md file: instructions, and sometimes scripts, that an AI coding agent loads when a task matches the skill\'s description. Claude Code and Codex both read the open Agent Skills format, so the same skill works in both.'],
   ['What does Skillshed add?', 'It gathers vetted skills into one plugin marketplace that Claude Code and Codex both understand, installs it with one command, keeps the always-on list short so skills keep triggering, and pins every third-party skill to a commit after scanning it for prompt injection.'],
   ['Why are most packs off?', `Agents read every enabled skill's description on every request, within a budget of about 1 to 2% of context. Past that, skills quietly stop triggering. Core and Matt Pocock's skills stay on; stack packs switch on only in projects that use them, with \`skillshed use supabase\`.`],
-  ['Can I add my own skills?', 'Yes. `skillshed new my-skill "Use when ..."` starts one, and `skillshed add owner/repo@skill` adds any skill from GitHub or skills.sh for you only. Both go into your own skill folders for Claude Code and Codex, scanned and pinned.'],
+  ['Can I add my own skills?', 'Yes. `skillshed new my-skill "Use when ..."` starts one, and `skillshed add owner/repo@skill` adds any skill from GitHub or skills.sh for you only. Both go into your own skill folders for Claude Code and Codex. Added skills are scanned before they install, but no person reviews them; see the next question.'],
+  ['What does vetted mean?', 'It depends on where a skill comes from. Skills in the shared packs are scanned, read file by file by a person before they are pinned, and only change through a pull request a person merges. Each one on the wall shows its source commit and the date that version was reviewed. Skills you add for yourself with `skillshed add` get the same automated scan, but no person reads them. They follow upstream by default, and `skillshed update` moves them forward whenever a new version passes the scan. Add `--pin` to keep one at the commit you checked.'],
   ['How do I share a skill with everyone?', 'Check it with `skillshed vet owner/repo@skill`, then submit it on GitHub. A workflow scans it and replies on the issue; a person reads every file before pinning it into a pack.'],
   ['Is it safe?', 'No scanner can prove a skill is safe. Skillshed narrows the risk: every upstream skill is pinned to a commit and content hash, scanned for hidden text, override phrasing and data exfiltration, and only updated through pull requests a person merges.'],
   ['How do I update or remove it?', '`skillshed update` pulls the latest skills into both tools. To remove it, run `claude plugin marketplace remove skillshed` and `codex plugin marketplace remove skillshed`, then delete `~/.skillshed`.'],

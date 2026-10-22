@@ -14,6 +14,7 @@ usage: skillshed <command>
   off <pack>...       turn packs off for the current project
   find <keywords>     search skill-issue.in and skills.sh for new skills
   update              pull the latest skills and refresh Claude Code / Codex
+  doctor              check every pack is installed, and on or off as expected
 
 Your own skills (only on this machine, always on):
   add <source>        add a third-party skill for you only, scanned and pinned
@@ -48,6 +49,7 @@ case "$cmd" in
     git -C "$ROOT" pull -q --ff-only
     "$ROOT/scripts/bootstrap.sh"
     exec node "$ROOT/scripts/personal.mjs" update ;;
+  doctor) exec "$ROOT/scripts/doctor.sh" ;;
   dir) echo "$ROOT" ;;
   help|-h|--help) usage ;;
   *) usage; exit 1 ;;
