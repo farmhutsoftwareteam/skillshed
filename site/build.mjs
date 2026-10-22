@@ -101,7 +101,7 @@ const jsonld = JSON.stringify({
       license: 'https://opensource.org/licenses/MIT',
       isAccessibleForFree: true,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-      installUrl: `https://raw.githubusercontent.com/${REPO}/main/install.sh`,
+      installUrl: `${SITE_URL}/install`,
       sameAs: [`https://github.com/${REPO}`],
       author: { '@type': 'Person', name: 'Munyaradzi Makosa', url: 'https://munyamakosa.com' },
     },
@@ -165,7 +165,7 @@ writeFileSync(
 
 > Skillshed is a plugin marketplace of vetted agent skills for Claude Code and Codex. One command installs it on macOS or Linux. A small core is always on; stack packs (Next.js/Vercel, Supabase, Expo, Inngest) switch on per project. Third-party skills are pinned to a commit and content hash, scanned for prompt injection, and updated only through reviewed pull requests. MIT licensed.
 
-Install: \`curl -fsSL https://raw.githubusercontent.com/${REPO}/main/install.sh | bash\`
+Install: \`curl -fsSL ${SITE_URL}/install/llms | bash\`
 
 Turn a pack on in the current project: \`skillshed use <pack>\`. Search for new skills: \`skillshed find <keywords>\`. Update: \`skillshed update\`.
 

@@ -1,0 +1,10 @@
+{
+  "name": "skillshed",
+  "private": true,
+  "type": "module",
+  "description": "Site and install endpoint for Skillshed. The marketplace itself needs no dependencies.",
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "@vercel/analytics": "2.0.1"
+  }
+}

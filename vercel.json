@@ -1,7 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "installCommand": "",
   "buildCommand": "node site/build.mjs",
   "outputDirectory": "site/dist",
   "headers": [
@@ -34,6 +33,21 @@
           "value": "text/plain; charset=utf-8"
         }
       ]
+    }
+  ],
+  "functions": {
+    "api/install.js": {
+      "includeFiles": "install.sh"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/install",
+      "destination": "/api/install"
+    },
+    {
+      "source": "/install/:ref",
+      "destination": "/api/install?ref=:ref"
     }
   ]
 }

@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Skillshed installer for Claude Code and Codex (macOS / Linux).
 #
-#   curl -fsSL https://raw.githubusercontent.com/farmhutsoftwareteam/skillshed/main/install.sh | bash
+#   curl -fsSL https://skillshed.munyamakosa.com/install | bash
+#   (same file as https://raw.githubusercontent.com/farmhutsoftwareteam/skillshed/main/install.sh)
 #
 # Clones the repo to ~/.skillshed (override with SKILLSHED_HOME), adds
 # the marketplace and plugins to every tool it finds, and puts a

@@ -5,10 +5,10 @@
 ## Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/farmhutsoftwareteam/skillshed/main/install.sh | bash
+curl -fsSL https://skillshed.munyamakosa.com/install/github | bash
 ```
 
-That's it. You need git and Node 20+, and Claude Code and/or Codex (`brew install --cask codex`). The installer:
+That's it. (The same script is at `https://raw.githubusercontent.com/farmhutsoftwareteam/skillshed/main/install.sh` if you'd rather fetch it from GitHub directly; the short URL only counts installs, it stores nothing about you.) You need git and Node 20+, and Claude Code and/or Codex (`brew install --cask codex`). The installer:
 
 - clones this repo to `~/.skillshed`
 - adds the `skillshed` marketplace to every tool it finds, with auto-update on in Claude Code
