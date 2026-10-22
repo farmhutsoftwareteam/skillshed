@@ -1,0 +1,10 @@
+{
+  "name": "inngest",
+  "description": "Stack pack: Inngest durable functions and events. Enable per project.",
+  "author": {
+    "name": "Munyaradzi Makosa",
+    "url": "https://github.com/farmhutsoftwareteam"
+  },
+  "repository": "https://github.com/farmhutsoftwareteam/munya-skills",
+  "license": "UNLICENSED"
+}

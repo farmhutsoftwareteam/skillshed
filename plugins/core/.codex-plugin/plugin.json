@@ -1,0 +1,10 @@
+{
+  "name": "core",
+  "description": "Always-on essentials: skill router plus everyday owned skills.",
+  "author": {
+    "name": "Munyaradzi Makosa",
+    "url": "https://github.com/farmhutsoftwareteam"
+  },
+  "repository": "https://github.com/farmhutsoftwareteam/munya-skills",
+  "license": "UNLICENSED"
+}

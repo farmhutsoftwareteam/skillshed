@@ -1,0 +1,39 @@
+{
+  "name": "munya",
+  "owner": {
+    "name": "Munyaradzi Makosa"
+  },
+  "description": "Munya's personal skills: a small always-on core plus per-project stack packs.",
+  "plugins": [
+    {
+      "name": "core",
+      "source": "./plugins/core",
+      "description": "Always-on essentials: skill router plus everyday owned skills.",
+      "category": "productivity"
+    },
+    {
+      "name": "nextjs-vercel",
+      "source": "./plugins/nextjs-vercel",
+      "description": "Stack pack: Next.js App Router and Vercel. Enable per project.",
+      "category": "coding"
+    },
+    {
+      "name": "supabase",
+      "source": "./plugins/supabase",
+      "description": "Stack pack: Supabase (Postgres, RLS, migrations, auth). Enable per project.",
+      "category": "coding"
+    },
+    {
+      "name": "expo",
+      "source": "./plugins/expo",
+      "description": "Stack pack: Expo and React Native. Enable per project.",
+      "category": "coding"
+    },
+    {
+      "name": "inngest",
+      "source": "./plugins/inngest",
+      "description": "Stack pack: Inngest durable functions and events. Enable per project.",
+      "category": "coding"
+    }
+  ]
+}

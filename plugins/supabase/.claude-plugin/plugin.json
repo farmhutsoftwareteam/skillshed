@@ -1,0 +1,10 @@
+{
+  "name": "supabase",
+  "description": "Stack pack: Supabase (Postgres, RLS, migrations, auth). Enable per project.",
+  "author": {
+    "name": "Munyaradzi Makosa",
+    "url": "https://github.com/farmhutsoftwareteam"
+  },
+  "repository": "https://github.com/farmhutsoftwareteam/munya-skills",
+  "license": "UNLICENSED"
+}

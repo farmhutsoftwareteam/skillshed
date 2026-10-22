@@ -1,0 +1,24 @@
+name: check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Lint skills, lock hashes, router index
+        run: node scripts/check.mjs
+      - name: Scan vendored skills for prompt injection
+        run: node scripts/scan-skills.mjs --report "$RUNNER_TEMP/scan.md" && cat "$RUNNER_TEMP/scan.md" >> "$GITHUB_STEP_SUMMARY"
+      - name: Scanner still catches a known-bad skill
+        run: "! node scripts/scan-skills.mjs tests/fixtures/injected-skill"

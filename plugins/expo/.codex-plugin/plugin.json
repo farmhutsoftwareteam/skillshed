@@ -1,0 +1,10 @@
+{
+  "name": "expo",
+  "description": "Stack pack: Expo and React Native. Enable per project.",
+  "author": {
+    "name": "Munyaradzi Makosa",
+    "url": "https://github.com/farmhutsoftwareteam"
+  },
+  "repository": "https://github.com/farmhutsoftwareteam/munya-skills",
+  "license": "UNLICENSED"
+}
