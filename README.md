@@ -1,6 +1,6 @@
 # Skillshed
 
-Agent skills for **Claude Code** and **Codex**, in one plugin marketplace: a small always-on core, Matt Pocock's engineering skills, and stack packs you switch on per project.
+[skillshed.vercel.app](https://skillshed.vercel.app) · Agent skills for **Claude Code** and **Codex**, in one plugin marketplace: a small always-on core, Matt Pocock's engineering skills, and stack packs you switch on per project.
 
 ## Install
 
