@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Installs the munya marketplace into Claude Code and Codex on this Mac.
+# Installs the skillshed marketplace into Claude Code and Codex on this Mac.
 # Packs in ALWAYS_ON are enabled everywhere; the rest are installed but
 # disabled, and turned on per project with scripts/use-pack.sh.
 #
@@ -9,8 +9,8 @@
 # Safe to re-run: existing marketplaces and plugins are left in place.
 set -uo pipefail
 
-SOURCE="${1:-farmhutsoftwareteam/munya-skills}"
-MARKET=munya
+SOURCE="${1:-farmhutsoftwareteam/skillshed}"
+MARKET=skillshed
 ALWAYS_ON=(core matt)
 # Every other pack in this checkout.
 PACKS=()
@@ -58,21 +58,17 @@ fi
 echo
 if command -v codex >/dev/null; then
   echo "Codex: $(command -v codex)"
-  # Codex clones owner/repo over HTTPS, which fails for a private repo
-  # without a credential helper; use SSH like the rest of the git setup.
-  CODEX_SOURCE="$SOURCE"
-  [[ "$SOURCE" != /* && "$SOURCE" != *:* ]] && CODEX_SOURCE="git@github.com:$SOURCE.git"
-  run codex plugin marketplace add "$CODEX_SOURCE"
+  run codex plugin marketplace add "$SOURCE"
   [[ "$SOURCE" != /* ]] && run codex plugin marketplace upgrade "$MARKET"
   CONFIG="$HOME/.codex/config.toml"
   for p in "${ALWAYS_ON[@]}"; do
     run codex plugin add "$p@$MARKET"
-    sed -i '' "/^\[plugins\.\"$p@$MARKET\"\]/,/^\[/ s/^enabled = false/enabled = true/" "$CONFIG"
+    sed -i.bak "/^\[plugins\.\"$p@$MARKET\"\]/,/^\[/ s/^enabled = false/enabled = true/" "$CONFIG" && rm -f "$CONFIG.bak"
   done
   for p in "${PACKS[@]}"; do
     run codex plugin add "$p@$MARKET"
     # codex has no disable command: flip the entry `plugin add` just wrote.
-    sed -i '' "/^\[plugins\.\"$p@$MARKET\"\]/,/^\[/ s/^enabled = true/enabled = false/" "$CONFIG"
+    sed -i.bak "/^\[plugins\.\"$p@$MARKET\"\]/,/^\[/ s/^enabled = true/enabled = false/" "$CONFIG" && rm -f "$CONFIG.bak"
   done
   echo "  stack packs disabled in $CONFIG"
 else

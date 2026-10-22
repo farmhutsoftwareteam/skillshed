@@ -1,9 +1,9 @@
 {
-  "name": "munya",
+  "name": "skillshed",
   "owner": {
     "name": "Munyaradzi Makosa"
   },
-  "description": "Munya's personal skills: a small always-on core plus per-project stack packs.",
+  "description": "Skillshed: a small always-on core plus packs you switch on per project.",
   "plugins": [
     {
       "name": "core",

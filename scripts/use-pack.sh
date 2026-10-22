@@ -9,7 +9,7 @@
 # Codex only reads .codex/config.toml in projects you have trusted.
 set -euo pipefail
 
-MARKET=munya
+MARKET=skillshed
 VALUE=true
 if [ "${1:-}" = "--off" ]; then VALUE=false; shift; fi
 [ $# -gt 0 ] || { echo "usage: use-pack.sh [--off] <pack>..." >&2; exit 1; }
@@ -28,7 +28,7 @@ node -e '
   s.enabledPlugins ??= {};
   for (const p of packs) s.enabledPlugins[`${p}@${market}`] = value === "true";
   // Lets a fresh machine discover the marketplace from the project alone.
-  (s.extraKnownMarketplaces ??= {})[market] ??= { source: { source: "github", repo: "farmhutsoftwareteam/munya-skills" } };
+  (s.extraKnownMarketplaces ??= {})[market] ??= { source: { source: "github", repo: "farmhutsoftwareteam/skillshed" } };
   fs.writeFileSync(f, JSON.stringify(s, null, 2) + "\n");
 ' "$MARKET" "$VALUE" "$@"
 
@@ -37,7 +37,7 @@ touch "$TOML"
 for p in "$@"; do
   header="[plugins.\"$p@$MARKET\"]"
   if grep -qF "$header" "$TOML"; then
-    sed -i '' "/^\[plugins\.\"$p@$MARKET\"\]/,/^\[/ s/^enabled = .*/enabled = $VALUE/" "$TOML"
+    sed -i.bak "/^\[plugins\.\"$p@$MARKET\"\]/,/^\[/ s/^enabled = .*/enabled = $VALUE/" "$TOML" && rm -f "$TOML.bak"
   else
     [ -s "$TOML" ] && echo >> "$TOML"
     printf '%s\nenabled = %s\n' "$header" "$VALUE" >> "$TOML"

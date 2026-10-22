@@ -1,4 +1,4 @@
-// Shared helpers for the munya-skills scripts. Node 20+, no dependencies.
+// Shared helpers for the skillshed scripts. Node 20+, no dependencies.
 import { createHash } from 'node:crypto';
 import { readFileSync, readdirSync, lstatSync, existsSync, writeFileSync } from 'node:fs';
 import { join, relative, dirname } from 'node:path';

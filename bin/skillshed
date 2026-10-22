@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# skillshed: day-to-day commands for the Skillshed marketplace.
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "$(readlink -f "$0")")/.." && pwd)"
+[ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
+usage() {
+  cat <<EOF
+usage: skillshed <command>
+
+  packs               list packs and what they cover
+  use <pack>...       turn packs on for the project in the current directory
+  off <pack>...       turn packs off for the current project
+  find <keywords>     search skill-issue.in and skills.sh for new skills
+  update              pull the latest skills and refresh Claude Code / Codex
+  dir                 print where Skillshed is installed
+
+Packs on everywhere: see ALWAYS_ON in $ROOT/scripts/bootstrap.sh
+EOF
+}
+
+cmd="${1:-help}"
+[ $# -gt 0 ] && shift
+case "$cmd" in
+  packs)
+    node -e '
+      const m = require(process.argv[1] + "/.claude-plugin/marketplace.json");
+      for (const p of m.plugins) console.log(p.name.padEnd(16), p.description);
+    ' "$ROOT" ;;
+  use) exec "$ROOT/scripts/use-pack.sh" "$@" ;;
+  off) exec "$ROOT/scripts/use-pack.sh" --off "$@" ;;
+  find) exec node "$ROOT/scripts/find-skill.mjs" "$@" ;;
+  update)
+    git -C "$ROOT" pull -q --ff-only
+    exec "$ROOT/scripts/bootstrap.sh" ;;
+  dir) echo "$ROOT" ;;
+  help|-h|--help) usage ;;
+  *) usage; exit 1 ;;
+esac

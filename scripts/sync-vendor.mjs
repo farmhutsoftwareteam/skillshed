@@ -47,7 +47,7 @@ function resolveCommit(repo, ref) {
 
 // Shallow, blob-less fetch of one commit; returns the temp repo dir.
 function fetchCommit(repo, commit) {
-  const dir = mkdtempSync(join(tmpdir(), 'munya-skills-'));
+  const dir = mkdtempSync(join(tmpdir(), 'skillshed-'));
   git(['init', '-q'], dir);
   git(['fetch', '-q', '--depth', '1', '--filter=blob:none', url(repo), commit], dir);
   return dir;
@@ -73,13 +73,27 @@ function findSkillPath(tmp, skill) {
 
 // Extracts <path> at FETCH_HEAD into the pack, replacing what was there.
 function install(tmp, path, dest) {
-  const out = mkdtempSync(join(tmpdir(), 'munya-skills-out-'));
+  const out = mkdtempSync(join(tmpdir(), 'skillshed-out-'));
   execFileSync('sh', ['-c', 'git archive FETCH_HEAD "$1" | tar -x -C "$2"', 'sh', path, out], { cwd: tmp });
   if (!existsSync(join(out, path, 'SKILL.md'))) throw new Error(`${path}/SKILL.md not found at that commit`);
   rmSync(dest, { recursive: true, force: true });
   mkdirSync(dirname(dest), { recursive: true });
   cpSync(join(out, path), dest, { recursive: true, verbatimSymlinks: true });
   rmSync(out, { recursive: true, force: true });
+}
+
+// Keeps the upstream repo's license next to its skills (MIT and friends
+// require the notice to travel with copies).
+function saveLicense(tmp, repo) {
+  for (const name of ['LICENSE', 'LICENSE.md', 'LICENSE.txt', 'LICENCE', 'COPYING']) {
+    try {
+      const text = git(['show', `FETCH_HEAD:${name}`], tmp);
+      mkdirSync(join(ROOT, 'licenses'), { recursive: true });
+      writeFileSync(join(ROOT, 'licenses', `${repo.replace('/', '__')}.txt`), text + '\n');
+      return;
+    } catch {}
+  }
+  console.warn(`${repo}: no LICENSE file found; check its terms before redistributing`);
 }
 
 function scan(dir) {
@@ -115,6 +129,7 @@ if (cmd === 'add') {
   }
   const dest = join(ROOT, 'plugins', pack, 'skills', name);
   install(tmp, path, dest);
+  saveLicense(tmp, src.repo);
   rmSync(tmp, { recursive: true, force: true });
   if (!scan(dest) && !flag('--accept-risk')) {
     rmSync(dest, { recursive: true, force: true });
@@ -140,6 +155,7 @@ if (cmd === 'add') {
     const tmp = fetchCommit(e.source, commit);
     const dest = join(ROOT, 'plugins', e.pack, 'skills', name);
     install(tmp, e.path, dest);
+    saveLicense(tmp, e.source);
     rmSync(tmp, { recursive: true, force: true });
     const computedHash = hashDir(dest);
     if (computedHash === e.computedHash) { lock.skills[name] = { ...e, commit }; continue; }

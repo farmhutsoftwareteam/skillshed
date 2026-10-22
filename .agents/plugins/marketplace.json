@@ -1,7 +1,7 @@
 {
-  "name": "munya",
+  "name": "skillshed",
   "interface": {
-    "displayName": "Munya Skills"
+    "displayName": "Skillshed"
   },
   "plugins": [
     {

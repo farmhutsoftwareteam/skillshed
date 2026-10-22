@@ -19,7 +19,7 @@ const manifest = {
   name,
   description,
   author: { name: 'Munyaradzi Makosa', url: 'https://github.com/farmhutsoftwareteam' },
-  repository: 'https://github.com/farmhutsoftwareteam/munya-skills',
+  repository: 'https://github.com/farmhutsoftwareteam/skillshed',
   license: 'UNLICENSED',
 };
 for (const d of ['.claude-plugin', '.codex-plugin']) {

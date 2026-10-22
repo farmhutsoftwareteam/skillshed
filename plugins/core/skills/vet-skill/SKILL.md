@@ -11,7 +11,7 @@ Third-party skills are instructions that run with your permissions, so treat the
 
 ## Steps
 
-1. Run the scanner from the munya-skills checkout and read every finding:
+1. Run the scanner from the skillshed checkout and read every finding:
    `node scripts/scan-skills.mjs <skill-dir>` (use `--diff <base-ref>` for an update PR).
 2. Read every file in the skill yourself, including `scripts/`, `references/` and `assets/`, not just `SKILL.md`. For an update, read the full diff.
 3. Treat it as a blocker if the skill:

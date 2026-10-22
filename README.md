@@ -1,57 +1,73 @@
-# munya-skills
+# Skillshed
 
-Munya's personal agent skills, packaged as one plugin marketplace that works in both **Claude Code** and **Codex**.
+Agent skills for **Claude Code** and **Codex**, in one plugin marketplace: a small always-on core, Matt Pocock's engineering skills, and stack packs you switch on per project.
 
-- **core** is always on: `skill-router`, `find-skill` and `vet-skill`.
-- **`matt`** is also always on: Matt Pocock's 31 stable skills, tracking upstream. They add about 1,300 tokens to every session.
-- **Stack packs** (`nextjs-vercel`, `supabase`, `expo`, `inngest`) are installed but switched off, and each project turns on only the ones it needs.
-
-To change which packs are always on, edit `ALWAYS_ON` in `scripts/bootstrap.sh`.
-
-Agents read every enabled skill's description on every request, within a small budget (about 1% of context in Claude Code, 2% in Codex). Past that budget, skills quietly stop triggering. Keeping most skills off by default is the point.
-
-## New Mac
-
-Prerequisites: Homebrew, `gh auth login` (this repo is private; Claude Code and Codex clone it with your git credentials), Node 20+, Claude Code and/or Codex (`brew install --cask codex`).
+## Install
 
 ```bash
-gh repo clone farmhutsoftwareteam/munya-skills ~/Developer/farmhutsoftwareteam/munya-skills
+curl -fsSL https://raw.githubusercontent.com/farmhutsoftwareteam/skillshed/main/install.sh | bash
+```
+
+That's it. You need git and Node 20+, and Claude Code and/or Codex (`brew install --cask codex`). The installer:
+
+- clones this repo to `~/.skillshed`
+- adds the `skillshed` marketplace to every tool it finds, with auto-update on in Claude Code
+- installs every pack: `core` and `matt` on, the rest off
+- puts a `skillshed` command on your PATH
+
+Restart any open Claude Code or Codex sessions afterwards. Re-running the installer, or `skillshed update`, updates everything.
+
+<details>
+<summary>Install with the tools' own commands instead</summary>
+
+Claude Code (inside a session):
+
+```
+/plugin marketplace add farmhutsoftwareteam/skillshed
+/plugin install core@skillshed
+/plugin install matt@skillshed
+```
+
+Codex:
+
+```bash
+codex plugin marketplace add farmhutsoftwareteam/skillshed
 ```
 
 ```bash
-~/Developer/farmhutsoftwareteam/munya-skills/scripts/bootstrap.sh
+codex plugin add core@skillshed
 ```
 
-`bootstrap.sh` does the following:
+You won't get the `skillshed` command this way.
+</details>
 
-- Adds the `munya` marketplace to both tools from GitHub.
-- Installs every plugin.
-- Enables the `ALWAYS_ON` packs (`core`, `matt`) and disables the rest.
-- Turns on Claude Code auto-update for this marketplace.
+## What's in it
 
-It is safe to re-run. To install from a local checkout instead (for example while developing), run `scripts/bootstrap.sh "$PWD"`.
+| Pack | On by default | What it covers |
+| --- | --- | --- |
+| `core` | yes | `skill-router` (finds the right skill, even in a pack that's off), `find-skill` (search and add new skills safely), `vet-skill` (check third-party skills for prompt injection) |
+| `matt` | yes | [Matt Pocock's skills](https://github.com/mattpocock/skills): TDD, specs, tickets, PRs, triage, grilling, code review (31 skills, MIT) |
+| `nextjs-vercel`, `supabase`, `expo`, `inngest` | no | Stack packs: turn on in the projects that use them |
 
-Restart any open Claude Code or Codex sessions afterwards.
+Agents read every enabled skill's description on every request, within a small budget (about 1% of context in Claude Code, 2% in Codex). Past that budget, skills quietly stop triggering, which is why most packs are off by default. To change which packs are on everywhere, edit `ALWAYS_ON` in `scripts/bootstrap.sh`.
 
-## Turning on a stack pack in a project
-
-From the project root:
+## Everyday use
 
 ```bash
-~/Developer/farmhutsoftwareteam/munya-skills/scripts/use-pack.sh supabase inngest
+skillshed packs              # list packs
+skillshed use supabase       # turn a pack on for the project you're in
+skillshed off supabase       # and off again
+skillshed find remotion      # search skill-issue.in + skills.sh for new skills
+skillshed update             # pull the latest and refresh both tools
 ```
 
-This writes `"supabase@munya": true` to `.claude/settings.json` and `[plugins."supabase@munya"] enabled = true` to `.codex/config.toml`. Commit both files so the project brings its packs to every machine. Codex reads the project file only in projects you have trusted.
-
-To turn a pack off again, use `use-pack.sh --off <pack>`.
-
-If a task needs a skill whose pack is off, `core:skill-router` finds it in its index, reads it from the local copy, and tells you which pack to enable.
+`use` writes `"supabase@skillshed": true` to `.claude/settings.json` and `[plugins."supabase@skillshed"] enabled = true` to `.codex/config.toml`. Commit both files so the project brings its packs to every machine. Codex reads the project file only in projects you have trusted.
 
 ## Finding new skills
 
 There is no bulk import. The skill-issue.in directory alone resolves to about 8,500 skills, too many to vet or review. Instead, `core:find-skill` pulls skills in on demand:
 
-- **Search:** `node scripts/find-skill.mjs <keywords>` searches a snapshot of skill-issue.in (`catalog/skill-issue.json`, about 313 entries, refreshed by the weekly sync) and the live skills.sh index.
+- **Search:** `skillshed find <keywords>` searches a snapshot of skill-issue.in (`catalog/skill-issue.json`, about 313 entries, refreshed by the weekly sync) and the live skills.sh index.
 - **Pick:** you choose from what it finds.
 - **Vet:** it vets the pick with `vet-skill`.
 - **Pin:** `sync-vendor.mjs add` puts the skill into a pack, pinned in the lock and scanned.
@@ -68,8 +84,11 @@ plugins/<pack>/
   .codex-plugin/plugin.json         Codex manifest
   skills/<skill>/SKILL.md           Agent Skills format (agentskills.io)
 vendor.lock.json                    pins for third-party skills
+install.sh                          one-line installer (curl | bash)
+bin/skillshed                    the skillshed command
+licenses/                           upstream licenses for vendored skills
 scripts/
-  bootstrap.sh                      new-Mac install
+  bootstrap.sh                      add marketplace + packs to both tools
   use-pack.sh                       per-project packs
   check.mjs                         lint, lock hashes, router index (--write)
   scan-skills.mjs                   prompt-injection / supply-chain scan
@@ -117,11 +136,11 @@ Use pinned for skills you have vetted carefully and don't want to change underne
 3. After you merge, Claude Code picks up the change on its own (auto-update). For Codex, or to update Claude Code now:
 
 ```bash
-claude plugin marketplace update munya
+claude plugin marketplace update skillshed
 ```
 
 ```bash
-codex plugin marketplace upgrade munya
+codex plugin marketplace upgrade skillshed
 ```
 
 ## Security: prompt injection and supply chain

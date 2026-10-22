@@ -1,6 +1,6 @@
 ---
 name: skill-router
-description: Use when a task might match one of Munya's skills but no loaded skill clearly fits, or the task belongs to a stack (Next.js/Vercel, Supabase, Expo, Inngest) whose pack may not be enabled here. Maps the task to the right skill and pack.
+description: Use when a task might match one of the Skillshed skills but no loaded skill clearly fits, or the task belongs to a stack (Next.js/Vercel, Supabase, Expo, Inngest) whose pack may not be enabled here. Maps the task to the right skill and pack.
 metadata:
   owner: munya
 ---
@@ -14,12 +14,12 @@ Find the right skill for the task, even if its pack is not enabled in this proje
 1. Find the row in the index below whose "Use when" matches the task.
 2. If that skill is already in your available skills list, invoke it normally and stop.
 3. If not, its pack is switched off here. Read its `SKILL.md` from the first of these locations that exists, and follow it for this task. `<path>` is the Path column; `<pack>/.../<skill>` is the same path without `plugins/`.
-   - `~/Developer/farmhutsoftwareteam/munya-skills/<path>` (local checkout)
-   - `~/.claude/plugins/marketplaces/munya/<path>` (Claude Code)
-   - `~/.claude/plugins/cache/munya/<pack>/*/skills/<skill>/SKILL.md` (Claude Code)
-   - `~/.codex/plugins/cache/munya/<pack>/*/skills/<skill>/SKILL.md` (Codex)
+   - `~/.skillshed/<path>` (local checkout)
+   - `~/.claude/plugins/marketplaces/skillshed/<path>` (Claude Code)
+   - `~/.claude/plugins/cache/skillshed/<pack>/*/skills/<skill>/SKILL.md` (Claude Code)
+   - `~/.codex/plugins/cache/skillshed/<pack>/*/skills/<skill>/SKILL.md` (Codex)
 4. Tell the user once that the pack is off for this project. They can turn it on with:
-   `~/Developer/farmhutsoftwareteam/munya-skills/scripts/use-pack.sh <pack>`
+   `skillshed use <pack>`
 5. If no row matches, say so and continue without a skill. Do not stretch a skill to fit.
 
 ## Index
