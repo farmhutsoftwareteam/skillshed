@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skillshed: agent skills for Claude Code and Codex</title>
+<meta name="description" content="One install for {{SKILL_COUNT}} vetted agent skills in Claude Code and Codex. A small always-on core, packs you switch on per project, upstream skills pinned and scanned for prompt injection.">
+<meta property="og:title" content="Skillshed">
+<meta property="og:description" content="Vetted agent skills for Claude Code and Codex, switched on per project.">
+<meta name="theme-color" content="#14110f">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #14110f; --bg-2: #1c1815; --card: #211c18; --line: #3a312a;
+  --text: #f3ece4; --muted: #a8998b; --accent: #f0a14a; --accent-2: #e2763a;
+  --on: #8fcf8a; --code-bg: #0e0c0a;
+  --serif: "Instrument Serif", Georgia, serif;
+  --sans: Inter, system-ui, -apple-system, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #faf6f0; --bg-2: #f3ece2; --card: #fffdf9; --line: #e3d8ca;
+    --text: #231c16; --muted: #75685b; --accent: #c4621f; --accent-2: #a84f17;
+    --on: #3f8a3a; --code-bg: #231c16;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
+.logo { display: flex; gap: 10px; align-items: center; font-weight: 600; text-decoration: none; letter-spacing: -0.01em; }
+.logo svg { width: 26px; height: 26px; }
+nav .links { display: flex; gap: 20px; font-size: 14px; color: var(--muted); }
+nav .links a { text-decoration: none; }
+nav .links a:hover { color: var(--text); }
+
+.hero { padding: 72px 0 56px; }
+.eyebrow { font: 500 13px var(--mono); color: var(--accent); letter-spacing: 0.04em; text-transform: uppercase; }
+h1 { font: 400 clamp(44px, 7vw, 84px)/1.02 var(--serif); letter-spacing: -0.02em; margin: 16px 0 20px; max-width: 14ch; }
+h1 em { color: var(--accent); }
+.lede { font-size: clamp(17px, 2vw, 20px); color: var(--muted); max-width: 60ch; margin: 0 0 32px; }
+
+.install { display: flex; align-items: center; gap: 12px; background: var(--code-bg); color: #f3ece4; border: 1px solid var(--line); border-radius: 12px; padding: 14px 14px 14px 18px; max-width: 760px; font: 14px var(--mono); }
+.install .prompt { color: var(--accent); user-select: none; }
+.install code { flex: 1; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+.install code::-webkit-scrollbar { display: none; }
+button.copy { flex: none; font: 500 13px var(--sans); background: var(--accent); color: #1a120b; border: 0; border-radius: 8px; padding: 8px 14px; cursor: pointer; }
+button.copy:hover { background: var(--accent-2); color: #fff; }
+.works { margin-top: 16px; font-size: 14px; color: var(--muted); }
+.works b { color: var(--text); font-weight: 500; }
+
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin: 56px 0 0; }
+.stats div { background: var(--bg-2); padding: 22px 24px; }
+.stats strong { display: block; font: 400 40px/1 var(--serif); }
+.stats span { color: var(--muted); font-size: 14px; }
+
+section { padding: 72px 0; border-top: 1px solid var(--line); }
+h2 { font: 400 clamp(32px, 4.5vw, 48px)/1.1 var(--serif); letter-spacing: -0.01em; margin: 0 0 12px; }
+.sub { color: var(--muted); max-width: 62ch; margin: 0 0 36px; }
+
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.step { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
+.step .n { font: 500 12px var(--mono); color: var(--accent); }
+.step h3 { margin: 8px 0 6px; font-size: 18px; }
+.step p { margin: 0 0 14px; color: var(--muted); font-size: 15px; }
+code.mini { display: inline-block; font: 13px var(--mono); background: var(--code-bg); color: #f3ece4; border-radius: 6px; padding: 4px 8px; }
+
+.packs { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.pack { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 10px; }
+.pack header { display: flex; justify-content: space-between; align-items: center; }
+.pack h3 { margin: 0; font: 500 17px var(--mono); }
+.pack p { margin: 0; color: var(--muted); font-size: 15px; flex: 1; }
+.pack footer { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--muted); }
+.pack .src { text-align: right; font-family: var(--mono); font-size: 12px; }
+.badge { font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: 0.05em; border-radius: 999px; padding: 3px 9px; border: 1px solid var(--line); color: var(--muted); }
+.badge.on { color: var(--on); border-color: color-mix(in srgb, var(--on) 40%, transparent); }
+
+.browser-tools { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+.browser-tools input { flex: 1 1 260px; font: 15px var(--sans); color: var(--text); background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 11px 14px; outline: none; }
+.browser-tools input:focus { border-color: var(--accent); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font: 500 13px var(--mono); background: transparent; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
+.count { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
+.list { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
+.skill { display: block; text-decoration: none; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; transition: border-color .15s; }
+.skill:hover { border-color: var(--accent); }
+.skill .top { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+.skill .name { font: 500 14px var(--mono); }
+.skill .pk { font: 12px var(--mono); color: var(--accent); }
+.skill .desc { color: var(--muted); font-size: 14px; margin: 6px 0 8px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.skill .from { font: 12px var(--mono); color: var(--muted); }
+.more { margin-top: 18px; }
+.more button { font: 500 14px var(--sans); color: var(--text); background: transparent; border: 1px solid var(--line); border-radius: 10px; padding: 10px 16px; cursor: pointer; }
+
+.security { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.security div { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
+.security h3 { margin: 0 0 6px; font-size: 17px; }
+.security p { margin: 0; color: var(--muted); font-size: 15px; }
+
+.cmds { background: var(--code-bg); color: #f3ece4; border-radius: 14px; padding: 22px 24px; font: 14px/1.9 var(--mono); overflow-x: auto; border: 1px solid var(--line); }
+.cmds .c { color: #8a7b6d; }
+
+footer.site { padding: 40px 0 56px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+
+@media (max-width: 760px) {
+  .wrap { padding: 0 16px; }
+  .hero { padding: 40px 0 36px; }
+  .steps, .security { grid-template-columns: 1fr; }
+  .stats div { padding: 16px 14px; }
+  .stats strong { font-size: 30px; }
+  .stats span { font-size: 12px; }
+  .list, .packs { grid-template-columns: 1fr; }
+  section { padding: 52px 0; }
+  nav .links a.hide-sm { display: none; }
+  .install { font-size: 12.5px; padding: 12px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="logo" href="/">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 14 16 4l12 10v14H4z" fill="var(--accent)"/><path d="M11 28V18h10v10" fill="none" stroke="var(--bg)" stroke-width="2.4"/><path d="M11 18l10 10M21 18 11 28" stroke="var(--bg)" stroke-width="1.6"/></svg>
+      Skillshed
+    </a>
+    <div class="links">
+      <a href="#packs" class="hide-sm">Packs</a>
+      <a href="#skills" class="hide-sm">Skills</a>
+      <a href="#security" class="hide-sm">Security</a>
+      <a href="https://github.com/{{REPO}}">GitHub</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="eyebrow">For Claude Code and Codex</div>
+    <h1>Every agent skill you trust, <em>in one shed.</em></h1>
+    <p class="lede">Install once on any machine. A small core is always on, and stack packs switch on only in the projects that use them, so your agent's skill list stays short enough to actually trigger. Third-party skills are pinned to a commit and scanned for prompt injection before they reach you.</p>
+    <div class="install">
+      <span class="prompt">$</span>
+      <code id="cmd">curl -fsSL https://raw.githubusercontent.com/{{REPO}}/main/install.sh | bash</code>
+      <button class="copy" data-copy="cmd">Copy</button>
+    </div>
+    <p class="works">Works with <b>Claude Code</b> and <b>Codex</b> on macOS and Linux. Needs git and Node 20+.</p>
+    <div class="stats">
+      <div><strong>{{SKILL_COUNT}}</strong><span>skills</span></div>
+      <div><strong>{{PACK_COUNT}}</strong><span>packs</span></div>
+      <div><strong>{{VENDORED_COUNT}}</strong><span>pinned upstream</span></div>
+    </div>
+  </header>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>How it works</h2>
+    <p class="sub">Agents read every enabled skill's description on every request, within a budget of about 1% of context. Past that, skills quietly stop triggering. Skillshed keeps the always-on list small.</p>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><h3>Install once</h3><p>One command adds the Skillshed marketplace to Claude Code and Codex, plus a <code>skillshed</code> CLI.</p><code class="mini">curl … | bash</code></div>
+      <div class="step"><div class="n">02</div><h3>Switch on per project</h3><p>Turn on the packs a repo needs. Commit the settings and every machine gets them.</p><code class="mini">skillshed use supabase</code></div>
+      <div class="step"><div class="n">03</div><h3>Find more, safely</h3><p>Search skill-issue.in and skills.sh. Each pick is vetted, pinned and scanned before it lands.</p><code class="mini">skillshed find remotion</code></div>
+    </div>
+  </div>
+</section>
+
+<section id="packs">
+  <div class="wrap">
+    <h2>Packs</h2>
+    <p class="sub">Official skills from the teams behind each stack, plus a few owned essentials. Packs that aren't on can still be found by the router when a task needs them.</p>
+    <div class="packs">
+{{PACK_CARDS}}
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Browse the shed</h2>
+    <p class="sub">Every skill, where it comes from, and the pinned commit it's locked to.</p>
+    <div class="browser-tools">
+      <input id="q" type="search" placeholder="Search skills, e.g. tdd, migrations, router" autocomplete="off">
+      <div class="chips" id="chips"></div>
+    </div>
+    <p class="count" id="count"></p>
+    <div class="list" id="list"></div>
+    <div class="more"><button id="more" hidden>Show all</button></div>
+  </div>
+</section>
+
+<section id="security">
+  <div class="wrap">
+    <h2>Skills are instructions. Treat them like code.</h2>
+    <p class="sub">A third-party skill runs with your agent's permissions. Skillshed never applies upstream changes silently.</p>
+    <div class="security">
+      <div><h3>Pinned</h3><p>Every upstream skill is locked to a commit SHA and a content hash. A hand edit or a moved upstream fails CI.</p></div>
+      <div><h3>Scanned</h3><p>Hidden Unicode, "ignore previous instructions", <code>curl | sh</code>, exfiltration endpoints, secret reads and more are flagged on add, in CI and in every sync.</p></div>
+      <div><h3>Reviewed</h3><p>A weekly job pulls upstream changes into a pull request with compare links and the scan report. Nothing merges without a human.</p></div>
+      <div><h3>Vetted by an agent too</h3><p>The <code>vet-skill</code> skill walks your agent through every file and diff, treating it as data, and ends with a quoted verdict.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Day to day</h2>
+    <pre class="cmds"><span class="c"># list packs</span>
+skillshed packs
+<span class="c"># turn a pack on (or off) for the project you're in</span>
+skillshed use expo
+skillshed off expo
+<span class="c"># search for new skills</span>
+skillshed find stripe
+<span class="c"># pull the latest and refresh Claude Code and Codex</span>
+skillshed update</pre>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer class="site">
+    <span>Skillshed is MIT licensed. Vendored skills keep their upstream licenses: thanks to Matt Pocock, Expo, Supabase, Inngest and Vercel.</span>
+    <a href="https://github.com/{{REPO}}">github.com/{{REPO}}</a>
+  </footer>
+</div>
+
+<script id="data" type="application/json">{{DATA}}</script>
+<script>
+(() => {
+  const { skills, packs } = JSON.parse(document.getElementById('data').textContent);
+  const list = document.getElementById('list');
+  const q = document.getElementById('q');
+  const count = document.getElementById('count');
+  const more = document.getElementById('more');
+  const chips = document.getElementById('chips');
+  const PAGE = 24;
+  let pack = 'all';
+  let showAll = false;
+
+  for (const p of ['all', ...packs]) {
+    const b = document.createElement('button');
+    b.className = 'chip';
+    b.textContent = p;
+    b.setAttribute('aria-pressed', String(p === pack));
+    b.onclick = () => { pack = p; showAll = false; chips.querySelectorAll('.chip').forEach((c) => c.setAttribute('aria-pressed', String(c === b))); render(); };
+    chips.append(b);
+  }
+
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+
+  function render() {
+    const terms = q.value.toLowerCase().split(/\s+/).filter(Boolean);
+    const hits = skills.filter((s) => (pack === 'all' || s.pack === pack) &&
+      terms.every((t) => (s.name + ' ' + s.description + ' ' + s.source + ' ' + s.pack).toLowerCase().includes(t)));
+    const shown = showAll ? hits : hits.slice(0, PAGE);
+    list.replaceChildren(...shown.map((s) => {
+      const a = el('a', 'skill');
+      a.href = s.url; a.target = '_blank'; a.rel = 'noopener';
+      const top = el('div', 'top');
+      top.append(el('span', 'name', s.name), el('span', 'pk', s.pack));
+      a.append(top, el('p', 'desc', s.description), el('span', 'from', s.vendored ? 'from ' + s.source : 'owned'));
+      return a;
+    }));
+    count.textContent = hits.length + (hits.length === 1 ? ' skill' : ' skills');
+    more.hidden = showAll || hits.length <= PAGE;
+    more.textContent = 'Show all ' + hits.length;
+  }
+  q.addEventListener('input', () => { showAll = false; render(); });
+  more.onclick = () => { showAll = true; render(); };
+  render();
+
+  document.querySelectorAll('[data-copy]').forEach((b) => b.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(document.getElementById(b.dataset.copy).textContent); b.textContent = 'Copied'; }
+    catch { b.textContent = 'Select & copy'; }
+    setTimeout(() => (b.textContent = 'Copy'), 1600);
+  }));
+})();
+</script>
+</body>
+</html>
