@@ -45,7 +45,7 @@ You won't get the `skillshed` command this way.
 
 | Pack | On by default | What it covers |
 | --- | --- | --- |
-| `core` | yes | `skill-router` (finds the right skill, even in a pack that's off), `find-skill` (search and add new skills safely), `vet-skill` (check third-party skills for prompt injection) |
+| `core` | yes | `skill-router` (finds the right skill, even in a pack that's off), `find-skill` (search and add new skills safely), `vet-skill` (check third-party skills for prompt injection), and [Cloudflare's `security-audit`](https://github.com/cloudflare/security-audit-skill) (security reviews and full audits with verified findings) |
 | `matt` | yes | [Matt Pocock's skills](https://github.com/mattpocock/skills): TDD, specs, tickets, PRs, triage, grilling, code review (31 skills, MIT) |
 | `nextjs-vercel` | no | Official Next.js skills from [vercel/next.js](https://github.com/vercel/next.js/tree/canary/skills): dev loop, bundle and caching optimisers (6) |
 | `supabase` | no | Official [Supabase skills](https://github.com/supabase/agent-skills): Supabase and Postgres best practices (2) |

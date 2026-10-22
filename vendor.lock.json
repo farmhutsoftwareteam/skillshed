@@ -568,6 +568,15 @@
       "pinned": false,
       "computedHash": "aa52a864ead89a2c03a84b0a74a899599f1d6fd5efc0af51ff31a30d667fa9f8"
     },
+    "security-audit": {
+      "source": "cloudflare/security-audit-skill",
+      "path": "skills/security-audit",
+      "ref": "main",
+      "commit": "c1c8a8c1471069fb0e188eeaff69b8e8db6564a8",
+      "pack": "core",
+      "pinned": false,
+      "computedHash": "ac796659de231c3ab76f6ee012836072bdc82928fb019199925c9062800e16c1"
+    },
     "setup-matt-pocock-skills": {
       "source": "mattpocock/skills",
       "path": "skills/engineering/setup-matt-pocock-skills",
