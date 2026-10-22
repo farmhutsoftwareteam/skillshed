@@ -7,6 +7,10 @@ import { track } from '@vercel/analytics/server';
 
 const script = readFileSync(join(process.cwd(), 'install.sh'), 'utf8');
 
+// track() posts to the deployment URL by default, which Deployment Protection
+// puts behind a login; send events through the public domain instead.
+process.env.VERCEL_WEB_ANALYTICS_ENDPOINT ??= 'https://skillshed.munyamakosa.com/_vercel/insights/event';
+
 export async function GET(request) {
   const ref = new URL(request.url).searchParams.get('ref') ?? '';
   const source = /^[a-z0-9-]{1,24}$/.test(ref) ? ref : 'direct';
