@@ -22,3 +22,5 @@ jobs:
         run: node scripts/scan-skills.mjs --report "$RUNNER_TEMP/scan.md" && cat "$RUNNER_TEMP/scan.md" >> "$GITHUB_STEP_SUMMARY"
       - name: Scanner still catches a known-bad skill
         run: "! node scripts/scan-skills.mjs tests/fixtures/injected-skill"
+      - name: Scan report keeps untrusted paths inside code spans
+        run: node tests/report-escaping.test.mjs

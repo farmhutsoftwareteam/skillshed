@@ -61,12 +61,14 @@ for (const dir of targets) {
   }
 }
 
+const cell = (t) => t.replace(/[|`\r\n]/g, "'");
 const high = findings.filter((f) => f.severity === 'high').length;
 const md = [
   `### Skill scan: ${high} high, ${findings.length - high} medium (${targets.length} skills)`,
   '',
   findings.length ? '| Sev | Rule | Location | Line | Why |\n| --- | --- | --- | --- | --- |' : 'No findings.',
-  ...findings.map((f) => `| ${f.severity} | ${f.rule} | \`${f.file}${f.line ? `:${f.line}` : ''}\` | \`${f.text.replace(/[|`]/g, "'")}\` | ${f.why} |`),
+  // Paths and excerpts come from untrusted repos: keep them inside their code spans.
+  ...findings.map((f) => `| ${f.severity} | ${f.rule} | \`${cell(f.file)}${f.line ? `:${f.line}` : ''}\` | \`${cell(f.text)}\` | ${f.why} |`),
 ].join('\n');
 
 for (const f of findings) console.log(`${f.severity.padEnd(6)} ${f.rule.padEnd(15)} ${f.file}${f.line ? `:${f.line}` : ''}  ${f.text}`);
