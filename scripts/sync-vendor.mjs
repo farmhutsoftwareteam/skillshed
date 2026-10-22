@@ -85,7 +85,7 @@ function install(tmp, path, dest) {
 // Keeps the upstream repo's license next to its skills (MIT and friends
 // require the notice to travel with copies).
 function saveLicense(tmp, repo) {
-  for (const name of ['LICENSE', 'LICENSE.md', 'LICENSE.txt', 'LICENCE', 'COPYING']) {
+  for (const name of ['LICENSE', 'LICENSE.md', 'LICENSE.txt', 'license.md', 'license', 'LICENCE', 'COPYING']) {
     try {
       const text = git(['show', `FETCH_HEAD:${name}`], tmp);
       mkdirSync(join(ROOT, 'licenses'), { recursive: true });

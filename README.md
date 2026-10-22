@@ -47,7 +47,10 @@ You won't get the `skillshed` command this way.
 | --- | --- | --- |
 | `core` | yes | `skill-router` (finds the right skill, even in a pack that's off), `find-skill` (search and add new skills safely), `vet-skill` (check third-party skills for prompt injection) |
 | `matt` | yes | [Matt Pocock's skills](https://github.com/mattpocock/skills): TDD, specs, tickets, PRs, triage, grilling, code review (31 skills, MIT) |
-| `nextjs-vercel`, `supabase`, `expo`, `inngest` | no | Stack packs: turn on in the projects that use them |
+| `nextjs-vercel` | no | Official Next.js skills from [vercel/next.js](https://github.com/vercel/next.js/tree/canary/skills): dev loop, bundle and caching optimisers (6) |
+| `supabase` | no | Official [Supabase skills](https://github.com/supabase/agent-skills): Supabase and Postgres best practices (2) |
+| `expo` | no | Official [Expo skills](https://github.com/expo/skills): EAS, Router, native UI, upgrades and more (24) |
+| `inngest` | no | Official [Inngest skills](https://github.com/inngest/inngest-skills): durable functions, steps, events, flow control (15) |
 
 Agents read every enabled skill's description on every request, within a small budget (about 1% of context in Claude Code, 2% in Codex). Past that budget, skills quietly stop triggering, which is why most packs are off by default. To change which packs are on everywhere, edit `ALWAYS_ON` in `scripts/bootstrap.sh`.
 

@@ -35,7 +35,7 @@ const RULES = [
   ['medium', 'role-hijack', /\b(you are now|new instructions|system prompt|developer mode|jailbreak)\b/i, 'role or prompt manipulation language'],
   ['medium', 'secrets', /(~\/\.ssh|id_rsa|id_ed25519|\.aws\/credentials|\.netrc|security find-(generic|internet)-password|keychain|\b[A-Z_]*(API_KEY|SECRET|TOKEN)\b)/, 'touches credentials or secrets'],
   ['medium', 'network-send', /\b(curl|wget|fetch\(|axios\.|requests\.(post|put)|nc\s+-|scp\s|rsync\s)[^\n]*(https?:\/\/|@)/i, 'sends or fetches over the network'],
-  ['medium', 'decode-exec', /(base64\s+(-d|--decode)|atob\(|\beval\s*\(|\bexec\s*\(|child_process|subprocess\.(run|Popen|call)|os\.system)/, 'decodes or executes dynamic code'],
+  ['medium', 'decode-exec', /(base64\s+(-d|--decode)|atob\(|\beval\s*\(|\bexec\s*\(|child_process|subprocess\.(run|Popen|call)|\bos\.system\s*\()/, 'decodes or executes dynamic code'],
   ['medium', 'html-comment', /<!--(?!\s*index:(start|end)\s*-->)/, 'HTML comments are invisible when rendered'],
   ['medium', 'broad-tools', /^allowed-tools:.*(Bash\(\*\)|Bash(\s|$)|\*)/m, 'asks for broad tool access'],
 ];
