@@ -4,6 +4,9 @@ on:
   pull_request:
   push:
     branches: [main]
+  # sync-vendor.yml dispatches this on its branch: its PRs are opened with
+  # GITHUB_TOKEN, so their pull_request runs wait for approval and never start.
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -16,11 +19,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Lint skills, lock hashes, router index
-        run: node scripts/check.mjs
-      - name: Scan vendored skills for prompt injection
-        run: node scripts/scan-skills.mjs --report "$RUNNER_TEMP/scan.md" && cat "$RUNNER_TEMP/scan.md" >> "$GITHUB_STEP_SUMMARY"
-      - name: Scanner still catches a known-bad skill
-        run: "! node scripts/scan-skills.mjs tests/fixtures/injected-skill"
-      - name: Scan report keeps untrusted paths inside code spans
-        run: node tests/report-escaping.test.mjs
+      - name: Lint, scan and regression tests
+        run: |
+          echo "Commit: $(git rev-parse HEAD)"
+          status=0; sh scripts/ci.sh "$RUNNER_TEMP/scan.md" || status=$?
+          cat "$RUNNER_TEMP/scan.md" >> "$GITHUB_STEP_SUMMARY" 2>/dev/null
+          exit $status

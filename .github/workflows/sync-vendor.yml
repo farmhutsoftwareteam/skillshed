@@ -10,6 +10,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  actions: write # dispatch check.yml on the sync branch
 
 jobs:
   sync:
@@ -36,27 +37,8 @@ jobs:
         run: |
           if git diff --quiet; then echo "No upstream changes"; exit 0; fi
 
-          # PRs opened with GITHUB_TOKEN don't trigger other workflows, so run
-          # the checks here and put the results in the PR body.
-          check_status=pass; node scripts/check.mjs > "$RUNNER_TEMP/check.txt" 2>&1 || check_status=FAIL
-          scan_status=pass; node scripts/scan-skills.mjs --report "$RUNNER_TEMP/scan.md" > /dev/null || scan_status=FAIL
-
-          {
-            echo "Upstream changes to vendored skills. Review every diff before merging: these files become instructions your agents follow."
-            echo
-            echo "Ask Claude: \`/core:vet-skill\` on this PR."
-            echo
-            echo "## Skill changes"
-            cat "$RUNNER_TEMP/summary.md"
-            echo
-            echo "## Check: $check_status"
-            echo '```'
-            cat "$RUNNER_TEMP/check.txt"
-            echo '```'
-            echo
-            echo "## Prompt-injection scan: $scan_status"
-            cat "$RUNNER_TEMP/scan.md"
-          } > "$RUNNER_TEMP/body.md"
+          # Same checks as check.yml, on the tree about to be committed.
+          ci_status=pass; sh scripts/ci.sh "$RUNNER_TEMP/scan.md" > "$RUNNER_TEMP/ci.txt" 2>&1 || ci_status=FAIL
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -64,9 +46,32 @@ jobs:
           git add -A
           git commit -q -m "Sync vendored skills from upstream"
           git push -f origin "$BRANCH"
+          sha=$(git rev-parse HEAD)
+
+          # A PR opened with GITHUB_TOKEN gets a pull_request run that waits for
+          # approval with no jobs. Dispatch the real one on the pushed commit.
+          gh workflow run check.yml --ref "$BRANCH"
+
+          {
+            echo "Upstream changes to vendored skills. Review every diff before merging: these files become instructions your agents follow."
+            echo
+            echo "Ask Claude: \`/core:vet-skill\` on this PR."
+            echo
+            echo "Before merging, the \`check\` run for \`$sha\` must have passed: [runs on this branch](https://github.com/$GITHUB_REPOSITORY/actions/workflows/check.yml?query=branch%3A$BRANCH). A skipped or pending check is not a pass."
+            echo
+            echo "## Skill changes"
+            cat "$RUNNER_TEMP/summary.md"
+            echo
+            echo "## Checks before push: $ci_status"
+            echo '```'
+            cat "$RUNNER_TEMP/ci.txt"
+            echo '```'
+            echo
+            cat "$RUNNER_TEMP/scan.md"
+          } > "$RUNNER_TEMP/body.md"
 
           title="Sync vendored skills"
-          [ "$scan_status" = FAIL ] && title="[scan findings] $title"
+          [ "$ci_status" = FAIL ] && title="[checks failing] $title"
           if gh pr view "$BRANCH" --json state -q .state 2>/dev/null | grep -q OPEN; then
             gh pr edit "$BRANCH" --title "$title" --body-file "$RUNNER_TEMP/body.md"
           else
