@@ -47,7 +47,7 @@ const packs = marketplace.plugins
 
 const tabs = packs
   .map(
-    (p, i) => `<button class="tab" role="tab" data-pack="${esc(p.name)}" aria-selected="${i === 0}">
+    (p, i) => `<button class="tab" type="button" data-pack="${esc(p.name)}" aria-pressed="${i === 0}" aria-controls="bands">
   <span class="tab-name">${esc(p.name)}</span><span class="tab-meta">${p.count} skills, ${p.on ? 'always on' : 'per project'}</span>
 </button>`,
   )
