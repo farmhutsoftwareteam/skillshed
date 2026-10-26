@@ -55,231 +55,231 @@
       "source": "expo/skills",
       "path": "plugins/expo/skills/eas-app-stores",
       "ref": "main",
-      "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
+      "commit": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "d4c69109097871da140e99b0e7eb1b97bb196d65dcd7aafea34bce171d448024",
-      "reviewed": "2026-10-22"
+      "computedHash": "9aead2f4b5a00c40d8939b7eb3c1d6939fdd515c5e05ad28c2b5dc367c0b235c",
+      "reviewed": "2026-10-26"
     },
     "eas-hosting": {
       "source": "expo/skills",
       "path": "plugins/expo/skills/eas-hosting",
       "ref": "main",
-      "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
+      "commit": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "4d65f701ce39b804c8c8ab42750e06de2197d2af4771572f49e7cc300c34fe63",
-      "reviewed": "2026-10-22"
+      "computedHash": "a0503dd0b0823523aed3483081cf22f98ed493027803486c0f8171a3c386efe9",
+      "reviewed": "2026-10-26"
     },
     "eas-observe": {
       "source": "expo/skills",
       "path": "plugins/expo/skills/eas-observe",
       "ref": "main",
-      "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
+      "commit": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "8ea33cd346455e0ac48dc2b9cbdade783492da9ce5107574e9234731d8639d72",
-      "reviewed": "2026-10-22"
+      "computedHash": "6a228c0a598c2ec0f1533ff864fb7f790496757c526931c3f6e3b80e3928eaf9",
+      "reviewed": "2026-10-26"
     },
     "eas-simulator": {
       "source": "expo/skills",
       "path": "plugins/expo/skills/eas-simulator",
       "ref": "main",
-      "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
+      "commit": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "4eef2514f766ea1c999d5ad0e2bb16236f773cb3e9f347fe836a39b633e0b0ee",
-      "reviewed": "2026-10-22"
+      "computedHash": "122cf4f4a3534e92704eba43ff414208d636b7e85d334ff0c67efca8bb999db2",
+      "reviewed": "2026-10-26"
     },
     "eas-update": {
       "source": "expo/skills",
       "path": "plugins/expo/skills/eas-update",
       "ref": "main",
-      "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
+      "commit": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "20d44da54edda9616f2c3bb09750d78c03ea81bc932c990e94864c323b09ba53",
-      "reviewed": "2026-10-22"
+      "computedHash": "8bad571b3aaf81d3f0e54ec70689fca1fef6edcd4c3c0c358892d4c92bc5653e",
+      "reviewed": "2026-10-26"
     },
     "eas-update-insights": {
       "source": "expo/skills",
       "path": "plugins/expo/skills/eas-update-insights",
       "ref": "main",
-      "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
+      "commit": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "6c2320500d744b8ea906e4362bf1d4a2d4f376ff6c5de04f8df14ff5aba45f1e",
-      "reviewed": "2026-10-22"
+      "computedHash": "36556bbec9c010f5a82edc76c9c3511e87421f38674d776545b41d2e47a404df",
+      "reviewed": "2026-10-26"
     },
     "eas-workflows": {
       "source": "expo/skills",
       "path": "plugins/expo/skills/eas-workflows",
       "ref": "main",
-      "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
+      "commit": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "873787f285b21e1f1749c9c79f77a979de65b22755c5947457a9579b1466dadd",
-      "reviewed": "2026-10-22"
+      "computedHash": "9d74c203a3a92e910d9b3957ffed5f9f917b69a9705585f12c71ddcc636d41c7",
+      "reviewed": "2026-10-26"
     },
     "expo-animation": {
       "source": "expo/skills",
       "path": "plugins/expo/skills/expo-animation",
       "ref": "main",
-      "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
+      "commit": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "39eac91b7b45ffdbf861cd29bbe820cabf6dc2a874b4978cde5682e81d224d5d",
-      "reviewed": "2026-10-22"
+      "computedHash": "177769d2b3b97bb1246c0aa9685533b68b47843f372a718fb9c5f594f9384396",
+      "reviewed": "2026-10-26"
     },
     "expo-app-clip": {
       "source": "expo/skills",
       "path": "plugins/expo/skills/expo-app-clip",
       "ref": "main",
-      "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
+      "commit": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "0ebda7c05912331dac26caa5f401cc7a171b70d586a028ac5e39cb8cd6ff831d",
-      "reviewed": "2026-10-22"
+      "computedHash": "8d129a830f270e82b8d7d5fad4921f2872c99961ef8cd4bab75eaafc5987aa32",
+      "reviewed": "2026-10-26"
     },
     "expo-brownfield": {
       "source": "expo/skills",
       "path": "plugins/expo/skills/expo-brownfield",
       "ref": "main",
-      "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
+      "commit": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "3df19129843d6648873ee06b4eb42f3078f6d99af501f6aae926eb3574b9df4b",
-      "reviewed": "2026-10-22"
+      "computedHash": "1cf0da582523034c4eb621d90fb7972938f81015ac509c5319aa6a05da3f995b",
+      "reviewed": "2026-10-26"
     },
     "expo-data-fetching": {
       "source": "expo/skills",
       "path": "plugins/expo/skills/expo-data-fetching",
       "ref": "main",
-      "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
+      "commit": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "f212e2e7768b7103aebde89a2610263e9ed91e2a525a4cb82ee5d07873a9b9d0",
-      "reviewed": "2026-10-22"
+      "computedHash": "7f73b39e521b5812a199664c084529d58f7b6210312bca932f201e4a52f3537e",
+      "reviewed": "2026-10-26"
     },
     "expo-design-system": {
       "source": "expo/skills",
       "path": "plugins/expo/skills/expo-design-system",
       "ref": "main",
-      "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
+      "commit": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "a4ad63aa97b9e5aab2e5727234594d4bfadd04571bf5bcb7909f843e84d9db8c",
-      "reviewed": "2026-10-22"
+      "computedHash": "3fdfcdc91433c2c87b5b8e511256fd26ef3a90dc793a76c244a5f82d0f7c89f6",
+      "reviewed": "2026-10-26"
     },
     "expo-dev-client": {
       "source": "expo/skills",
       "path": "plugins/expo/skills/expo-dev-client",
       "ref": "main",
-      "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
+      "commit": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "7cef5a76b8692cb5eccd2b0667964ac8784c5d78d344033746aac3f7b5fd7e25",
-      "reviewed": "2026-10-22"
+      "computedHash": "cd31c0c10bcb2ba423f43f3b1ac5831f3f491e6a9707ac24b219a5eed114221c",
+      "reviewed": "2026-10-26"
     },
     "expo-dom": {
       "source": "expo/skills",
       "path": "plugins/expo/skills/expo-dom",
       "ref": "main",
-      "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
+      "commit": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "08876d3e611d98d23fd09a585aa1053371b3c2e9d2cc011519bae6b592f74c8b",
-      "reviewed": "2026-10-22"
+      "computedHash": "8e09a348b224fcd347e3ed6506e44067044482a0190401cb99d651d1cc3e8f9c",
+      "reviewed": "2026-10-26"
     },
     "expo-examples": {
       "source": "expo/skills",
       "path": "plugins/expo/skills/expo-examples",
       "ref": "main",
-      "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
+      "commit": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "884bcc73bb943eede4028a41b96af6ec30f9cad994eb6821e1a7a4303df86cae",
-      "reviewed": "2026-10-22"
+      "computedHash": "de1404300e47c3e70ef4881d25264ea7c76dbe949f70b69946335e585cbf398c",
+      "reviewed": "2026-10-26"
     },
     "expo-module": {
       "source": "expo/skills",
       "path": "plugins/expo/skills/expo-module",
       "ref": "main",
-      "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
+      "commit": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "acc1f35eb73e622c1c0e3680c6baf5be26d3e90b7e9e201dcc32dc93efea2846",
-      "reviewed": "2026-10-22"
+      "computedHash": "9f594d1c92baeb11e5fb1ea0b5a41004f3ea0d71662c719c48eb1d1088e67b63",
+      "reviewed": "2026-10-26"
     },
     "expo-native-ui": {
       "source": "expo/skills",
       "path": "plugins/expo/skills/expo-native-ui",
       "ref": "main",
-      "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
+      "commit": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "fa063f539b3c75b8ca232e9ba1203dde883c20b5eb433c326fe60ed531eb5f36",
-      "reviewed": "2026-10-22"
+      "computedHash": "bbfd60404b4b4f7ba98888bcb8b72bb64f4440b9eac7b22744df87d27baf4b07",
+      "reviewed": "2026-10-26"
     },
     "expo-overview": {
       "source": "expo/skills",
       "path": "plugins/expo/skills/expo-overview",
       "ref": "main",
-      "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
+      "commit": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "173a008b1b9a2ea101411d3f783f060cf13e77cdb2d4b0473ac4b3fa7ec707aa",
-      "reviewed": "2026-10-22"
+      "computedHash": "cf71a7754a41a949cd69755431f0590d583c8d5e3b6782ec0cc75d325c70d60a",
+      "reviewed": "2026-10-26"
     },
     "expo-project-structure": {
       "source": "expo/skills",
       "path": "plugins/expo/skills/expo-project-structure",
       "ref": "main",
-      "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
+      "commit": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "8ebe0d95e15d749a352578db6f7cc9e04e6490f3dca9f0449ee726ba1e6fbbed",
-      "reviewed": "2026-10-22"
+      "computedHash": "98c53ff32b49e41e27d0271c4fe4b1f94d0e3daadeb0f38b8cf9d911fb93812b",
+      "reviewed": "2026-10-26"
     },
     "expo-router": {
       "source": "expo/skills",
       "path": "plugins/expo/skills/expo-router",
       "ref": "main",
-      "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
+      "commit": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "141386684f7c101692bc3efbadd13300ff07fbfbc0286be68d8f3ba594572fa1",
-      "reviewed": "2026-10-22"
+      "computedHash": "672a26b3e8ed0aba18d72c09cdd9f4474a2f20f155c7766763d886e9ddaa360e",
+      "reviewed": "2026-10-26"
     },
     "expo-ui": {
       "source": "expo/skills",
       "path": "plugins/expo/skills/expo-ui",
       "ref": "main",
-      "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
+      "commit": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "5db5ad226596f9d9aeb01df8f0dd2fb3383eb8094cf35947407670d661148226",
-      "reviewed": "2026-10-22"
+      "computedHash": "896c0291e6b6a789220f322cc59528550306f755f26ccb29a7902f02b91a59d7",
+      "reviewed": "2026-10-26"
     },
     "expo-upgrade": {
       "source": "expo/skills",
       "path": "plugins/expo/skills/expo-upgrade",
       "ref": "main",
-      "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
+      "commit": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "362acf53aeb58e5f79c55ce0abffa354afff771b3fc620ea84c56a8f130c7729",
-      "reviewed": "2026-10-22"
+      "computedHash": "ab41fe0e3c06ce79baf226b6a18b6f2f8672c4bb764321854fbdcc0435cf748f",
+      "reviewed": "2026-10-26"
     },
     "expo-web-to-native": {
       "source": "expo/skills",
       "path": "plugins/expo/skills/expo-web-to-native",
       "ref": "main",
-      "commit": "3d1ca4e2a3c5ffc14817a85dde0bf1b188e9753d",
+      "commit": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
       "pack": "expo",
       "pinned": false,
-      "computedHash": "1a65b0a1cfab6208673f1a30c328e7bfe1eb7788dfb45e5a4329bf142ffbfa03",
-      "reviewed": "2026-10-22"
+      "computedHash": "61b3e372cf5b2cf4a1dbb115e63aaec3eba48424d0875927b27b6f32bc232b79",
+      "reviewed": "2026-10-26"
     },
     "git-guardrails-claude-code": {
       "source": "mattpocock/skills",
@@ -525,7 +525,7 @@
       "source": "vercel/next.js",
       "path": "skills/next-bundle-optimizer",
       "ref": "canary",
-      "commit": "684cf7ea8915613a53e1ed34d88d2cfb093ed57d",
+      "commit": "502b6b7daf220f4516eb2d8b7e750ce6874ac201",
       "pack": "nextjs-vercel",
       "pinned": false,
       "computedHash": "eb1e054af768adeeef6f953c527edfa4e2a03f36ec576b336ee211e4903c6141",
@@ -535,7 +535,7 @@
       "source": "vercel/next.js",
       "path": "skills/next-cache-components-adoption",
       "ref": "canary",
-      "commit": "684cf7ea8915613a53e1ed34d88d2cfb093ed57d",
+      "commit": "502b6b7daf220f4516eb2d8b7e750ce6874ac201",
       "pack": "nextjs-vercel",
       "pinned": false,
       "computedHash": "3f233a4f8fec9aa3f5f3dd183f4d0b76986ab75a31b17efd7fc18368ab7d356f",
@@ -545,7 +545,7 @@
       "source": "vercel/next.js",
       "path": "skills/next-cache-components-optimizer",
       "ref": "canary",
-      "commit": "684cf7ea8915613a53e1ed34d88d2cfb093ed57d",
+      "commit": "502b6b7daf220f4516eb2d8b7e750ce6874ac201",
       "pack": "nextjs-vercel",
       "pinned": false,
       "computedHash": "b1f7d01586035e3b981b5dd9e23fb3a22f2eb21b7702ed4259f4443d7698ff85",
@@ -555,7 +555,7 @@
       "source": "vercel/next.js",
       "path": "skills/next-dev-loop",
       "ref": "canary",
-      "commit": "684cf7ea8915613a53e1ed34d88d2cfb093ed57d",
+      "commit": "502b6b7daf220f4516eb2d8b7e750ce6874ac201",
       "pack": "nextjs-vercel",
       "pinned": false,
       "computedHash": "c305c83b726212e0284930c65cded2c4a4ab85f9bfccfa83b62274247fe3580e",
@@ -565,7 +565,7 @@
       "source": "vercel/next.js",
       "path": "skills/next-partial-prefetching-adoption",
       "ref": "canary",
-      "commit": "684cf7ea8915613a53e1ed34d88d2cfb093ed57d",
+      "commit": "502b6b7daf220f4516eb2d8b7e750ce6874ac201",
       "pack": "nextjs-vercel",
       "pinned": false,
       "computedHash": "44553d39329e8e3c98115b0d67d4b73028626dfb61479a8b541a956c6554e106",
@@ -575,7 +575,7 @@
       "source": "vercel/next.js",
       "path": "skills/next-partial-prefetching-optimizer",
       "ref": "canary",
-      "commit": "684cf7ea8915613a53e1ed34d88d2cfb093ed57d",
+      "commit": "502b6b7daf220f4516eb2d8b7e750ce6874ac201",
       "pack": "nextjs-vercel",
       "pinned": false,
       "computedHash": "2a9c24352cf4c3bd3546ce2b7d9d4eb3ce03026cca6dd69dcda0d69b61469da3",
