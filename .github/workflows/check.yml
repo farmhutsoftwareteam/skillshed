@@ -4,9 +4,6 @@ on:
   pull_request:
   push:
     branches: [main]
-  # sync-vendor.yml dispatches this on its branch: its PRs are opened with
-  # GITHUB_TOKEN, so their pull_request runs wait for approval and never start.
-  workflow_dispatch:
 
 permissions:
   contents: read
