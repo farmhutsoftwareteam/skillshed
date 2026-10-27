@@ -11,6 +11,96 @@
       "computedHash": "99224d8d3f3c059def3e0e3f5c2b851c38dcf81ec9cdb991e01eeb4a5ae84d2e",
       "reviewed": "2026-10-22"
     },
+    "better-accessibility": {
+      "source": "jakubkrehel/skills",
+      "path": "skills/better-accessibility",
+      "ref": "main",
+      "commit": "592aedc44d7d5b3e29740984252902f3e5402a1c",
+      "pack": "interfaces",
+      "pinned": false,
+      "computedHash": "bac3341ecd0f0c8d7319bd620ecb00534df6c595194d587078d6c9981c44cd3c",
+      "reviewed": "2026-10-27"
+    },
+    "better-colors": {
+      "source": "jakubkrehel/skills",
+      "path": "skills/better-colors",
+      "ref": "main",
+      "commit": "592aedc44d7d5b3e29740984252902f3e5402a1c",
+      "pack": "interfaces",
+      "pinned": false,
+      "computedHash": "5685366a469d8070f0d835969b58c28cca0ec839b5c5b72ddcfa87a2d841debe",
+      "reviewed": "2026-10-27"
+    },
+    "better-interface": {
+      "source": "jakubkrehel/skills",
+      "path": "skills/better-interface",
+      "ref": "main",
+      "commit": "592aedc44d7d5b3e29740984252902f3e5402a1c",
+      "pack": "interfaces",
+      "pinned": false,
+      "computedHash": "671426482ea1c118919c42f6f3cb94e61bc483e9c04677afe848a6c0e94d60b8",
+      "reviewed": "2026-10-27"
+    },
+    "better-layout": {
+      "source": "jakubkrehel/skills",
+      "path": "skills/better-layout",
+      "ref": "main",
+      "commit": "592aedc44d7d5b3e29740984252902f3e5402a1c",
+      "pack": "interfaces",
+      "pinned": false,
+      "computedHash": "d86c8ad42c9912d3e3f4d50048be27b9d42493555c5ff9de568a268d2212df18",
+      "reviewed": "2026-10-27"
+    },
+    "better-typography": {
+      "source": "jakubkrehel/skills",
+      "path": "skills/better-typography",
+      "ref": "main",
+      "commit": "592aedc44d7d5b3e29740984252902f3e5402a1c",
+      "pack": "interfaces",
+      "pinned": false,
+      "computedHash": "21ebae1f6897df5fef5f851a6aa11e82fce4ec5043c00544bd6584a9ec4c0118",
+      "reviewed": "2026-10-27"
+    },
+    "better-ui": {
+      "source": "jakubkrehel/skills",
+      "path": "skills/better-ui",
+      "ref": "main",
+      "commit": "592aedc44d7d5b3e29740984252902f3e5402a1c",
+      "pack": "interfaces",
+      "pinned": false,
+      "computedHash": "392c7c8fe1004ca48610d313ade33879145f3bfe2de4471c170b775ff253e97f",
+      "reviewed": "2026-10-27"
+    },
+    "better-writing": {
+      "source": "jakubkrehel/skills",
+      "path": "skills/better-writing",
+      "ref": "main",
+      "commit": "592aedc44d7d5b3e29740984252902f3e5402a1c",
+      "pack": "interfaces",
+      "pinned": false,
+      "computedHash": "82f6bb0dcab4bb9d97632b1024e4397e71f5a0587c4ddef9cbef88404b8fb810",
+      "reviewed": "2026-10-27"
+    },
+    "break": {
+      "source": "jakubkrehel/skills",
+      "path": "skills/break",
+      "ref": "main",
+      "commit": "592aedc44d7d5b3e29740984252902f3e5402a1c",
+      "pack": "interfaces",
+      "pinned": false,
+      "computedHash": "7edef95e521667b646154353345cddf36c517eb13773ac0d9728586b47875de6",
+      "reviewed": "2026-10-27"
+    },
+    "build-design": {
+      "source": "jakubkrehel/skills",
+      "path": "skills/build-design",
+      "ref": "main",
+      "commit": "592aedc44d7d5b3e29740984252902f3e5402a1c",
+      "pack": "interfaces",
+      "pinned": false,
+      "computedHash": "195f70953071cbd7385db304efccfb446709d10de7c9c11ed5b8bd8dff2841b5",
+      "reviewed": "2026-10-27"
+    },
     "code-review": {
       "source": "mattpocock/skills",
       "path": "skills/engineering/code-review",
@@ -120,6 +210,16 @@
       "pinned": false,
       "computedHash": "873787f285b21e1f1749c9c79f77a979de65b22755c5947457a9579b1466dadd",
       "reviewed": "2026-10-22"
+    },
+    "explain-interface": {
+      "source": "jakubkrehel/skills",
+      "path": "skills/explain-interface",
+      "ref": "main",
+      "commit": "592aedc44d7d5b3e29740984252902f3e5402a1c",
+      "pack": "interfaces",
+      "pinned": false,
+      "computedHash": "461bbc9a92e4b513dfb2105c8bfb91626684827d7593ac02cc1c1468aba928d7",
+      "reviewed": "2026-10-27"
     },
     "expo-animation": {
       "source": "expo/skills",
@@ -511,6 +611,16 @@
       "computedHash": "4fefaed452c6de2ab1d082e2a85a35524c6d205e8fcac00821bbfa49d4d004dd",
       "reviewed": "2026-10-22"
     },
+    "interface-review": {
+      "source": "jakubkrehel/skills",
+      "path": "skills/interface-review",
+      "ref": "main",
+      "commit": "592aedc44d7d5b3e29740984252902f3e5402a1c",
+      "pack": "interfaces",
+      "pinned": false,
+      "computedHash": "6ca361e4cbf89a3b7a5cec4eee733f471b53cce6cae249d403ccd138e34882a1",
+      "reviewed": "2026-10-27"
+    },
     "migrate-to-shoehorn": {
       "source": "mattpocock/skills",
       "path": "skills/misc/migrate-to-shoehorn",
@@ -661,6 +771,16 @@
       "computedHash": "b7455a91310ae0aa9b02b2642533fe60f17a1443d45bc0b455cc3136f2d85c8b",
       "reviewed": "2026-10-22"
     },
+    "state-machine": {
+      "source": "jakubkrehel/skills",
+      "path": "skills/state-machine",
+      "ref": "main",
+      "commit": "592aedc44d7d5b3e29740984252902f3e5402a1c",
+      "pack": "interfaces",
+      "pinned": false,
+      "computedHash": "57367f8e5909c6a0f0b6eaf0abe40ccfb276b01b7f85749c6098b74b3906815f",
+      "reviewed": "2026-10-27"
+    },
     "supabase": {
       "source": "supabase/agent-skills",
       "path": "skills/supabase",
@@ -740,6 +860,16 @@
       "pinned": false,
       "computedHash": "bf09f37fa24ab64324497772a25a1e0a9b22d06ccb238fefd0cfb12eee473c3d",
       "reviewed": "2026-10-22"
+    },
+    "variant": {
+      "source": "jakubkrehel/skills",
+      "path": "skills/variant",
+      "ref": "main",
+      "commit": "592aedc44d7d5b3e29740984252902f3e5402a1c",
+      "pack": "interfaces",
+      "pinned": false,
+      "computedHash": "fd8f4840e9710347616a922ee23e87b17c6baa08095e58dfafe4d7eef37b2714",
+      "reviewed": "2026-10-27"
     },
     "wait-what": {
       "source": "mattpocock/skills",

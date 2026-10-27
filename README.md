@@ -53,6 +53,7 @@ You won't get the `skillshed` command this way.
 | `supabase` | no | Official [Supabase skills](https://github.com/supabase/agent-skills): Supabase and Postgres best practices (2) |
 | `expo` | no | Official [Expo skills](https://github.com/expo/skills): EAS, Router, native UI, upgrades and more (23) |
 | `inngest` | no | Official [Inngest skills](https://github.com/inngest/inngest-skills): durable functions, steps, events, flow control (15) |
+| `interfaces` | no | [Jakub Krehel's interface skills](https://github.com/jakubkrehel/skills): accessibility, layout, type, colour, copy and UI polish, design reviews, building from Figma, and throwaway pages for variants, states and stress tests (13, MIT) |
 
 Agents read every enabled skill's description on every request, within a small budget (about 1% of context in Claude Code, 2% in Codex). Past that budget, skills quietly stop triggering, which is why most packs are off by default. To change which packs are on everywhere, edit `ALWAYS_ON` in `scripts/bootstrap.sh`.
 
