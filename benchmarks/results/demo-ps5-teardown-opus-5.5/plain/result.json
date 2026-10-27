@@ -1,0 +1,46 @@
+{
+  "arm": "plain",
+  "exit": 0,
+  "wallSeconds": 1038,
+  "model": "claude-opus-5-5",
+  "skillsLoaded": [],
+  "skillsUsed": [],
+  "tools": {
+    "Bash": 13,
+    "ToolSearch": 1,
+    "WebSearch": 3,
+    "WebFetch": 2,
+    "Write": 1,
+    "Read": 11
+  },
+  "costUsd": 3.4757446999999995,
+  "turns": 32,
+  "durationMs": 1036930,
+  "apiMs": 1002656,
+  "isError": false,
+  "tokens": {
+    "input": 64411,
+    "output": 99725,
+    "cacheRead": 2312032,
+    "cacheWrite": 140648
+  },
+  "byModel": {
+    "claude-opus-5-5": {
+      "input": 48,
+      "output": 92393,
+      "cacheRead": 2312032,
+      "cacheWrite": 140648,
+      "thinking": 55911,
+      "costUsd": 3.4356423999999994
+    },
+    "claude-haiku-5-5": {
+      "input": 64363,
+      "output": 7332,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "thinking": 2776,
+      "costUsd": 0.04010230000000001
+    }
+  },
+  "delivered": true
+}

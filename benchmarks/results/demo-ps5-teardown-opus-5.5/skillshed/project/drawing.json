@@ -1,0 +1,33 @@
+{
+  "dependencies": "node_modules",
+  "modelScripts": ["model.js"],
+  "drawings": [{
+    "id": "ps5",
+    "title": "PlayStation 5, disc edition (CFI-1000)",
+    "description": "Exploded assembly of the original PS5 disc edition. Envelope, fan size, PSU rating, chip markings and layer order follow Sony's official teardown and iFixit's teardown; exact internal shapes, positions and the heat-pipe count are illustrative.",
+    "concept": true,
+    "parts": [
+      {"id": "cover-drive", "name": "Side cover, disc drive side"},
+      {"id": "chassis-drive", "name": "Chassis half, disc drive side"},
+      {"id": "drive", "name": "Ultra HD Blu-ray drive"},
+      {"id": "psu", "name": "Power supply unit, 350 W"},
+      {"id": "shield-drive", "name": "Steel shield, disc drive side"},
+      {"id": "board", "name": "Main board"},
+      {"id": "soc", "name": "AMD SoC, CXD90060GG"},
+      {"id": "gddr6", "name": "GDDR6 memory, 8 × 2 GB"},
+      {"id": "ssd-controller", "name": "SSD controller, CXD90062GG"},
+      {"id": "nand", "name": "NAND flash, 3 of 6 shown"},
+      {"id": "m2-slot", "name": "M.2 expansion slot"},
+      {"id": "wifi", "name": "Wi-Fi module, J20H100"},
+      {"id": "heatsink", "name": "Heatsink with copper heat pipes"},
+      {"id": "shield-heatsink", "name": "Steel shield, heatsink side"},
+      {"id": "chassis-heatsink", "name": "Chassis half, heatsink side"},
+      {"id": "m2-cover", "name": "M.2 bay cover"},
+      {"id": "cover-heatsink", "name": "Side cover, heatsink side"},
+      {"id": "fan", "name": "Cooling fan, 120 mm × 45 mm"},
+      {"id": "stand", "name": "Base stand"},
+      {"id": "stand-screw", "name": "Stand screw"}
+    ],
+    "parameters": []
+  }]
+}

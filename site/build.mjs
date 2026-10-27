@@ -3,7 +3,7 @@
 // packs from the marketplace, skills from each SKILL.md, sources from the lock.
 //
 //   node site/build.mjs
-import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ROOT, skills, frontmatter, readLock } from '../scripts/lib.mjs';
@@ -137,10 +137,16 @@ mkdirSync(out, { recursive: true });
 writeFileSync(join(out, 'index.html'), html);
 cpSync(join(SITE, 'public'), out, { recursive: true });
 
+// Blog posts and the demos they show are static folders, copied as they are.
+// Each post is site/blog/<slug>/index.html.
+const posts = existsSync(join(SITE, 'blog')) ? readdirSync(join(SITE, 'blog')).filter((s) => existsSync(join(SITE, 'blog', s, 'index.html'))) : [];
+for (const dir of ['blog', 'demos']) if (existsSync(join(SITE, dir))) cpSync(join(SITE, dir), join(out, dir), { recursive: true });
+
 writeFileSync(join(out, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
+const urls = ['/', ...posts.map((s) => `/blog/${s}/`)];
 writeFileSync(
   join(out, 'sitemap.xml'),
-  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${SITE_URL}/</loc><lastmod>${today}</lastmod></url>\n</urlset>\n`,
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${SITE_URL}${u}</loc><lastmod>${today}</lastmod></url>`).join('\n')}\n</urlset>\n`,
 );
 writeFileSync(
   join(out, 'site.webmanifest'),
