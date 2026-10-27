@@ -80,3 +80,22 @@ work directory (and the transcript path) and prints
 `{ task, checks: [{ id, group, label, pass, detail }], passed, total }`; see
 `lib/report.mjs`. Before you run it for real, check that the untouched fixture
 scores low and the reference scores full marks.
+
+## Demos
+
+Some results can't be scored by a script, such as a drawing. `demo.mjs` runs
+an open-ended prompt in an empty folder as plain Claude Code (no plugins at
+all) and as Skillshed's defaults plus the demo's packs. It keeps what each run
+made and records the model, tokens per model, cost, time, turns, tool calls and
+skills used. Each demo is `benchmarks/demos/<id>/` with `prompt.md` and
+`demo.json` (`{ "packs" }`).
+
+```bash
+node benchmarks/demo.mjs ps5-teardown --model claude-opus-5-5 --node ~/.local/share/fnm/node-versions/v22.23.4/installation/bin
+```
+
+One run per arm is a demonstration, not a measurement. The
+[PS5 teardown post](https://skillshed.munyamakosa.com/blog/ps5-teardown/) shows
+the first one, from `results/demo-ps5-teardown-opus-5.5/`. Transcripts are
+kept without the base64 of images the agent read back, which would otherwise
+make each one several megabytes.
