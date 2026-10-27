@@ -1,0 +1,10 @@
+{
+  "name": "interfaces",
+  "description": "Pack: Jakub Krehel's interface skills (accessibility, layout, type, color, copy, UI polish, design reviews). Enable per project.",
+  "author": {
+    "name": "Munyaradzi Makosa",
+    "url": "https://github.com/farmhutsoftwareteam"
+  },
+  "repository": "https://github.com/farmhutsoftwareteam/skillshed",
+  "license": "MIT"
+}

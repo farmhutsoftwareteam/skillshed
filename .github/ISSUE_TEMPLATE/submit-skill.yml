@@ -28,6 +28,7 @@ body:
         - supabase
         - expo
         - inngest
+        - interfaces
         - A new pack (say which below)
     validations:
       required: true
