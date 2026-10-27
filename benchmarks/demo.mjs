@@ -28,6 +28,8 @@ const EMAILS = [process.env.CLAUDE_CODE_USER_EMAIL, spawnSync("git", ["config", 
 
 const [name, ...rest] = process.argv.slice(2);
 const args = parseArgs(rest);
+const maxUsd = positive("max-usd", 25);
+const minutes = positive("minutes", 90);
 const demoDir = path.join(BENCH, "demos", name ?? "");
 if (!name || !fs.existsSync(path.join(demoDir, "demo.json"))) die(`usage: demo.mjs <name> [options] (have: ${fs.readdirSync(path.join(BENCH, "demos")).join(", ")})`);
 const meta = JSON.parse(fs.readFileSync(path.join(demoDir, "demo.json"), "utf8"));
@@ -41,7 +43,7 @@ const env = runEnv();
 fs.mkdirSync(out, { recursive: true });
 fs.writeFileSync(path.join(out, "run.json"), JSON.stringify({
   demo: name, started: new Date().toISOString(), model: args.model ?? null, arms, packs: meta.packs,
-  maxUsd: Number(args["max-usd"] ?? 25), minutes: Number(args.minutes ?? 90),
+  maxUsd, minutes,
   claudeVersion: spawnSync(claude, ["--version"], { encoding: "utf8", env }).stdout.trim(),
   node: spawnSync("node", ["-v"], { encoding: "utf8", env }).stdout.trim(),
   repoCommit: git(REPO, "rev-parse", "HEAD"),
@@ -50,7 +52,7 @@ console.log(`${arms.length} runs -> ${path.relative(process.cwd(), out)}`);
 
 const results = await Promise.all(arms.map(runArm));
 fs.writeFileSync(path.join(out, "summary.json"), JSON.stringify(results, null, 2) + "\n");
-for (const r of results) console.log(`${r.arm}: ${r.wallSeconds}s, $${r.costUsd?.toFixed(2)}, ${r.turns} turns, out ${r.tokens.output}, skills used: ${r.skillsUsed.join(", ") || "none"}${r.exit ? `, exit ${r.exit}` : ""}`);
+for (const r of results) console.log(`${r.arm}: ${r.wallSeconds}s, ${r.costUsd == null ? "no cost reported" : `$${r.costUsd.toFixed(2)}`}, ${r.turns ?? 0} turns, out ${r.tokens.output}, skills used: ${r.skillsUsed.join(", ") || "none"}${r.exit ? `, exit ${r.exit}` : ""}`);
 
 async function runArm(arm) {
   const runDir = path.join(out, arm);
@@ -87,13 +89,13 @@ function runClaude(cwd, transcript) {
     "--setting-sources", "project",
     "--permission-mode", "bypassPermissions",
     "--no-session-persistence",
-    "--max-budget-usd", String(args["max-usd"] ?? 25),
+    "--max-budget-usd", String(maxUsd),
     ...(args.model ? ["--model", args.model] : []),
   ];
   return new Promise((resolve) => {
     const fd = fs.openSync(transcript, "w");
     const child = spawn(claude, cmd, { cwd, env, stdio: ["ignore", fd, fd] });
-    const timer = setTimeout(() => child.kill("SIGTERM"), Number(args.minutes ?? 90) * 60_000);
+    const timer = setTimeout(() => child.kill("SIGTERM"), minutes * 60_000);
     child.on("close", (code) => {
       clearTimeout(timer);
       fs.closeSync(fd);
@@ -173,13 +175,24 @@ function git(cwd, ...a) {
   return execFileSync("git", a, { cwd, encoding: "utf8", maxBuffer: 64 << 20 }).trim();
 }
 
+// Every option takes a value, so a flag with none is a mistake, not `true`.
 function parseArgs(argv) {
+  const known = ["arms", "model", "max-usd", "minutes", "node", "out", "claude"];
   const o = {};
   for (let i = 0; i < argv.length; i++) {
     if (!argv[i].startsWith("--")) die(`unexpected argument: ${argv[i]}`);
-    o[argv[i].slice(2)] = argv[i + 1]?.startsWith("--") || argv[i + 1] === undefined ? "true" : argv[++i];
+    const key = argv[i].slice(2);
+    if (!known.includes(key)) die(`unknown option: --${key} (have: ${known.map((k) => `--${k}`).join(", ")})`);
+    if (argv[i + 1] === undefined || argv[i + 1].startsWith("--")) die(`--${key} needs a value`);
+    o[key] = argv[++i];
   }
   return o;
+}
+
+function positive(key, fallback) {
+  const n = Number(args[key] ?? fallback);
+  if (!Number.isFinite(n) || n <= 0) die(`--${key} must be a positive number, not ${args[key]}`);
+  return n;
 }
 
 function die(msg) {
