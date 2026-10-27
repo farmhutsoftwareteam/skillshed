@@ -44,7 +44,7 @@
     {
       "name": "interfaces",
       "source": "./plugins/interfaces",
-      "description": "Pack: Jakub Krehel's interface skills (accessibility, layout, type, color, copy, UI polish, design reviews). Enable per project.",
+      "description": "Pack: Jakub Krehel's interface skills (accessibility, layout, type, color, copy, UI polish, design reviews) and technical teardown illustrations. Enable per project.",
       "category": "coding"
     }
   ]
