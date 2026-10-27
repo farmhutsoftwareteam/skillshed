@@ -1,9 +1,13 @@
 #!/usr/bin/env node
-// Records compose.html (both delivered pages side by side) taking the PS5
-// apart and putting it back, as a 1920x1080 MP4 that loops.
+// Records compose.html taking the PS5 apart and putting it back, as an MP4
+// that loops: both delivered pages side by side, or one alone with --only.
 //
 //   node site/build.mjs && python3 -m http.server 4321 --directory site/dist &
-//   node benchmarks/demos/ps5-teardown/video/record.mjs [base-url] [out.mp4]
+//   node benchmarks/demos/ps5-teardown/video/record.mjs
+//   node benchmarks/demos/ps5-teardown/video/record.mjs --only skillshed --size 1080x1080 --out ps5-skillshed.mp4
+//
+// Options: --base URL (default http://localhost:4321), --only plain|skillshed,
+// --size WxH (default 1920x1080), --out FILE (default site/blog/ps5-teardown/ps5-side-by-side.mp4).
 //
 // Needs Node 22+ (global WebSocket), Chrome and ffmpeg. compose.html is copied
 // next to the demo pages in site/dist so the frame can drive both of them.
@@ -15,8 +19,12 @@ import { fileURLToPath } from "node:url";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(HERE, "../../../..");
-const base = (process.argv[2] ?? "http://localhost:4321").replace(/\/$/, "");
-const out = path.resolve(process.argv[3] ?? path.join(REPO, "site/blog/ps5-teardown/ps5-side-by-side.mp4"));
+const arg = (name) => { const i = process.argv.indexOf(`--${name}`); return i > 0 ? process.argv[i + 1] : undefined; };
+const base = (arg("base") ?? "http://localhost:4321").replace(/\/$/, "");
+const only = arg("only");
+const [W, H] = (arg("size") ?? "1920x1080").split("x").map(Number);
+const out = path.resolve(arg("out") ?? path.join(REPO, "site/blog/ps5-teardown/ps5-side-by-side.mp4"));
+const query = new URLSearchParams({ w: W, h: H, ...(only ? { only } : {}) });
 const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 // Seconds: hold assembled, take it apart, hold exploded, put it back, hold.
 const TIMELINE = [[1.2, "exploded"], [6.6, "assembled"], [10.2, null]];
@@ -24,18 +32,18 @@ const TIMELINE = [[1.2, "exploded"], [6.6, "assembled"], [10.2, null]];
 fs.copyFileSync(path.join(HERE, "compose.html"), path.join(REPO, "site/dist/demos/ps5-teardown/compose.html"));
 const profile = fs.mkdtempSync(path.join(os.tmpdir(), "ps5-video-"));
 const frames = fs.mkdtempSync(path.join(os.tmpdir(), "ps5-frames-"));
-const chrome = spawn(CHROME, ["--headless=new", "--remote-debugging-port=0", `--user-data-dir=${profile}`, "--window-size=1920,1080", "--hide-scrollbars", "--no-first-run", "about:blank"], { stdio: "ignore" });
+const chrome = spawn(CHROME, ["--headless=new", "--remote-debugging-port=0", `--user-data-dir=${profile}`, `--window-size=${W},${H}`, "--hide-scrollbars", "--no-first-run", "about:blank"], { stdio: "ignore" });
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 try {
   const cdp = await connect(profile);
   await cdp.send("Page.enable");
-  await cdp.send("Emulation.setDeviceMetricsOverride", { width: 1920, height: 1080, deviceScaleFactor: 1, mobile: false });
-  await cdp.send("Page.navigate", { url: `${base}/demos/ps5-teardown/compose.html` });
+  await cdp.send("Emulation.setDeviceMetricsOverride", { width: W, height: H, deviceScaleFactor: 1, mobile: false });
+  await cdp.send("Page.navigate", { url: `${base}/demos/ps5-teardown/compose.html?${query}` });
   const evaluate = async (expression) => (await cdp.send("Runtime.evaluate", { expression, returnByValue: true, awaitPromise: true })).result.value;
 
   for (let t = 0; !(await evaluate("typeof ready === 'function' && Boolean(ready())")); t += 250) {
-    if (t > 60_000) throw Error("the two pages did not finish loading within a minute");
+    if (t > 60_000) throw Error("the pages did not finish loading within a minute");
     await sleep(250);
   }
   await evaluate("setView('assembled')");
@@ -50,7 +58,7 @@ try {
     shots.push({ file, t: Date.now() / 1000 });
     cdp.send("Page.screencastFrameAck", { sessionId: params.sessionId });
   });
-  await cdp.send("Page.startScreencast", { format: "jpeg", quality: 92, maxWidth: 1920, maxHeight: 1080, everyNthFrame: 1 });
+  await cdp.send("Page.startScreencast", { format: "jpeg", quality: 92, maxWidth: W, maxHeight: H, everyNthFrame: 1 });
   const start = Date.now() / 1000;
   for (const [at, view] of TIMELINE) {
     await sleep(Math.max(0, (start + at) * 1000 - Date.now()));
