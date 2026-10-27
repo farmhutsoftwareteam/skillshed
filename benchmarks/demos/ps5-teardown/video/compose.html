@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PS5 teardown, side by side</title>
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&display=block" rel="stylesheet">
+<style>
+/* One 1920x1080 frame for record.mjs: both delivered pages, unedited, at the same scale. */
+:root { --bg: #1c1c1c; --surface: #262626; --ink: #f1f1ef; --muted: #a3a49f; --accent: #8fa68e; --accent-ink: #1c1c1c; --field-1: #c8c5ba; --radius: 8px; }
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); color: var(--ink); font-family: Switzer, "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+.frame { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 116px 1fr 52px; gap: 10px; padding: 14px; height: 100%; }
+.head { border-radius: var(--radius); padding: 0 26px; display: flex; align-items: center; justify-content: space-between; }
+.head.plain { background: var(--surface); }
+.head.sk { background: var(--accent); color: var(--accent-ink); }
+.head h2 { margin: 0; font: 600 44px/1 Switzer, sans-serif; letter-spacing: -0.04em; }
+.head p { margin: 0; font: 500 30px/1 Switzer, sans-serif; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; text-align: right; }
+.stage { border-radius: var(--radius); overflow: hidden; background: #fff; position: relative; }
+/* Pages render at 1100px wide, then scale to the stage, so the drawings read on a phone. */
+.stage iframe { position: absolute; top: 0; left: 0; width: 1100px; border: 0; transform-origin: 0 0; }
+.foot { grid-column: 1 / -1; border-radius: var(--radius); background: var(--field-1); color: var(--accent-ink); display: flex; align-items: center; justify-content: space-between; padding: 0 26px; font: 500 24px/1 Switzer, sans-serif; letter-spacing: -0.01em; }
+.foot b { font-weight: 600; letter-spacing: -0.04em; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="head plain"><h2>Plain Claude Code</h2><p>17 m 18 s · $3.48</p></div>
+  <div class="head sk"><h2>With Skillshed</h2><p>10 m 28 s · $2.89</p></div>
+  <div class="stage"><iframe id="plain" src="plain/" title="Plain run"></iframe></div>
+  <div class="stage"><iframe id="skillshed" src="skillshed/" title="Skillshed run"></iframe></div>
+  <div class="foot"><span>Same prompt, same model: a PS5 teardown on Claude Opus 5.5</span><b>Skillshed</b></div>
+</div>
+<script>
+  const stages = [...document.querySelectorAll('.stage')];
+  for (const s of stages) {
+    const f = s.querySelector('iframe'), k = s.clientWidth / 1100;
+    f.style.height = `${s.clientHeight / k}px`;
+    f.style.transform = `scale(${k})`;
+  }
+  // Called by record.mjs. Both pages flip in the same frame.
+  window.setView = (view) => {
+    const p = document.getElementById('plain').contentDocument.getElementById('toggle');
+    if ((p.getAttribute('aria-checked') === 'true') !== (view === 'assembled')) p.click();
+    document.getElementById('skillshed').contentDocument.querySelector(`#view [data-view="${view}"]`).click();
+  };
+  window.ready = () => {
+    const sk = document.getElementById('skillshed').contentDocument;
+    const pl = document.getElementById('plain').contentDocument;
+    return document.fonts.status === 'loaded' && pl?.getElementById('toggle') && sk?.getElementById('viewport')?.getAttribute('aria-busy') === 'false';
+  };
+</script>
+</body>
+</html>
