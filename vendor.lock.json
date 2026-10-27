@@ -821,6 +821,16 @@
       "computedHash": "7bd8a41095f71c5e76892427f1db17eaa744372611b748db50a93dfa25fc62ca",
       "reviewed": "2026-10-22"
     },
+    "teardown": {
+      "source": "jakubkrehel/skills",
+      "path": "skills/teardown",
+      "ref": "main",
+      "commit": "592aedc44d7d5b3e29740984252902f3e5402a1c",
+      "pack": "interfaces",
+      "pinned": false,
+      "computedHash": "5ae1db3e1c57885bceefd56ab58a79a9cb1700dee26d115c631103a8333a8a68",
+      "reviewed": "2026-10-27"
+    },
     "to-questionnaire": {
       "source": "mattpocock/skills",
       "path": "skills/productivity/to-questionnaire",
