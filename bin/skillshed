@@ -12,6 +12,7 @@ usage: skillshed <command>
   packs               list packs and what they cover
   use <pack>...       turn packs on for the project in the current directory
   off <pack>...       turn packs off for the current project
+  exclude <pack>...   turn packs off and never use their skills here
   find <keywords>     search skill-issue.in and skills.sh for new skills
   update              pull the latest skills and refresh Claude Code / Codex
   doctor              check every pack is installed, and on or off as expected
@@ -42,6 +43,7 @@ case "$cmd" in
     ' "$ROOT" ;;
   use) exec "$ROOT/scripts/use-pack.sh" "$@" ;;
   off) exec "$ROOT/scripts/use-pack.sh" --off "$@" ;;
+  exclude) exec "$ROOT/scripts/use-pack.sh" --exclude "$@" ;;
   find) exec node "$ROOT/scripts/find-skill.mjs" "$@" ;;
   add|new|remove|vet) exec node "$ROOT/scripts/personal.mjs" "$cmd" "$@" ;;
   mine) exec node "$ROOT/scripts/personal.mjs" list ;;
