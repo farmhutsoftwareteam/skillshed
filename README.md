@@ -155,6 +155,9 @@ node scripts/sync-vendor.mjs update     # pull upstream for tracked skills
 node scripts/sync-vendor.mjs remove <name>
 ```
 
+- **Tree URLs** can name any branch, including ones with slashes (`/tree/feature/new-skill/skills/foo`), a tag or a commit SHA. A `/blob/.../SKILL.md` link works too.
+- **Ambiguous names** stop the import. If several folders in the repo are named `<skill>`, or carry it as their frontmatter name, the error lists every path. Re-run with `--path <dir>` to pick one.
+
 - **Tracked** (the default) means the weekly sync moves the skill to the latest commit on its `ref`.
 - **Pinned** (`--pin`) means it stays at its commit until you run `update <name> --force`.
 
