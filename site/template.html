@@ -529,7 +529,8 @@ release-notes    (yours)</pre></div>
   <div class="last"><span>© 2026 Skillshed</span><a class="btn" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">Back to top</a></div>
 </footer>
 
-<script>
+<script type="module">
+import { rank } from './search.js';
 (() => {
   document.documentElement.classList.add('js');
 
@@ -545,19 +546,21 @@ release-notes    (yours)</pre></div>
   // buttons are toggle filters, not tabs: a search clears them all.
   const tabs = [...document.querySelectorAll('.tab')];
   const bands = [...document.querySelectorAll('.band')];
+  const list = document.getElementById('bands');
+  const docs = bands.map((b) => ({ el: b, name: b.querySelector('.band-name').textContent, text: b.dataset.text, pack: b.dataset.more }));
   const q = document.getElementById('q');
   const result = document.getElementById('result');
   let pack = '{{FIRST_PACK}}';
+  // A search shows its matches best first across every pack; no search, one pack in name order.
   function render() {
-    const terms = q.value.toLowerCase().split(/\s+/).filter(Boolean);
-    let n = 0;
-    for (const b of bands) {
-      const show = terms.length ? terms.every((t) => b.dataset.text.includes(t)) : b.dataset.pack === pack;
-      b.hidden = !show;
-      if (show) n++;
-    }
-    tabs.forEach((t) => t.setAttribute('aria-pressed', String(!terms.length && t.dataset.pack === pack)));
-    result.textContent = terms.length
+    const searching = q.value.trim() !== '';
+    const shown = searching ? rank(q.value, docs).map((r) => r.doc.el) : bands.filter((b) => b.dataset.pack === pack);
+    const on = new Set(shown);
+    for (const b of bands) b.hidden = !on.has(b);
+    list.append(...shown, ...bands.filter((b) => !on.has(b)));
+    const n = shown.length;
+    tabs.forEach((t) => t.setAttribute('aria-pressed', String(!searching && t.dataset.pack === pack)));
+    result.textContent = searching
       ? (n ? `${n} ${n === 1 ? 'skill matches' : 'skills match'} across every pack` : 'Nothing on the wall for that yet. skillshed find searches skill-issue.in and skills.sh.')
       : '';
   }
