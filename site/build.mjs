@@ -26,10 +26,12 @@ const all = skills()
   .map((s) => {
     const fm = frontmatter(readFileSync(s.file, 'utf8')) ?? {};
     const v = lock.skills[s.name];
+    const full = (fm.description ?? '').replace(/\s+/g, ' ').trim();
     return {
       name: s.name,
       pack: s.pack,
-      description: firstSentence((fm.description ?? '').replace(/\s+/g, ' ').trim()),
+      description: firstSentence(full),
+      full,
       source: v ? v.source : 'Skillshed',
       commit: v ? v.commit.slice(0, 7) : '',
       reviewed: v?.reviewed ?? '',
@@ -53,9 +55,11 @@ const tabs = packs
   )
   .join('\n');
 
+// Search reads the whole description; the pack's blurb and the source count for less.
+const packText = Object.fromEntries(marketplace.plugins.map((p) => [p.name, p.description ?? '']));
 const bands = all
   .map(
-    (s) => `<li class="band" data-pack="${esc(s.pack)}" data-text="${esc(`${s.name} ${s.description} ${s.source}`.toLowerCase())}">
+    (s) => `<li class="band" data-pack="${esc(s.pack)}" data-text="${esc(s.full)}" data-more="${esc(`${s.pack} ${packText[s.pack] ?? ''} ${s.source}`)}">
   <a href="${esc(s.url)}" target="_blank" rel="noopener">
     <span class="band-name">${esc(s.name)}</span>
     <span class="band-desc">${esc(s.description)}</span>
