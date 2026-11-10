@@ -45,7 +45,9 @@ if [ "$status" -ne 0 ]; then
   echo "Fix them, then re-run this installer or run: skillshed doctor" >&2
   exit "$status"
 fi
-echo "Skillshed installed. Restart Claude Code / Codex sessions to load them."
-echo "  skillshed use supabase   # turn a pack on in the current project"
-echo "  skillshed doctor         # check the install at any time"
-echo "  skillshed help"
+echo "Skillshed installed. core and matt are on everywhere; the other packs are off."
+echo "Next, in a project:"
+echo "  skillshed packs          # pick the pack for your task (e.g. supabase, interfaces)"
+echo "  skillshed use supabase   # turn it on for the project you're in"
+echo "  then restart Claude Code / Codex and ask, e.g. \"add row level security to my tables\""
+echo "Not sure which pack? Just ask; core:skill-router will name it. Check the install: skillshed doctor"

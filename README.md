@@ -43,6 +43,15 @@ codex plugin add core@skillshed
 You won't get the `skillshed` command this way.
 </details>
 
+## First run
+
+1. **Pick a pack for the task.** `core` and `matt` are already on. Row-level security, auth or migrations: `supabase`. An exploded drawing of a physical object: `interfaces`. EAS builds and store releases: `expo`. Durable background jobs: `inngest`. Next.js caching and bundles: `nextjs-vercel`. `skillshed packs` lists them all, and if you're unsure, just ask: the always-on `core:skill-router` names the pack and the command that turns it on.
+2. **Turn it on in the project:** `cd` into the project, then `skillshed use supabase`.
+3. **Restart** the Claude Code or Codex session. Packs load when a session starts.
+4. **Ask in plain words.** A skill triggers from its description, so you don't need its name. In Claude Code you can also call one directly, as `/supabase:supabase` or `/core:find-skill`.
+
+You should see the session name the skill it loaded, then work that follows it. Ask for row-level security with `supabase` on and the migration keeps its security-definer helpers out of the `public` schema, which Haiku missed in every run without the pack in [our benchmark](benchmarks/RESULTS.md). For a side-by-side of the same prompt with and without a pack, see [a PS5 torn down twice](https://skillshed.munyamakosa.com/blog/ps5-teardown/), plain Claude Code against the `interfaces` pack.
+
 ## What's in it
 
 | Pack | On by default | What it covers |
