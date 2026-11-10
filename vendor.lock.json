@@ -161,9 +161,9 @@
       "computedHash": "cf233fee7275f8d00b5d2f11da948738531eee9ae7cc8d5b13f815f39fef1c9f",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-22",
-        "by": "migrated",
-        "hash": "bb3048304e5c783c09783326a9e8f8ba55a31e810f511a792238bb8ad45a0978"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "cf233fee7275f8d00b5d2f11da948738531eee9ae7cc8d5b13f815f39fef1c9f"
       }
     },
     "codebase-design": {
@@ -176,9 +176,9 @@
       "computedHash": "667012327c54634ddc0fea22ccdf5d43c797b97038a6d4aadc09de29d50d0185",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-22",
-        "by": "migrated",
-        "hash": "07246bd43eadfb50ac686aee5297d2cb808bf5ad00fb2ed289416b4b79e7850c"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "667012327c54634ddc0fea22ccdf5d43c797b97038a6d4aadc09de29d50d0185"
       }
     },
     "diagnosing-bugs": {
@@ -221,9 +221,9 @@
       "computedHash": "baf06426c6344f02924baee67dc414a6d32cb15190dddf627ee09ec0ca775e78",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-26",
-        "by": "migrated",
-        "hash": "9aead2f4b5a00c40d8939b7eb3c1d6939fdd515c5e05ad28c2b5dc367c0b235c"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "baf06426c6344f02924baee67dc414a6d32cb15190dddf627ee09ec0ca775e78"
       }
     },
     "eas-hosting": {
@@ -236,9 +236,9 @@
       "computedHash": "618e60d3e2d1870259e9be1dd44d3be6d6d7b4cd2fab3c3e97dc8008a2e3e4e2",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-26",
-        "by": "migrated",
-        "hash": "a0503dd0b0823523aed3483081cf22f98ed493027803486c0f8171a3c386efe9"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "618e60d3e2d1870259e9be1dd44d3be6d6d7b4cd2fab3c3e97dc8008a2e3e4e2"
       }
     },
     "eas-observe": {
@@ -251,9 +251,9 @@
       "computedHash": "3758222e39f998786e97a1480d59391563bd6dca87e80aabfade9064e3cc9d0a",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-26",
-        "by": "migrated",
-        "hash": "6a228c0a598c2ec0f1533ff864fb7f790496757c526931c3f6e3b80e3928eaf9"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "3758222e39f998786e97a1480d59391563bd6dca87e80aabfade9064e3cc9d0a"
       }
     },
     "eas-simulator": {
@@ -266,9 +266,9 @@
       "computedHash": "edce1e0bec2ff24617682da32ea1a987de7ea148e0b033ed1199131b9517157a",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-26",
-        "by": "migrated",
-        "hash": "122cf4f4a3534e92704eba43ff414208d636b7e85d334ff0c67efca8bb999db2"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "edce1e0bec2ff24617682da32ea1a987de7ea148e0b033ed1199131b9517157a"
       }
     },
     "eas-update": {
@@ -281,9 +281,9 @@
       "computedHash": "5c217c14dd68f016cb2d9db7789bf1cf2574e5b93a1d108848d64b100d9e2a13",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-26",
-        "by": "migrated",
-        "hash": "8bad571b3aaf81d3f0e54ec70689fca1fef6edcd4c3c0c358892d4c92bc5653e"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "5c217c14dd68f016cb2d9db7789bf1cf2574e5b93a1d108848d64b100d9e2a13"
       }
     },
     "eas-update-insights": {
@@ -296,9 +296,9 @@
       "computedHash": "aea5232ee2f17a1b5e429df99ad5af66e3389aa2faaf1d52aa01a3409b212866",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-26",
-        "by": "migrated",
-        "hash": "36556bbec9c010f5a82edc76c9c3511e87421f38674d776545b41d2e47a404df"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "aea5232ee2f17a1b5e429df99ad5af66e3389aa2faaf1d52aa01a3409b212866"
       }
     },
     "eas-workflows": {
@@ -311,9 +311,9 @@
       "computedHash": "3654ebdb6f5456b95b95fc94bdb25862eeeb375b01768506ac772653d18946bb",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-26",
-        "by": "migrated",
-        "hash": "9d74c203a3a92e910d9b3957ffed5f9f917b69a9705585f12c71ddcc636d41c7"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "3654ebdb6f5456b95b95fc94bdb25862eeeb375b01768506ac772653d18946bb"
       }
     },
     "explain-interface": {
@@ -341,9 +341,9 @@
       "computedHash": "a19680ec3cbbbb2bececfde338e508e14790960266d0ccf20df7b24643a9ed7a",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-26",
-        "by": "migrated",
-        "hash": "177769d2b3b97bb1246c0aa9685533b68b47843f372a718fb9c5f594f9384396"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "a19680ec3cbbbb2bececfde338e508e14790960266d0ccf20df7b24643a9ed7a"
       }
     },
     "expo-app-clip": {
@@ -386,9 +386,9 @@
       "computedHash": "3ab322e5aaf488ab49e5b7caaf5f8fb572e75d987d948a109ff4cc5a6bc993b2",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-26",
-        "by": "migrated",
-        "hash": "7f73b39e521b5812a199664c084529d58f7b6210312bca932f201e4a52f3537e"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "3ab322e5aaf488ab49e5b7caaf5f8fb572e75d987d948a109ff4cc5a6bc993b2"
       }
     },
     "expo-design-system": {
@@ -401,9 +401,9 @@
       "computedHash": "c5870a79c3d360130f979dcd53a484905a0ba62ae460c2b3763d531731ec769c",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-26",
-        "by": "migrated",
-        "hash": "3fdfcdc91433c2c87b5b8e511256fd26ef3a90dc793a76c244a5f82d0f7c89f6"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "c5870a79c3d360130f979dcd53a484905a0ba62ae460c2b3763d531731ec769c"
       }
     },
     "expo-dev-client": {
@@ -416,9 +416,9 @@
       "computedHash": "6999ec92413553b94f3a027775b71cc75fd7182ef3e177199f3067415b82afb3",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-26",
-        "by": "migrated",
-        "hash": "cd31c0c10bcb2ba423f43f3b1ac5831f3f491e6a9707ac24b219a5eed114221c"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "6999ec92413553b94f3a027775b71cc75fd7182ef3e177199f3067415b82afb3"
       }
     },
     "expo-dom": {
@@ -431,9 +431,9 @@
       "computedHash": "a419a053ba79d6a56029772473fb92041225359c27f1ab30b39a44aad38df403",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-26",
-        "by": "migrated",
-        "hash": "8e09a348b224fcd347e3ed6506e44067044482a0190401cb99d651d1cc3e8f9c"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "a419a053ba79d6a56029772473fb92041225359c27f1ab30b39a44aad38df403"
       }
     },
     "expo-examples": {
@@ -446,9 +446,9 @@
       "computedHash": "9d950e54b1971cdb4ff9eac206c5305d59c0a44d170d0e0cea29ebf413bb56c4",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-26",
-        "by": "migrated",
-        "hash": "de1404300e47c3e70ef4881d25264ea7c76dbe949f70b69946335e585cbf398c"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "9d950e54b1971cdb4ff9eac206c5305d59c0a44d170d0e0cea29ebf413bb56c4"
       }
     },
     "expo-module": {
@@ -461,9 +461,9 @@
       "computedHash": "517ec905755c06a680e27a6618f036f2b1a25cb4a2d17067e4d99f09e7a48d53",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-26",
-        "by": "migrated",
-        "hash": "9f594d1c92baeb11e5fb1ea0b5a41004f3ea0d71662c719c48eb1d1088e67b63"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "517ec905755c06a680e27a6618f036f2b1a25cb4a2d17067e4d99f09e7a48d53"
       }
     },
     "expo-native-ui": {
@@ -476,9 +476,9 @@
       "computedHash": "9b4fd02a7244bbe8cc05a9a3572b06f0cd222f3ec24d987c4ac5a85e531c26fe",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-26",
-        "by": "migrated",
-        "hash": "bbfd60404b4b4f7ba98888bcb8b72bb64f4440b9eac7b22744df87d27baf4b07"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "9b4fd02a7244bbe8cc05a9a3572b06f0cd222f3ec24d987c4ac5a85e531c26fe"
       }
     },
     "expo-overview": {
@@ -491,9 +491,9 @@
       "computedHash": "99d80d4bdbdeb23fedd5aee83bb6cce9f89f5dfc11fbef220caa91a2f0210aaa",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-26",
-        "by": "migrated",
-        "hash": "cf71a7754a41a949cd69755431f0590d583c8d5e3b6782ec0cc75d325c70d60a"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "99d80d4bdbdeb23fedd5aee83bb6cce9f89f5dfc11fbef220caa91a2f0210aaa"
       }
     },
     "expo-project-structure": {
@@ -506,9 +506,9 @@
       "computedHash": "bc191b1e63a8e2c6cfbf35b5bbe3aadc4f26872d6fddcef97ec6e9a14dab0a7f",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-26",
-        "by": "migrated",
-        "hash": "98c53ff32b49e41e27d0271c4fe4b1f94d0e3daadeb0f38b8cf9d911fb93812b"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "bc191b1e63a8e2c6cfbf35b5bbe3aadc4f26872d6fddcef97ec6e9a14dab0a7f"
       }
     },
     "expo-router": {
@@ -521,9 +521,9 @@
       "computedHash": "522fb4c26ace63fa30696e4b5e5d9737d2e4b357f07d2ef26942ca5e4736612c",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-26",
-        "by": "migrated",
-        "hash": "672a26b3e8ed0aba18d72c09cdd9f4474a2f20f155c7766763d886e9ddaa360e"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "522fb4c26ace63fa30696e4b5e5d9737d2e4b357f07d2ef26942ca5e4736612c"
       }
     },
     "expo-ui": {
@@ -536,9 +536,9 @@
       "computedHash": "9d9a84d712c1888a74ba51ee0c86229f462c67110defdf6ac6315b2669394114",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-26",
-        "by": "migrated",
-        "hash": "896c0291e6b6a789220f322cc59528550306f755f26ccb29a7902f02b91a59d7"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "9d9a84d712c1888a74ba51ee0c86229f462c67110defdf6ac6315b2669394114"
       }
     },
     "expo-upgrade": {
@@ -551,9 +551,9 @@
       "computedHash": "ada6e60984837c07a56fe0365ce954799b4110f1d56db7dae49a3f57390c116e",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-26",
-        "by": "migrated",
-        "hash": "ab41fe0e3c06ce79baf226b6a18b6f2f8672c4bb764321854fbdcc0435cf748f"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "ada6e60984837c07a56fe0365ce954799b4110f1d56db7dae49a3f57390c116e"
       }
     },
     "expo-web-to-native": {
@@ -566,9 +566,9 @@
       "computedHash": "611e77ec8b5e2f7bc9c067de50a96da10a1e98103fde2abc2e661241690b4cb6",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-26",
-        "by": "migrated",
-        "hash": "61b3e372cf5b2cf4a1dbb115e63aaec3eba48424d0875927b27b6f32bc232b79"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "611e77ec8b5e2f7bc9c067de50a96da10a1e98103fde2abc2e661241690b4cb6"
       }
     },
     "git-guardrails-claude-code": {
@@ -626,9 +626,9 @@
       "computedHash": "823f08ad33368a9626991e6782f7ae14b958e39ef8503f6bdb3b98a58d237a58",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-22",
-        "by": "migrated",
-        "hash": "90b54c72a48114f62072de27e1bef0c61d55f0959044725c593ed9fc72197755"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "823f08ad33368a9626991e6782f7ae14b958e39ef8503f6bdb3b98a58d237a58"
       }
     },
     "handoff": {
@@ -671,9 +671,9 @@
       "computedHash": "5e643602870ecf6a47818ba468fff5d30fe4a1e660f3dec79346f6de85006d5b",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-22",
-        "by": "migrated",
-        "hash": "f5df654e389b0983a98df35bf83dced720fed5ec87436da18bcfb38ea60ecc7b"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "5e643602870ecf6a47818ba468fff5d30fe4a1e660f3dec79346f6de85006d5b"
       }
     },
     "improve-codebase-architecture": {
@@ -686,9 +686,9 @@
       "computedHash": "499043a54914592b8d40160e0ecae3787452869aed4fce50c3e574c1926329d8",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-22",
-        "by": "migrated",
-        "hash": "741b4015c0edbcd5ffb9c926abab6cd52946bd296af2792c4694c759f4bd2554"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "499043a54914592b8d40160e0ecae3787452869aed4fce50c3e574c1926329d8"
       }
     },
     "inngest-agent-evals": {
@@ -956,9 +956,9 @@
       "computedHash": "db0acce362ff86c4816d769c6e323d86e0bc6ddb4abc4159f154c44405c3d3ea",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-22",
-        "by": "migrated",
-        "hash": "eb1e054af768adeeef6f953c527edfa4e2a03f36ec576b336ee211e4903c6141"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "db0acce362ff86c4816d769c6e323d86e0bc6ddb4abc4159f154c44405c3d3ea"
       }
     },
     "next-cache-components-adoption": {
@@ -986,9 +986,9 @@
       "computedHash": "4a4f8d8dabaa5d88be31f14129668be4057aefd4bb293531c419085ac3b50527",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-22",
-        "by": "migrated",
-        "hash": "b1f7d01586035e3b981b5dd9e23fb3a22f2eb21b7702ed4259f4443d7698ff85"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "4a4f8d8dabaa5d88be31f14129668be4057aefd4bb293531c419085ac3b50527"
       }
     },
     "next-dev-loop": {
@@ -1001,9 +1001,9 @@
       "computedHash": "68e70a9270eb02cc9c63cb19ce5106772ce4c140242199f4d90c77f6acb56355",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-22",
-        "by": "migrated",
-        "hash": "c305c83b726212e0284930c65cded2c4a4ab85f9bfccfa83b62274247fe3580e"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "68e70a9270eb02cc9c63cb19ce5106772ce4c140242199f4d90c77f6acb56355"
       }
     },
     "next-partial-prefetching-adoption": {
@@ -1016,9 +1016,9 @@
       "computedHash": "dda1c5f89f8a54e38f3dd68f52819e918b9ebfc714bbcb063570050b54d71e93",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-22",
-        "by": "migrated",
-        "hash": "44553d39329e8e3c98115b0d67d4b73028626dfb61479a8b541a956c6554e106"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "dda1c5f89f8a54e38f3dd68f52819e918b9ebfc714bbcb063570050b54d71e93"
       }
     },
     "next-partial-prefetching-optimizer": {
@@ -1031,9 +1031,9 @@
       "computedHash": "466c09de2cd57963f00ceca623ec5fe1c00fb97797a2f762c1db75870f91033e",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-22",
-        "by": "migrated",
-        "hash": "2a9c24352cf4c3bd3546ce2b7d9d4eb3ce03026cca6dd69dcda0d69b61469da3"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "466c09de2cd57963f00ceca623ec5fe1c00fb97797a2f762c1db75870f91033e"
       }
     },
     "pr": {
@@ -1076,9 +1076,9 @@
       "computedHash": "34a7c3808288b05ea422affe978ee4d301239817d822f4f50687f1957c17cf9a",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-22",
-        "by": "migrated",
-        "hash": "d293faf4e4da791b8046cd2eed5b4dce46f591f1a26be4099a55b968b5dbe9c9"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "34a7c3808288b05ea422affe978ee4d301239817d822f4f50687f1957c17cf9a"
       }
     },
     "retro": {
@@ -1136,9 +1136,9 @@
       "computedHash": "f8f92182cd38f90a66bc50b9408da5de83cbda1e4abaffbb8a7428beabcf6f5d",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-22",
-        "by": "migrated",
-        "hash": "f1442885e269d489b91b2a289e4619a0385eb3503121ea1f92769268bf08c123"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "f8f92182cd38f90a66bc50b9408da5de83cbda1e4abaffbb8a7428beabcf6f5d"
       }
     },
     "setup-pre-commit": {
@@ -1166,9 +1166,9 @@
       "computedHash": "d2a845e541fbed640e931bf71fe9191d163801b71da53e842a2f7b27407f8ae8",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-27",
-        "by": "migrated",
-        "hash": "57367f8e5909c6a0f0b6eaf0abe40ccfb276b01b7f85749c6098b74b3906815f"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "d2a845e541fbed640e931bf71fe9191d163801b71da53e842a2f7b27407f8ae8"
       }
     },
     "supabase": {
@@ -1346,9 +1346,9 @@
       "computedHash": "eec9b3ec0cd815b708670bf163384d257c7d1350ccb823f66043cbe138794298",
       "fetched": "2026-11-10",
       "review": {
-        "date": "2026-10-22",
-        "by": "migrated",
-        "hash": "d7224a1241800092e128af0544017b1a78f412c3fc26e810521f3674a1184c93"
+        "date": "2026-11-10",
+        "by": "farmhutsoftwareteam",
+        "hash": "eec9b3ec0cd815b708670bf163384d257c7d1350ccb823f66043cbe138794298"
       }
     },
     "wizard": {
