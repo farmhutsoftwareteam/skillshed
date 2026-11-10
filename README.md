@@ -17,7 +17,7 @@ That's it. (The same script is at `https://raw.githubusercontent.com/farmhutsoft
 
 The installer finishes by checking each tool it found: every pack installed, `core` and `matt` on, the rest off. It exits with an error, and says what is wrong, if any of that fails or no tool was found. Run the same check any time with `skillshed doctor`.
 
-Restart any open Claude Code or Codex sessions afterwards. Re-running the installer, or `skillshed update`, updates everything.
+Restart any open Claude Code or Codex sessions afterwards. Re-running the installer, or `skillshed update`, updates everything. It keeps your settings: the on/off defaults only apply to packs new to a tool, so a pack you turned on everywhere (or `matt` turned off) stays that way, and so does an `autoUpdate` you set yourself. It reads back every change it makes and fails if one didn't take. `skillshed doctor` warns, rather than fails, about a pack you switched from its default.
 
 <details>
 <summary>Install with the tools' own commands instead</summary>
@@ -68,7 +68,7 @@ skillshed packs              # list packs
 skillshed use supabase       # turn a pack on for the project you're in
 skillshed off supabase       # and off again
 skillshed find remotion      # search skill-issue.in + skills.sh for new skills
-skillshed update             # pull the latest and refresh both tools
+skillshed update             # pull the latest and refresh both tools; your on/off choices stay
 skillshed doctor             # check every pack is installed, and on or off as expected
 ```
 
@@ -169,7 +169,7 @@ Use pinned for skills you have vetted carefully and don't want to change underne
 
 1. Every Monday, `sync-vendor.yml` (needs *Settings → Actions → Allow GitHub Actions to create pull requests*) runs `sync-vendor.mjs update`.
 2. It then runs the checks and the scanner, and opens or refreshes a **`vendor-sync` PR**. The PR body includes the compare links, the check output and the scan report. Nothing reaches `main` without your merge.
-3. After you merge, Claude Code picks up the change on its own (auto-update). For Codex, or to update Claude Code now:
+3. After you merge, Claude Code picks up the change on its own (auto-update, unless you set `autoUpdate` to false for `skillshed` in `~/.claude/settings.json`). For Codex, or to update Claude Code now, run `skillshed update`, or:
 
 ```bash
 claude plugin marketplace update skillshed
