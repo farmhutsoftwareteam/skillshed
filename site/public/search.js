@@ -1,5 +1,5 @@
 // Task-style skill search, shared by the landing page and `skillshed find`.
-// Plain ES module, no dependencies: the page imports it from /search.js and
+// Plain ES module, no dependencies: the page imports it from ./search.js and
 // node imports it from site/public/search.js.
 //
 //   rank(query, docs) -> [{ doc, score }] best first, near misses dropped, where doc is

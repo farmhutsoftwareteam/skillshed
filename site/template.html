@@ -529,8 +529,7 @@ release-notes    (yours)</pre></div>
   <div class="last"><span>© 2026 Skillshed</span><a class="btn" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">Back to top</a></div>
 </footer>
 
-<script type="module">
-import { rank } from './search.js';
+<script>
 (() => {
   document.documentElement.classList.add('js');
 
@@ -551,6 +550,13 @@ import { rank } from './search.js';
   const q = document.getElementById('q');
   const result = document.getElementById('result');
   let pack = '{{FIRST_PACK}}';
+  // Only search needs the scorer. Until it loads, or if it never does, every
+  // word must appear somewhere in the band, as before.
+  let rank = (query, ds) => {
+    const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+    return ds.filter((d) => terms.every((t) => `${d.name} ${d.text} ${d.pack}`.toLowerCase().includes(t))).map((doc) => ({ doc }));
+  };
+  import('./search.js').then((m) => { rank = m.rank; if (q.value.trim()) render(); }, () => {});
   // A search shows its matches best first across every pack; no search, one pack in name order.
   function render() {
     const searching = q.value.trim() !== '';
