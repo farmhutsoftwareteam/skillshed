@@ -20,7 +20,7 @@ They go into `~/.agents/skills` (Codex) with a link from `~/.claude/skills` (Cla
 1. Put the skill in a public GitHub repo: a folder with a `SKILL.md` that follows the [Agent Skills format](https://agentskills.io/specification). The repo needs a licence that allows redistribution.
 2. Check it: `skillshed vet owner/repo@skill-name`. Fix any high-severity findings.
 3. [Open a submission](https://github.com/farmhutsoftwareteam/skillshed/issues/new?template=submit-skill.yml). A workflow scans it again and comments the result on the issue.
-4. A maintainer reads every file, picks the pack, and adds it with `sync-vendor.mjs add`, which pins it to a commit in `vendor.lock.json`. From then on, upstream changes arrive as reviewed weekly PRs.
+4. A maintainer reads every file, picks the pack, and adds it with `sync-vendor.mjs add`, which pins it to a commit in `vendor.lock.json`, then records the review with `sync-vendor.mjs review <name> --by <handle>`. From then on, upstream changes arrive as weekly PRs, and the site shows a skill as reviewed only once someone has read and recorded its current version.
 
 ### What gets accepted
 

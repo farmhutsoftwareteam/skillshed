@@ -9,7 +9,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "99224d8d3f3c059def3e0e3f5c2b851c38dcf81ec9cdb991e01eeb4a5ae84d2e",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "99224d8d3f3c059def3e0e3f5c2b851c38dcf81ec9cdb991e01eeb4a5ae84d2e"
+      }
     },
     "better-accessibility": {
       "source": "jakubkrehel/skills",
@@ -19,7 +24,12 @@
       "pack": "interfaces",
       "pinned": false,
       "computedHash": "bac3341ecd0f0c8d7319bd620ecb00534df6c595194d587078d6c9981c44cd3c",
-      "reviewed": "2026-10-27"
+      "fetched": "2026-10-27",
+      "review": {
+        "date": "2026-10-27",
+        "by": "migrated",
+        "hash": "bac3341ecd0f0c8d7319bd620ecb00534df6c595194d587078d6c9981c44cd3c"
+      }
     },
     "better-colors": {
       "source": "jakubkrehel/skills",
@@ -29,7 +39,12 @@
       "pack": "interfaces",
       "pinned": false,
       "computedHash": "5685366a469d8070f0d835969b58c28cca0ec839b5c5b72ddcfa87a2d841debe",
-      "reviewed": "2026-10-27"
+      "fetched": "2026-10-27",
+      "review": {
+        "date": "2026-10-27",
+        "by": "migrated",
+        "hash": "5685366a469d8070f0d835969b58c28cca0ec839b5c5b72ddcfa87a2d841debe"
+      }
     },
     "better-interface": {
       "source": "jakubkrehel/skills",
@@ -39,7 +54,12 @@
       "pack": "interfaces",
       "pinned": false,
       "computedHash": "671426482ea1c118919c42f6f3cb94e61bc483e9c04677afe848a6c0e94d60b8",
-      "reviewed": "2026-10-27"
+      "fetched": "2026-10-27",
+      "review": {
+        "date": "2026-10-27",
+        "by": "migrated",
+        "hash": "671426482ea1c118919c42f6f3cb94e61bc483e9c04677afe848a6c0e94d60b8"
+      }
     },
     "better-layout": {
       "source": "jakubkrehel/skills",
@@ -49,7 +69,12 @@
       "pack": "interfaces",
       "pinned": false,
       "computedHash": "d86c8ad42c9912d3e3f4d50048be27b9d42493555c5ff9de568a268d2212df18",
-      "reviewed": "2026-10-27"
+      "fetched": "2026-10-27",
+      "review": {
+        "date": "2026-10-27",
+        "by": "migrated",
+        "hash": "d86c8ad42c9912d3e3f4d50048be27b9d42493555c5ff9de568a268d2212df18"
+      }
     },
     "better-typography": {
       "source": "jakubkrehel/skills",
@@ -59,7 +84,12 @@
       "pack": "interfaces",
       "pinned": false,
       "computedHash": "21ebae1f6897df5fef5f851a6aa11e82fce4ec5043c00544bd6584a9ec4c0118",
-      "reviewed": "2026-10-27"
+      "fetched": "2026-10-27",
+      "review": {
+        "date": "2026-10-27",
+        "by": "migrated",
+        "hash": "21ebae1f6897df5fef5f851a6aa11e82fce4ec5043c00544bd6584a9ec4c0118"
+      }
     },
     "better-ui": {
       "source": "jakubkrehel/skills",
@@ -69,7 +99,12 @@
       "pack": "interfaces",
       "pinned": false,
       "computedHash": "392c7c8fe1004ca48610d313ade33879145f3bfe2de4471c170b775ff253e97f",
-      "reviewed": "2026-10-27"
+      "fetched": "2026-10-27",
+      "review": {
+        "date": "2026-10-27",
+        "by": "migrated",
+        "hash": "392c7c8fe1004ca48610d313ade33879145f3bfe2de4471c170b775ff253e97f"
+      }
     },
     "better-writing": {
       "source": "jakubkrehel/skills",
@@ -79,7 +114,12 @@
       "pack": "interfaces",
       "pinned": false,
       "computedHash": "82f6bb0dcab4bb9d97632b1024e4397e71f5a0587c4ddef9cbef88404b8fb810",
-      "reviewed": "2026-10-27"
+      "fetched": "2026-10-27",
+      "review": {
+        "date": "2026-10-27",
+        "by": "migrated",
+        "hash": "82f6bb0dcab4bb9d97632b1024e4397e71f5a0587c4ddef9cbef88404b8fb810"
+      }
     },
     "break": {
       "source": "jakubkrehel/skills",
@@ -89,7 +129,12 @@
       "pack": "interfaces",
       "pinned": false,
       "computedHash": "7edef95e521667b646154353345cddf36c517eb13773ac0d9728586b47875de6",
-      "reviewed": "2026-10-27"
+      "fetched": "2026-10-27",
+      "review": {
+        "date": "2026-10-27",
+        "by": "migrated",
+        "hash": "7edef95e521667b646154353345cddf36c517eb13773ac0d9728586b47875de6"
+      }
     },
     "build-design": {
       "source": "jakubkrehel/skills",
@@ -99,7 +144,12 @@
       "pack": "interfaces",
       "pinned": false,
       "computedHash": "195f70953071cbd7385db304efccfb446709d10de7c9c11ed5b8bd8dff2841b5",
-      "reviewed": "2026-10-27"
+      "fetched": "2026-10-27",
+      "review": {
+        "date": "2026-10-27",
+        "by": "migrated",
+        "hash": "195f70953071cbd7385db304efccfb446709d10de7c9c11ed5b8bd8dff2841b5"
+      }
     },
     "code-review": {
       "source": "mattpocock/skills",
@@ -109,7 +159,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "bb3048304e5c783c09783326a9e8f8ba55a31e810f511a792238bb8ad45a0978",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "bb3048304e5c783c09783326a9e8f8ba55a31e810f511a792238bb8ad45a0978"
+      }
     },
     "codebase-design": {
       "source": "mattpocock/skills",
@@ -119,7 +174,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "07246bd43eadfb50ac686aee5297d2cb808bf5ad00fb2ed289416b4b79e7850c",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "07246bd43eadfb50ac686aee5297d2cb808bf5ad00fb2ed289416b4b79e7850c"
+      }
     },
     "diagnosing-bugs": {
       "source": "mattpocock/skills",
@@ -129,7 +189,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "9b24ecaf15dd8d5594f973c590c6904d90dd3b50f8853fefd2341b7fd4a156bf",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "9b24ecaf15dd8d5594f973c590c6904d90dd3b50f8853fefd2341b7fd4a156bf"
+      }
     },
     "domain-modeling": {
       "source": "mattpocock/skills",
@@ -139,7 +204,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "467f5e92529c2a4637440dce99841814b0864a8528714188ec91b78d900df540",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "467f5e92529c2a4637440dce99841814b0864a8528714188ec91b78d900df540"
+      }
     },
     "eas-app-stores": {
       "source": "expo/skills",
@@ -149,7 +219,12 @@
       "pack": "expo",
       "pinned": false,
       "computedHash": "9aead2f4b5a00c40d8939b7eb3c1d6939fdd515c5e05ad28c2b5dc367c0b235c",
-      "reviewed": "2026-10-26"
+      "fetched": "2026-10-26",
+      "review": {
+        "date": "2026-10-26",
+        "by": "migrated",
+        "hash": "9aead2f4b5a00c40d8939b7eb3c1d6939fdd515c5e05ad28c2b5dc367c0b235c"
+      }
     },
     "eas-hosting": {
       "source": "expo/skills",
@@ -159,7 +234,12 @@
       "pack": "expo",
       "pinned": false,
       "computedHash": "a0503dd0b0823523aed3483081cf22f98ed493027803486c0f8171a3c386efe9",
-      "reviewed": "2026-10-26"
+      "fetched": "2026-10-26",
+      "review": {
+        "date": "2026-10-26",
+        "by": "migrated",
+        "hash": "a0503dd0b0823523aed3483081cf22f98ed493027803486c0f8171a3c386efe9"
+      }
     },
     "eas-observe": {
       "source": "expo/skills",
@@ -169,7 +249,12 @@
       "pack": "expo",
       "pinned": false,
       "computedHash": "6a228c0a598c2ec0f1533ff864fb7f790496757c526931c3f6e3b80e3928eaf9",
-      "reviewed": "2026-10-26"
+      "fetched": "2026-10-26",
+      "review": {
+        "date": "2026-10-26",
+        "by": "migrated",
+        "hash": "6a228c0a598c2ec0f1533ff864fb7f790496757c526931c3f6e3b80e3928eaf9"
+      }
     },
     "eas-simulator": {
       "source": "expo/skills",
@@ -179,7 +264,12 @@
       "pack": "expo",
       "pinned": false,
       "computedHash": "122cf4f4a3534e92704eba43ff414208d636b7e85d334ff0c67efca8bb999db2",
-      "reviewed": "2026-10-26"
+      "fetched": "2026-10-26",
+      "review": {
+        "date": "2026-10-26",
+        "by": "migrated",
+        "hash": "122cf4f4a3534e92704eba43ff414208d636b7e85d334ff0c67efca8bb999db2"
+      }
     },
     "eas-update": {
       "source": "expo/skills",
@@ -189,7 +279,12 @@
       "pack": "expo",
       "pinned": false,
       "computedHash": "8bad571b3aaf81d3f0e54ec70689fca1fef6edcd4c3c0c358892d4c92bc5653e",
-      "reviewed": "2026-10-26"
+      "fetched": "2026-10-26",
+      "review": {
+        "date": "2026-10-26",
+        "by": "migrated",
+        "hash": "8bad571b3aaf81d3f0e54ec70689fca1fef6edcd4c3c0c358892d4c92bc5653e"
+      }
     },
     "eas-update-insights": {
       "source": "expo/skills",
@@ -199,7 +294,12 @@
       "pack": "expo",
       "pinned": false,
       "computedHash": "36556bbec9c010f5a82edc76c9c3511e87421f38674d776545b41d2e47a404df",
-      "reviewed": "2026-10-26"
+      "fetched": "2026-10-26",
+      "review": {
+        "date": "2026-10-26",
+        "by": "migrated",
+        "hash": "36556bbec9c010f5a82edc76c9c3511e87421f38674d776545b41d2e47a404df"
+      }
     },
     "eas-workflows": {
       "source": "expo/skills",
@@ -209,7 +309,12 @@
       "pack": "expo",
       "pinned": false,
       "computedHash": "9d74c203a3a92e910d9b3957ffed5f9f917b69a9705585f12c71ddcc636d41c7",
-      "reviewed": "2026-10-26"
+      "fetched": "2026-10-26",
+      "review": {
+        "date": "2026-10-26",
+        "by": "migrated",
+        "hash": "9d74c203a3a92e910d9b3957ffed5f9f917b69a9705585f12c71ddcc636d41c7"
+      }
     },
     "explain-interface": {
       "source": "jakubkrehel/skills",
@@ -219,7 +324,12 @@
       "pack": "interfaces",
       "pinned": false,
       "computedHash": "461bbc9a92e4b513dfb2105c8bfb91626684827d7593ac02cc1c1468aba928d7",
-      "reviewed": "2026-10-27"
+      "fetched": "2026-10-27",
+      "review": {
+        "date": "2026-10-27",
+        "by": "migrated",
+        "hash": "461bbc9a92e4b513dfb2105c8bfb91626684827d7593ac02cc1c1468aba928d7"
+      }
     },
     "expo-animation": {
       "source": "expo/skills",
@@ -229,7 +339,12 @@
       "pack": "expo",
       "pinned": false,
       "computedHash": "177769d2b3b97bb1246c0aa9685533b68b47843f372a718fb9c5f594f9384396",
-      "reviewed": "2026-10-26"
+      "fetched": "2026-10-26",
+      "review": {
+        "date": "2026-10-26",
+        "by": "migrated",
+        "hash": "177769d2b3b97bb1246c0aa9685533b68b47843f372a718fb9c5f594f9384396"
+      }
     },
     "expo-app-clip": {
       "source": "expo/skills",
@@ -239,7 +354,12 @@
       "pack": "expo",
       "pinned": false,
       "computedHash": "8d129a830f270e82b8d7d5fad4921f2872c99961ef8cd4bab75eaafc5987aa32",
-      "reviewed": "2026-10-26"
+      "fetched": "2026-10-26",
+      "review": {
+        "date": "2026-10-26",
+        "by": "migrated",
+        "hash": "8d129a830f270e82b8d7d5fad4921f2872c99961ef8cd4bab75eaafc5987aa32"
+      }
     },
     "expo-brownfield": {
       "source": "expo/skills",
@@ -249,7 +369,12 @@
       "pack": "expo",
       "pinned": false,
       "computedHash": "1cf0da582523034c4eb621d90fb7972938f81015ac509c5319aa6a05da3f995b",
-      "reviewed": "2026-10-26"
+      "fetched": "2026-10-26",
+      "review": {
+        "date": "2026-10-26",
+        "by": "migrated",
+        "hash": "1cf0da582523034c4eb621d90fb7972938f81015ac509c5319aa6a05da3f995b"
+      }
     },
     "expo-data-fetching": {
       "source": "expo/skills",
@@ -259,7 +384,12 @@
       "pack": "expo",
       "pinned": false,
       "computedHash": "7f73b39e521b5812a199664c084529d58f7b6210312bca932f201e4a52f3537e",
-      "reviewed": "2026-10-26"
+      "fetched": "2026-10-26",
+      "review": {
+        "date": "2026-10-26",
+        "by": "migrated",
+        "hash": "7f73b39e521b5812a199664c084529d58f7b6210312bca932f201e4a52f3537e"
+      }
     },
     "expo-design-system": {
       "source": "expo/skills",
@@ -269,7 +399,12 @@
       "pack": "expo",
       "pinned": false,
       "computedHash": "3fdfcdc91433c2c87b5b8e511256fd26ef3a90dc793a76c244a5f82d0f7c89f6",
-      "reviewed": "2026-10-26"
+      "fetched": "2026-10-26",
+      "review": {
+        "date": "2026-10-26",
+        "by": "migrated",
+        "hash": "3fdfcdc91433c2c87b5b8e511256fd26ef3a90dc793a76c244a5f82d0f7c89f6"
+      }
     },
     "expo-dev-client": {
       "source": "expo/skills",
@@ -279,7 +414,12 @@
       "pack": "expo",
       "pinned": false,
       "computedHash": "cd31c0c10bcb2ba423f43f3b1ac5831f3f491e6a9707ac24b219a5eed114221c",
-      "reviewed": "2026-10-26"
+      "fetched": "2026-10-26",
+      "review": {
+        "date": "2026-10-26",
+        "by": "migrated",
+        "hash": "cd31c0c10bcb2ba423f43f3b1ac5831f3f491e6a9707ac24b219a5eed114221c"
+      }
     },
     "expo-dom": {
       "source": "expo/skills",
@@ -289,7 +429,12 @@
       "pack": "expo",
       "pinned": false,
       "computedHash": "8e09a348b224fcd347e3ed6506e44067044482a0190401cb99d651d1cc3e8f9c",
-      "reviewed": "2026-10-26"
+      "fetched": "2026-10-26",
+      "review": {
+        "date": "2026-10-26",
+        "by": "migrated",
+        "hash": "8e09a348b224fcd347e3ed6506e44067044482a0190401cb99d651d1cc3e8f9c"
+      }
     },
     "expo-examples": {
       "source": "expo/skills",
@@ -299,7 +444,12 @@
       "pack": "expo",
       "pinned": false,
       "computedHash": "de1404300e47c3e70ef4881d25264ea7c76dbe949f70b69946335e585cbf398c",
-      "reviewed": "2026-10-26"
+      "fetched": "2026-10-26",
+      "review": {
+        "date": "2026-10-26",
+        "by": "migrated",
+        "hash": "de1404300e47c3e70ef4881d25264ea7c76dbe949f70b69946335e585cbf398c"
+      }
     },
     "expo-module": {
       "source": "expo/skills",
@@ -309,7 +459,12 @@
       "pack": "expo",
       "pinned": false,
       "computedHash": "9f594d1c92baeb11e5fb1ea0b5a41004f3ea0d71662c719c48eb1d1088e67b63",
-      "reviewed": "2026-10-26"
+      "fetched": "2026-10-26",
+      "review": {
+        "date": "2026-10-26",
+        "by": "migrated",
+        "hash": "9f594d1c92baeb11e5fb1ea0b5a41004f3ea0d71662c719c48eb1d1088e67b63"
+      }
     },
     "expo-native-ui": {
       "source": "expo/skills",
@@ -319,7 +474,12 @@
       "pack": "expo",
       "pinned": false,
       "computedHash": "bbfd60404b4b4f7ba98888bcb8b72bb64f4440b9eac7b22744df87d27baf4b07",
-      "reviewed": "2026-10-26"
+      "fetched": "2026-10-26",
+      "review": {
+        "date": "2026-10-26",
+        "by": "migrated",
+        "hash": "bbfd60404b4b4f7ba98888bcb8b72bb64f4440b9eac7b22744df87d27baf4b07"
+      }
     },
     "expo-overview": {
       "source": "expo/skills",
@@ -329,7 +489,12 @@
       "pack": "expo",
       "pinned": false,
       "computedHash": "cf71a7754a41a949cd69755431f0590d583c8d5e3b6782ec0cc75d325c70d60a",
-      "reviewed": "2026-10-26"
+      "fetched": "2026-10-26",
+      "review": {
+        "date": "2026-10-26",
+        "by": "migrated",
+        "hash": "cf71a7754a41a949cd69755431f0590d583c8d5e3b6782ec0cc75d325c70d60a"
+      }
     },
     "expo-project-structure": {
       "source": "expo/skills",
@@ -339,7 +504,12 @@
       "pack": "expo",
       "pinned": false,
       "computedHash": "98c53ff32b49e41e27d0271c4fe4b1f94d0e3daadeb0f38b8cf9d911fb93812b",
-      "reviewed": "2026-10-26"
+      "fetched": "2026-10-26",
+      "review": {
+        "date": "2026-10-26",
+        "by": "migrated",
+        "hash": "98c53ff32b49e41e27d0271c4fe4b1f94d0e3daadeb0f38b8cf9d911fb93812b"
+      }
     },
     "expo-router": {
       "source": "expo/skills",
@@ -349,7 +519,12 @@
       "pack": "expo",
       "pinned": false,
       "computedHash": "672a26b3e8ed0aba18d72c09cdd9f4474a2f20f155c7766763d886e9ddaa360e",
-      "reviewed": "2026-10-26"
+      "fetched": "2026-10-26",
+      "review": {
+        "date": "2026-10-26",
+        "by": "migrated",
+        "hash": "672a26b3e8ed0aba18d72c09cdd9f4474a2f20f155c7766763d886e9ddaa360e"
+      }
     },
     "expo-ui": {
       "source": "expo/skills",
@@ -359,7 +534,12 @@
       "pack": "expo",
       "pinned": false,
       "computedHash": "896c0291e6b6a789220f322cc59528550306f755f26ccb29a7902f02b91a59d7",
-      "reviewed": "2026-10-26"
+      "fetched": "2026-10-26",
+      "review": {
+        "date": "2026-10-26",
+        "by": "migrated",
+        "hash": "896c0291e6b6a789220f322cc59528550306f755f26ccb29a7902f02b91a59d7"
+      }
     },
     "expo-upgrade": {
       "source": "expo/skills",
@@ -369,7 +549,12 @@
       "pack": "expo",
       "pinned": false,
       "computedHash": "ab41fe0e3c06ce79baf226b6a18b6f2f8672c4bb764321854fbdcc0435cf748f",
-      "reviewed": "2026-10-26"
+      "fetched": "2026-10-26",
+      "review": {
+        "date": "2026-10-26",
+        "by": "migrated",
+        "hash": "ab41fe0e3c06ce79baf226b6a18b6f2f8672c4bb764321854fbdcc0435cf748f"
+      }
     },
     "expo-web-to-native": {
       "source": "expo/skills",
@@ -379,7 +564,12 @@
       "pack": "expo",
       "pinned": false,
       "computedHash": "61b3e372cf5b2cf4a1dbb115e63aaec3eba48424d0875927b27b6f32bc232b79",
-      "reviewed": "2026-10-26"
+      "fetched": "2026-10-26",
+      "review": {
+        "date": "2026-10-26",
+        "by": "migrated",
+        "hash": "61b3e372cf5b2cf4a1dbb115e63aaec3eba48424d0875927b27b6f32bc232b79"
+      }
     },
     "git-guardrails-claude-code": {
       "source": "mattpocock/skills",
@@ -389,7 +579,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "92c1c7a61a0edc6c3c6a35e5301da9f422c2226a6f15ce9215cc9b4bba2b098e",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "92c1c7a61a0edc6c3c6a35e5301da9f422c2226a6f15ce9215cc9b4bba2b098e"
+      }
     },
     "grill-me": {
       "source": "mattpocock/skills",
@@ -399,7 +594,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "fe33aaa8e8dcd606107b1bfe3109f257b4a7e0f4907afd6506b62ccfb73cd1d3",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "fe33aaa8e8dcd606107b1bfe3109f257b4a7e0f4907afd6506b62ccfb73cd1d3"
+      }
     },
     "grill-with-docs": {
       "source": "mattpocock/skills",
@@ -409,7 +609,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "9e8f732b806727978f1ad8d2fb9ce4467da68f7482d63c4bb5a73f2b1a0c797c",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "9e8f732b806727978f1ad8d2fb9ce4467da68f7482d63c4bb5a73f2b1a0c797c"
+      }
     },
     "grilling": {
       "source": "mattpocock/skills",
@@ -419,7 +624,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "90b54c72a48114f62072de27e1bef0c61d55f0959044725c593ed9fc72197755",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "90b54c72a48114f62072de27e1bef0c61d55f0959044725c593ed9fc72197755"
+      }
     },
     "handoff": {
       "source": "mattpocock/skills",
@@ -429,7 +639,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "16e5b77eadb689d69c816bfe52cae6b5f425180340b77235ab8a3f402cf4b6f3",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "16e5b77eadb689d69c816bfe52cae6b5f425180340b77235ab8a3f402cf4b6f3"
+      }
     },
     "implement": {
       "source": "mattpocock/skills",
@@ -439,7 +654,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "c7c4d38c8dd9a05fcad046f79aeb275c7f31a87d7bceb4f3a133f125e6f4bfbb",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "c7c4d38c8dd9a05fcad046f79aeb275c7f31a87d7bceb4f3a133f125e6f4bfbb"
+      }
     },
     "implement-spec": {
       "source": "mattpocock/skills",
@@ -449,7 +669,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "f5df654e389b0983a98df35bf83dced720fed5ec87436da18bcfb38ea60ecc7b",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "f5df654e389b0983a98df35bf83dced720fed5ec87436da18bcfb38ea60ecc7b"
+      }
     },
     "improve-codebase-architecture": {
       "source": "mattpocock/skills",
@@ -459,7 +684,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "741b4015c0edbcd5ffb9c926abab6cd52946bd296af2792c4694c759f4bd2554",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "741b4015c0edbcd5ffb9c926abab6cd52946bd296af2792c4694c759f4bd2554"
+      }
     },
     "inngest-agent-evals": {
       "source": "inngest/inngest-skills",
@@ -469,7 +699,12 @@
       "pack": "inngest",
       "pinned": false,
       "computedHash": "f4a813e42d2b3851e916b062a15e84854e4429b50304c96e21f54cd03ef2dfde",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "f4a813e42d2b3851e916b062a15e84854e4429b50304c96e21f54cd03ef2dfde"
+      }
     },
     "inngest-agents": {
       "source": "inngest/inngest-skills",
@@ -479,7 +714,12 @@
       "pack": "inngest",
       "pinned": false,
       "computedHash": "47cb6397510ec463604963862719a44ec7babc1bdcaa61c2d2d63077f9076e54",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "47cb6397510ec463604963862719a44ec7babc1bdcaa61c2d2d63077f9076e54"
+      }
     },
     "inngest-api": {
       "source": "inngest/inngest-skills",
@@ -489,7 +729,12 @@
       "pack": "inngest",
       "pinned": false,
       "computedHash": "a8007c1f881d27c18b555c916433a95a8f892cc8a3d6ea5aaf5564a87aa07a74",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "a8007c1f881d27c18b555c916433a95a8f892cc8a3d6ea5aaf5564a87aa07a74"
+      }
     },
     "inngest-api-cli": {
       "source": "inngest/inngest-skills",
@@ -499,7 +744,12 @@
       "pack": "inngest",
       "pinned": false,
       "computedHash": "4ba6358ee2dc84a992e1e10248b796ba593a654100458dd2871f1a9b5b5fcba2",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "4ba6358ee2dc84a992e1e10248b796ba593a654100458dd2871f1a9b5b5fcba2"
+      }
     },
     "inngest-brownfield-audit": {
       "source": "inngest/inngest-skills",
@@ -509,7 +759,12 @@
       "pack": "inngest",
       "pinned": false,
       "computedHash": "4f46633ae05254a48d646d3756630fae05e19eaa15ffea5b898edeb3f44579e8",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "4f46633ae05254a48d646d3756630fae05e19eaa15ffea5b898edeb3f44579e8"
+      }
     },
     "inngest-cli": {
       "source": "inngest/inngest-skills",
@@ -519,7 +774,12 @@
       "pack": "inngest",
       "pinned": false,
       "computedHash": "915bddf09a8bb38753c780d02a196a2cbc0d1f2a65c83837b4368d8b22c852b4",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "915bddf09a8bb38753c780d02a196a2cbc0d1f2a65c83837b4368d8b22c852b4"
+      }
     },
     "inngest-cloud": {
       "source": "inngest/inngest-skills",
@@ -529,7 +789,12 @@
       "pack": "inngest",
       "pinned": false,
       "computedHash": "03f0a1388c2650669db5e57135f4523820cb057da3584002f42ef68cb2b38dc8",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "03f0a1388c2650669db5e57135f4523820cb057da3584002f42ef68cb2b38dc8"
+      }
     },
     "inngest-durable-functions": {
       "source": "inngest/inngest-skills",
@@ -539,7 +804,12 @@
       "pack": "inngest",
       "pinned": false,
       "computedHash": "de0eeb6810cc65a2caaa0437d140d971e1efb05475c8fc6db01960e859d758f3",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "de0eeb6810cc65a2caaa0437d140d971e1efb05475c8fc6db01960e859d758f3"
+      }
     },
     "inngest-events": {
       "source": "inngest/inngest-skills",
@@ -549,7 +819,12 @@
       "pack": "inngest",
       "pinned": false,
       "computedHash": "14bfc909497f6cdee64997f343b38f2a7013f1617b753ffaffe5539a1545bd03",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "14bfc909497f6cdee64997f343b38f2a7013f1617b753ffaffe5539a1545bd03"
+      }
     },
     "inngest-flow-control": {
       "source": "inngest/inngest-skills",
@@ -559,7 +834,12 @@
       "pack": "inngest",
       "pinned": false,
       "computedHash": "816531118017e7c31d1598689380672b607adb438a0b1e0f4cc169f2f579b03f",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "816531118017e7c31d1598689380672b607adb438a0b1e0f4cc169f2f579b03f"
+      }
     },
     "inngest-middleware": {
       "source": "inngest/inngest-skills",
@@ -569,7 +849,12 @@
       "pack": "inngest",
       "pinned": false,
       "computedHash": "ea840a90edbf8b5095b349bf20c03530ebcdd038b8976459acc064a5e79fa982",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "ea840a90edbf8b5095b349bf20c03530ebcdd038b8976459acc064a5e79fa982"
+      }
     },
     "inngest-realtime": {
       "source": "inngest/inngest-skills",
@@ -579,7 +864,12 @@
       "pack": "inngest",
       "pinned": false,
       "computedHash": "bdf03799a3cc1997333ef306d0efb85c4174cc0db8da9595b4e60496a61d73d8",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "bdf03799a3cc1997333ef306d0efb85c4174cc0db8da9595b4e60496a61d73d8"
+      }
     },
     "inngest-setup": {
       "source": "inngest/inngest-skills",
@@ -589,7 +879,12 @@
       "pack": "inngest",
       "pinned": false,
       "computedHash": "13f7025183bcfea6ebb5e27b1bfa5cbf8f3570847aba144538af12854667d04a",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "13f7025183bcfea6ebb5e27b1bfa5cbf8f3570847aba144538af12854667d04a"
+      }
     },
     "inngest-steps": {
       "source": "inngest/inngest-skills",
@@ -599,7 +894,12 @@
       "pack": "inngest",
       "pinned": false,
       "computedHash": "f37a3a423739fba256a5cd8cfa35b6121bf3192a0fe2a964e5c41af1036f3de0",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "f37a3a423739fba256a5cd8cfa35b6121bf3192a0fe2a964e5c41af1036f3de0"
+      }
     },
     "inngest-v3-v4-migration": {
       "source": "inngest/inngest-skills",
@@ -609,7 +909,12 @@
       "pack": "inngest",
       "pinned": false,
       "computedHash": "4fefaed452c6de2ab1d082e2a85a35524c6d205e8fcac00821bbfa49d4d004dd",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "4fefaed452c6de2ab1d082e2a85a35524c6d205e8fcac00821bbfa49d4d004dd"
+      }
     },
     "interface-review": {
       "source": "jakubkrehel/skills",
@@ -619,7 +924,12 @@
       "pack": "interfaces",
       "pinned": false,
       "computedHash": "6ca361e4cbf89a3b7a5cec4eee733f471b53cce6cae249d403ccd138e34882a1",
-      "reviewed": "2026-10-27"
+      "fetched": "2026-10-27",
+      "review": {
+        "date": "2026-10-27",
+        "by": "migrated",
+        "hash": "6ca361e4cbf89a3b7a5cec4eee733f471b53cce6cae249d403ccd138e34882a1"
+      }
     },
     "migrate-to-shoehorn": {
       "source": "mattpocock/skills",
@@ -629,7 +939,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "be9b2a0f6e0cd5186997e1eee2b92a7b9ed5e98f9f4b6b19a05edc67542f7f06",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "be9b2a0f6e0cd5186997e1eee2b92a7b9ed5e98f9f4b6b19a05edc67542f7f06"
+      }
     },
     "next-bundle-optimizer": {
       "source": "vercel/next.js",
@@ -639,7 +954,12 @@
       "pack": "nextjs-vercel",
       "pinned": false,
       "computedHash": "eb1e054af768adeeef6f953c527edfa4e2a03f36ec576b336ee211e4903c6141",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "eb1e054af768adeeef6f953c527edfa4e2a03f36ec576b336ee211e4903c6141"
+      }
     },
     "next-cache-components-adoption": {
       "source": "vercel/next.js",
@@ -649,7 +969,12 @@
       "pack": "nextjs-vercel",
       "pinned": false,
       "computedHash": "3f233a4f8fec9aa3f5f3dd183f4d0b76986ab75a31b17efd7fc18368ab7d356f",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "3f233a4f8fec9aa3f5f3dd183f4d0b76986ab75a31b17efd7fc18368ab7d356f"
+      }
     },
     "next-cache-components-optimizer": {
       "source": "vercel/next.js",
@@ -659,7 +984,12 @@
       "pack": "nextjs-vercel",
       "pinned": false,
       "computedHash": "b1f7d01586035e3b981b5dd9e23fb3a22f2eb21b7702ed4259f4443d7698ff85",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "b1f7d01586035e3b981b5dd9e23fb3a22f2eb21b7702ed4259f4443d7698ff85"
+      }
     },
     "next-dev-loop": {
       "source": "vercel/next.js",
@@ -669,7 +999,12 @@
       "pack": "nextjs-vercel",
       "pinned": false,
       "computedHash": "c305c83b726212e0284930c65cded2c4a4ab85f9bfccfa83b62274247fe3580e",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "c305c83b726212e0284930c65cded2c4a4ab85f9bfccfa83b62274247fe3580e"
+      }
     },
     "next-partial-prefetching-adoption": {
       "source": "vercel/next.js",
@@ -679,7 +1014,12 @@
       "pack": "nextjs-vercel",
       "pinned": false,
       "computedHash": "44553d39329e8e3c98115b0d67d4b73028626dfb61479a8b541a956c6554e106",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "44553d39329e8e3c98115b0d67d4b73028626dfb61479a8b541a956c6554e106"
+      }
     },
     "next-partial-prefetching-optimizer": {
       "source": "vercel/next.js",
@@ -689,7 +1029,12 @@
       "pack": "nextjs-vercel",
       "pinned": false,
       "computedHash": "2a9c24352cf4c3bd3546ce2b7d9d4eb3ce03026cca6dd69dcda0d69b61469da3",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "2a9c24352cf4c3bd3546ce2b7d9d4eb3ce03026cca6dd69dcda0d69b61469da3"
+      }
     },
     "pr": {
       "source": "mattpocock/skills",
@@ -699,7 +1044,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "e6edd6e5d192d995ed3dd25cd279efa6c8be860b3d24aa7f0c5d5e51a0cd2d52",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "e6edd6e5d192d995ed3dd25cd279efa6c8be860b3d24aa7f0c5d5e51a0cd2d52"
+      }
     },
     "prototype": {
       "source": "mattpocock/skills",
@@ -709,7 +1059,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "090ae76b97353255ca29be783d69bcc1029e0195bdf43118d0b6f7ea9acc89b0",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "090ae76b97353255ca29be783d69bcc1029e0195bdf43118d0b6f7ea9acc89b0"
+      }
     },
     "research": {
       "source": "mattpocock/skills",
@@ -719,7 +1074,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "d293faf4e4da791b8046cd2eed5b4dce46f591f1a26be4099a55b968b5dbe9c9",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "d293faf4e4da791b8046cd2eed5b4dce46f591f1a26be4099a55b968b5dbe9c9"
+      }
     },
     "retro": {
       "source": "mattpocock/skills",
@@ -729,7 +1089,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "e13af4f6dfecd777815adde57811398dc59d0118692a70d996968b59e3d13db8",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "e13af4f6dfecd777815adde57811398dc59d0118692a70d996968b59e3d13db8"
+      }
     },
     "scaffold-exercises": {
       "source": "mattpocock/skills",
@@ -739,7 +1104,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "aa52a864ead89a2c03a84b0a74a899599f1d6fd5efc0af51ff31a30d667fa9f8",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "aa52a864ead89a2c03a84b0a74a899599f1d6fd5efc0af51ff31a30d667fa9f8"
+      }
     },
     "security-audit": {
       "source": "cloudflare/security-audit-skill",
@@ -749,7 +1119,12 @@
       "pack": "core",
       "pinned": false,
       "computedHash": "ac796659de231c3ab76f6ee012836072bdc82928fb019199925c9062800e16c1",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "ac796659de231c3ab76f6ee012836072bdc82928fb019199925c9062800e16c1"
+      }
     },
     "setup-matt-pocock-skills": {
       "source": "mattpocock/skills",
@@ -759,7 +1134,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "f1442885e269d489b91b2a289e4619a0385eb3503121ea1f92769268bf08c123",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "f1442885e269d489b91b2a289e4619a0385eb3503121ea1f92769268bf08c123"
+      }
     },
     "setup-pre-commit": {
       "source": "mattpocock/skills",
@@ -769,7 +1149,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "b7455a91310ae0aa9b02b2642533fe60f17a1443d45bc0b455cc3136f2d85c8b",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "b7455a91310ae0aa9b02b2642533fe60f17a1443d45bc0b455cc3136f2d85c8b"
+      }
     },
     "state-machine": {
       "source": "jakubkrehel/skills",
@@ -779,7 +1164,12 @@
       "pack": "interfaces",
       "pinned": false,
       "computedHash": "57367f8e5909c6a0f0b6eaf0abe40ccfb276b01b7f85749c6098b74b3906815f",
-      "reviewed": "2026-10-27"
+      "fetched": "2026-10-27",
+      "review": {
+        "date": "2026-10-27",
+        "by": "migrated",
+        "hash": "57367f8e5909c6a0f0b6eaf0abe40ccfb276b01b7f85749c6098b74b3906815f"
+      }
     },
     "supabase": {
       "source": "supabase/agent-skills",
@@ -789,7 +1179,12 @@
       "pack": "supabase",
       "pinned": false,
       "computedHash": "3c95d48548a5d37f7e0a99b191e7cd6afb4f0184db733bfe5f740a0909fee4db",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "3c95d48548a5d37f7e0a99b191e7cd6afb4f0184db733bfe5f740a0909fee4db"
+      }
     },
     "supabase-postgres-best-practices": {
       "source": "supabase/agent-skills",
@@ -799,7 +1194,12 @@
       "pack": "supabase",
       "pinned": false,
       "computedHash": "5766a8e9524c3c2a81041409be237c3baf515aa04a135871a21dd351682d173f",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "5766a8e9524c3c2a81041409be237c3baf515aa04a135871a21dd351682d173f"
+      }
     },
     "tdd": {
       "source": "mattpocock/skills",
@@ -809,7 +1209,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "ef3cbb31aa8b1f8a3f9b6a042c230dc9312019e84cdc6337f60890f177fd5764",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "ef3cbb31aa8b1f8a3f9b6a042c230dc9312019e84cdc6337f60890f177fd5764"
+      }
     },
     "teach": {
       "source": "mattpocock/skills",
@@ -819,7 +1224,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "7bd8a41095f71c5e76892427f1db17eaa744372611b748db50a93dfa25fc62ca",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "7bd8a41095f71c5e76892427f1db17eaa744372611b748db50a93dfa25fc62ca"
+      }
     },
     "teardown": {
       "source": "jakubkrehel/skills",
@@ -829,7 +1239,12 @@
       "pack": "interfaces",
       "pinned": false,
       "computedHash": "5ae1db3e1c57885bceefd56ab58a79a9cb1700dee26d115c631103a8333a8a68",
-      "reviewed": "2026-10-27"
+      "fetched": "2026-10-27",
+      "review": {
+        "date": "2026-10-27",
+        "by": "migrated",
+        "hash": "5ae1db3e1c57885bceefd56ab58a79a9cb1700dee26d115c631103a8333a8a68"
+      }
     },
     "to-questionnaire": {
       "source": "mattpocock/skills",
@@ -839,7 +1254,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "619879fbd0e99ffacb9ae4a23a8c44393a37cb6d90b59a5ce8f5ace1be5baae0",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "619879fbd0e99ffacb9ae4a23a8c44393a37cb6d90b59a5ce8f5ace1be5baae0"
+      }
     },
     "to-spec": {
       "source": "mattpocock/skills",
@@ -849,7 +1269,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "cc5d718c2f810f4c9b081ea888af3ad3eb73bb8db6fc9fa92c3b1729637b7d56",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "cc5d718c2f810f4c9b081ea888af3ad3eb73bb8db6fc9fa92c3b1729637b7d56"
+      }
     },
     "to-tickets": {
       "source": "mattpocock/skills",
@@ -859,7 +1284,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "7cca8cd2afe55d1cd8bfc986df6a4cb4ad54411452575200804494b03c871ede",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "7cca8cd2afe55d1cd8bfc986df6a4cb4ad54411452575200804494b03c871ede"
+      }
     },
     "triage": {
       "source": "mattpocock/skills",
@@ -869,7 +1299,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "bf09f37fa24ab64324497772a25a1e0a9b22d06ccb238fefd0cfb12eee473c3d",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "bf09f37fa24ab64324497772a25a1e0a9b22d06ccb238fefd0cfb12eee473c3d"
+      }
     },
     "variant": {
       "source": "jakubkrehel/skills",
@@ -879,7 +1314,12 @@
       "pack": "interfaces",
       "pinned": false,
       "computedHash": "fd8f4840e9710347616a922ee23e87b17c6baa08095e58dfafe4d7eef37b2714",
-      "reviewed": "2026-10-27"
+      "fetched": "2026-10-27",
+      "review": {
+        "date": "2026-10-27",
+        "by": "migrated",
+        "hash": "fd8f4840e9710347616a922ee23e87b17c6baa08095e58dfafe4d7eef37b2714"
+      }
     },
     "wait-what": {
       "source": "mattpocock/skills",
@@ -889,7 +1329,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "aeda379d44a811ede92435e0af812ba599c3f3fb617c208a7ed3d0226072ba8d",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "aeda379d44a811ede92435e0af812ba599c3f3fb617c208a7ed3d0226072ba8d"
+      }
     },
     "wayfinder": {
       "source": "mattpocock/skills",
@@ -899,7 +1344,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "d7224a1241800092e128af0544017b1a78f412c3fc26e810521f3674a1184c93",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "d7224a1241800092e128af0544017b1a78f412c3fc26e810521f3674a1184c93"
+      }
     },
     "wizard": {
       "source": "mattpocock/skills",
@@ -909,7 +1359,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "93fc955828a4d1086f8ac15c67d894d540db821b5eca0feca2e24d8856b784e3",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "93fc955828a4d1086f8ac15c67d894d540db821b5eca0feca2e24d8856b784e3"
+      }
     },
     "writing-for-agents": {
       "source": "mattpocock/skills",
@@ -919,7 +1374,12 @@
       "pack": "matt",
       "pinned": false,
       "computedHash": "8365ebe1d0c343d3d46970526f30fcf7c5e0c5e49fd39a3c882977024626ff3c",
-      "reviewed": "2026-10-22"
+      "fetched": "2026-10-22",
+      "review": {
+        "date": "2026-10-22",
+        "by": "migrated",
+        "hash": "8365ebe1d0c343d3d46970526f30fcf7c5e0c5e49fd39a3c882977024626ff3c"
+      }
     }
   }
 }

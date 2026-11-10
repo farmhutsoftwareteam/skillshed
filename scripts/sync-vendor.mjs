@@ -9,17 +9,20 @@
 //   update [name...] [--force] [--summary <file>]
 //       Moves tracked skills to the latest commit of their ref. Pinned skills
 //       only move when named with --force.
+//   review <name...>|--all-changed --by <github-handle>
+//       Records that you read the current content of these skills. Run it
+//       after reading the diff; the site says "review pending" until you do.
 //   remove <name>
 import { execFileSync } from 'node:child_process';
 import { rmSync, existsSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join, relative } from 'node:path';
-import { ROOT, packs, readLock, writeLock, hashDir } from './lib.mjs';
+import { ROOT, packs, readLock, writeLock, hashDir, isReviewed, withContent, withReview } from './lib.mjs';
 import { git, resolve, resolveCommit, fetchCommit, install } from './fetch.mjs';
 
 const [cmd, ...rest] = process.argv.slice(2);
 const opt = (f) => (rest.includes(f) ? rest[rest.indexOf(f) + 1] : undefined);
 const flag = (f) => rest.includes(f);
-const positional = rest.filter((a, i) => !a.startsWith('--') && !['--pack', '--ref', '--path', '--name', '--summary'].includes(rest[i - 1]));
+const positional = rest.filter((a, i) => !a.startsWith('--') && !['--pack', '--ref', '--path', '--name', '--summary', '--by'].includes(rest[i - 1]));
 
 // Keeps the upstream repo's license next to its skills (MIT and friends
 // require the notice to travel with copies).
@@ -50,7 +53,6 @@ process.on('uncaughtException', (e) => {
 });
 
 const lock = readLock();
-// The date a person-reviewed PR brings new content in; shown on the site.
 const today = new Date().toISOString().slice(0, 10);
 
 if (cmd === 'add') {
@@ -73,10 +75,10 @@ if (cmd === 'add') {
     console.error(`\nRemoved ${name}: high-severity scan findings. Review them; re-run with --accept-risk only if they are false positives.`);
     process.exit(1);
   }
-  lock.skills[name] = { source: src.repo, path, ref, commit, pack, pinned: flag('--pin'), computedHash: hashDir(dest), reviewed: today };
+  lock.skills[name] = { source: src.repo, path, ref, commit, pack, pinned: flag('--pin'), computedHash: hashDir(dest), fetched: today };
   writeLock(lock);
   console.log(`added ${name} -> plugins/${pack}/skills/${name} @ ${commit.slice(0, 7)} (${flag('--pin') ? 'pinned' : `tracks ${ref}`})`);
-  console.log('Next: node scripts/check.mjs --write');
+  console.log(`Next: node scripts/check.mjs --write, then once you have read every file: node scripts/sync-vendor.mjs review ${name} --by <github-handle>`);
 } else if (cmd === 'update') {
   const names = positional.length ? positional : Object.keys(lock.skills);
   const lines = [];
@@ -97,12 +99,28 @@ if (cmd === 'add') {
     const computedHash = hashDir(dest);
     if (computedHash === e.computedHash) { lock.skills[name] = { ...e, commit }; continue; }
     lines.push(`- **${name}** (${e.pack}): [\`${e.commit.slice(0, 7)}...${commit.slice(0, 7)}\`](https://github.com/${e.source}/compare/${e.commit}...${commit}) in \`${e.source}/${e.path}\``);
-    lock.skills[name] = { ...e, commit, computedHash, reviewed: today };
+    lock.skills[name] = withContent(e, commit, computedHash, today);
   }
   writeLock(lock);
   const summary = lines.length ? lines.join('\n') : 'No upstream changes.';
   console.log(summary);
   if (opt('--summary')) writeFileSync(opt('--summary'), summary + '\n');
+} else if (cmd === 'review') {
+  const by = opt('--by');
+  if (!by || by.startsWith('--')) throw new Error('--by <github-handle> is required: the person who read the content');
+  const names = flag('--all-changed') ? Object.keys(lock.skills).filter((n) => !isReviewed(lock.skills[n])) : positional;
+  if (!names.length) throw new Error(flag('--all-changed') ? 'nothing to review: every vendored skill is reviewed' : 'name the skills you reviewed, or pass --all-changed');
+  for (const name of names) {
+    const e = lock.skills[name];
+    if (!e) throw new Error(`${name} is not in vendor.lock.json`);
+    // Record the hash of what is on disk, and only if it is what the lock pins.
+    if (hashDir(join(ROOT, 'plugins', e.pack, 'skills', name)) !== e.computedHash) throw new Error(`${name}: content differs from vendor.lock.json; re-sync before reviewing`);
+  }
+  for (const name of names) {
+    lock.skills[name] = withReview(lock.skills[name], by, today);
+    console.log(`reviewed ${name} @ ${lock.skills[name].computedHash.slice(0, 12)} by ${by}`);
+  }
+  writeLock(lock);
 } else if (cmd === 'remove') {
   const name = positional[0];
   const e = lock.skills[name];
@@ -112,6 +130,6 @@ if (cmd === 'add') {
   writeLock(lock);
   console.log(`removed ${name}`);
 } else {
-  console.log('usage: sync-vendor.mjs add <source> --pack <pack> [--ref r] [--path p] [--pin] [--accept-risk]\n       sync-vendor.mjs update [name...] [--force] [--summary file]\n       sync-vendor.mjs remove <name>');
+  console.log('usage: sync-vendor.mjs add <source> --pack <pack> [--ref r] [--path p] [--pin] [--accept-risk]\n       sync-vendor.mjs update [name...] [--force] [--summary file]\n       sync-vendor.mjs review <name...>|--all-changed --by <github-handle>\n       sync-vendor.mjs remove <name>');
   process.exit(cmd ? 1 : 0);
 }

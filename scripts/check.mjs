@@ -7,7 +7,7 @@
 //   node scripts/check.mjs --write   # also rewrite the skill-router index
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { join, relative } from 'node:path';
-import { ROOT, packs, skills, frontmatter, hashDir, readLock } from './lib.mjs';
+import { ROOT, packs, skills, frontmatter, hashDir, readLock, isReviewed } from './lib.mjs';
 
 const WRITE = process.argv.includes('--write');
 const OWNED_DESC_MAX = 300; // keep the always-loaded listing small
@@ -42,6 +42,9 @@ for (const [name, e] of Object.entries(lock.skills)) {
   if (!existsSync(dir)) { errors.push(`vendor.lock.json: ${name} not found in plugins/${e.pack}/skills`); continue; }
   if (hashDir(dir) !== e.computedHash) errors.push(`plugins/${e.pack}/skills/${name}: content differs from vendor.lock.json (edit upstream or re-sync)`);
 }
+// A review counts only for the content hash it names.
+const unreviewed = Object.keys(lock.skills).filter((n) => !isReviewed(lock.skills[n]));
+if (unreviewed.length) warnings.push(`review pending for ${unreviewed.join(', ')}: read them, then node scripts/sync-vendor.mjs review <name...> --by <github-handle>`);
 
 // Both marketplaces list exactly the packs on disk.
 const want = packs().join(',');
