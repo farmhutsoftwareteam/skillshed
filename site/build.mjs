@@ -26,10 +26,12 @@ const all = skills()
   .map((s) => {
     const fm = frontmatter(readFileSync(s.file, 'utf8')) ?? {};
     const v = lock.skills[s.name];
+    const full = (fm.description ?? '').replace(/\s+/g, ' ').trim();
     return {
       name: s.name,
       pack: s.pack,
-      description: firstSentence((fm.description ?? '').replace(/\s+/g, ' ').trim()),
+      description: firstSentence(full),
+      full,
       source: v ? v.source : 'Skillshed',
       commit: v ? v.commit.slice(0, 7) : '',
       reviewed: v ? reviewLabel(v, day) : '',
@@ -53,9 +55,11 @@ const tabs = packs
   )
   .join('\n');
 
+// Search reads the whole description; the pack's blurb and the source count for less.
+const packText = Object.fromEntries(marketplace.plugins.map((p) => [p.name, p.description ?? '']));
 const bands = all
   .map(
-    (s) => `<li class="band" data-pack="${esc(s.pack)}" data-text="${esc(`${s.name} ${s.description} ${s.source}`.toLowerCase())}">
+    (s) => `<li class="band" data-pack="${esc(s.pack)}" data-text="${esc(s.full)}" data-more="${esc(`${s.pack} ${packText[s.pack] ?? ''} ${s.source}`)}">
   <a href="${esc(s.url)}" target="_blank" rel="noopener">
     <span class="band-name">${esc(s.name)}</span>
     <span class="band-desc">${esc(s.description)}</span>
@@ -80,7 +84,7 @@ const faq = [
   ['What does vetted mean?', 'It depends on where a skill comes from. Skills in the shared packs are scanned, read file by file by a person before they are pinned, and only change through a pull request a person merges. Each one on the wall shows its source commit and the date a person reviewed that exact version; when upstream changes, it says review pending until someone reads the new files and records it. Skills you add for yourself with `skillshed add` get the same automated scan, but no person reads them. They follow upstream by default, and `skillshed update` moves them forward whenever a new version passes the scan. Add `--pin` to keep one at the commit you checked.'],
   ['How do I share a skill with everyone?', 'Check it with `skillshed vet owner/repo@skill`, then submit it on GitHub. A workflow scans it and replies on the issue; a person reads every file before pinning it into a pack.'],
   ['Is it safe?', 'No scanner can prove a skill is safe. Skillshed narrows the risk: every upstream skill is pinned to a commit and content hash, scanned for hidden text, override phrasing and data exfiltration, and only updated through pull requests a person merges.'],
-  ['How do I update or remove it?', '`skillshed update` pulls the latest skills into both tools. To remove it, run `claude plugin marketplace remove skillshed` and `codex plugin marketplace remove skillshed`, then delete `~/.skillshed`.'],
+  ['How do I update or remove it?', '`skillshed update` pulls the latest skills into both tools. `skillshed uninstall` shows everything it would remove, and `skillshed uninstall --yes` removes it: the packs and marketplace in both tools, their settings entries, the `skillshed` command and `~/.skillshed`. Your personal skills stay unless you add `--personal`. Packs you turned on in a project with `skillshed use` stay in that project\'s `.claude` and `.codex` files; it tells you how to find them.'],
   ['What does it cost?', 'Nothing. Skillshed is MIT licensed, and the skills it carries keep their own open-source licences.'],
 ];
 const codeSpans = (t) => esc(t).replace(/`([^`]+)`/g, '<code>$1</code>');

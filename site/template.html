@@ -120,6 +120,25 @@ pre, code { font-family: var(--code); }
 .copyline code::-webkit-scrollbar { display: none; }
 .copyline .btn { padding: 10px 14px; flex: none; }
 
+/* ---------- First run: after the install, two tiles ---------- */
+.first { padding: 0 var(--margin); margin-top: 120px; }
+.first h2 { font-size: clamp(2rem, 1.6rem + 1.6vw, 2.5rem); line-height: 1; padding: 0 14px; margin-bottom: 56px; }
+.first h2 span { display: block; color: var(--muted); }
+.first-grid { display: grid; grid-template-columns: 7fr 5fr; gap: var(--gap); }
+.first .tile { padding: 32px; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; }
+.first h3 { font: 600 var(--step-lead)/1.15 var(--display); letter-spacing: -0.03em; margin-bottom: 10px; }
+.first p { max-width: 50ch; }
+.first p + p { margin-top: 12px; }
+.first code { font-size: 0.9em; white-space: nowrap; }
+.first [data-ui] { border-radius: var(--radius); padding: 18px 20px; overflow-x: auto; }
+.first .pick { background: var(--field-1); color: var(--field-1-ink); }
+.pairs { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 4px; }
+.pairs li { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 16px; padding: 12px 14px; border-radius: var(--radius); background: #bdbaae; font-size: var(--step-small); line-height: 1.35; }
+.pairs code { font-size: 13px; }
+.pairs + p { margin-top: 18px; }
+.first .pick .btn { align-self: flex-start; background: var(--accent-ink); color: var(--ink); margin-top: 16px; }
+@media (hover: hover) and (pointer: fine) { .first .pick .btn:hover { background: #333; } }
+
 /* ---------- How a skill gets in: four fields ---------- */
 .fields { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 160px; }
 .field { min-height: 84svh; position: relative; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; }
@@ -273,6 +292,10 @@ footer { padding: 120px var(--margin) var(--margin); }
   .field .clause { font-size: 24px; }
   .card { position: static; transform: none; }
   @media (hover: hover) { .field:hover .card { transform: none; } }
+  .first { margin-top: 96px; }
+  .first h2 { padding: 0 8px; margin-bottom: 32px; }
+  .first-grid { grid-template-columns: 1fr; }
+  .first .tile { padding: 22px; }
   .wall, .safe { margin-top: 120px; }
   .wall-head { flex-direction: column; align-items: stretch; padding: 0 8px; }
   .wall-head .btn { width: 100%; }
@@ -357,6 +380,45 @@ footer { padding: 120px var(--margin) var(--margin); }
     </div>
   </header>
 </div>
+
+<section id="first-run" class="first" aria-labelledby="first-h">
+  <h2 id="first-h" class="rise"><span>First run</span>from install to a skill at work</h2>
+  <div class="first-grid">
+    <article class="tile steps">
+      <div>
+        <h3>Turn a pack on, restart, then ask</h3>
+        <p>In your project folder, run <code>skillshed use</code> with the pack your task needs, then restart Claude Code or Codex: packs load when a session starts. Ask in plain words. A skill triggers from its description, so you don't need its name, though in Claude Code you can call one directly, as <code>/supabase:supabase</code> or <code>/core:find-skill</code>.</p>
+        <p>You should see the session name the skill it loaded, and the work follow it. With supabase on, the migration keeps its security-definer helpers out of the public schema, something Haiku got wrong in every run without the pack in <a href="https://github.com/{{REPO}}/blob/main/benchmarks/RESULTS.md">our benchmark</a>.</p>
+      </div>
+      <div data-ui><pre><span class="dim">$</span> <span class="hi">cd ~/Developer/acme/api</span>
+<span class="dim">$</span> <span class="hi">skillshed use supabase</span>
+Enabled: supabase (in .claude/settings.json and .codex/config.toml)
+Restart the Claude Code / Codex session to pick it up.
+<span class="dim">$</span> <span class="hi">claude</span>
+<span class="dim">&gt;</span> <span class="hi">add row level security to the teams and projects tables</span>
+
+<span class="ok">●</span> <span class="hi">Using supabase:supabase</span></pre></div>
+    </article>
+    <article class="tile pick">
+      <div>
+        <h3>Which pack?</h3>
+        <p>Match the task. <code>core</code> and <code>matt</code> are already on.</p>
+        <ul class="pairs">
+          <li><span>Row-level security, auth, migrations</span><code>supabase</code></li>
+          <li><span>An exploded drawing of a physical object</span><code>interfaces</code></li>
+          <li><span>An EAS build or an app store release</span><code>expo</code></li>
+          <li><span>Durable functions and background jobs</span><code>inngest</code></li>
+          <li><span>Next.js caching and bundle size</span><code>nextjs-vercel</code></li>
+        </ul>
+        <p>Not sure? Ask anyway. The always-on skill-router names the pack and the command that turns it on, and <code>skillshed packs</code> lists them all.</p>
+      </div>
+      <div>
+        <p>One prompt, run plain and with interfaces on: 10 minutes instead of 17, and a 3D model of the console instead of a labelled poster.</p>
+        <a class="btn" href="/blog/ps5-teardown/">See a PS5 torn down twice</a>
+      </div>
+    </article>
+  </div>
+</section>
 
 <section id="how" class="fields" aria-labelledby="how-h">
   <div class="field rise">
@@ -545,19 +607,28 @@ release-notes    (yours)</pre></div>
   // buttons are toggle filters, not tabs: a search clears them all.
   const tabs = [...document.querySelectorAll('.tab')];
   const bands = [...document.querySelectorAll('.band')];
+  const list = document.getElementById('bands');
+  const docs = bands.map((b) => ({ el: b, name: b.querySelector('.band-name').textContent, text: b.dataset.text, pack: b.dataset.more }));
   const q = document.getElementById('q');
   const result = document.getElementById('result');
   let pack = '{{FIRST_PACK}}';
+  // Only search needs the scorer. Until it loads, or if it never does, every
+  // word must appear somewhere in the band, as before.
+  let rank = (query, ds) => {
+    const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+    return ds.filter((d) => terms.every((t) => `${d.name} ${d.text} ${d.pack}`.toLowerCase().includes(t))).map((doc) => ({ doc }));
+  };
+  import('./search.js').then((m) => { rank = m.rank; if (q.value.trim()) render(); }, () => {});
+  // A search shows its matches best first across every pack; no search, one pack in name order.
   function render() {
-    const terms = q.value.toLowerCase().split(/\s+/).filter(Boolean);
-    let n = 0;
-    for (const b of bands) {
-      const show = terms.length ? terms.every((t) => b.dataset.text.includes(t)) : b.dataset.pack === pack;
-      b.hidden = !show;
-      if (show) n++;
-    }
-    tabs.forEach((t) => t.setAttribute('aria-pressed', String(!terms.length && t.dataset.pack === pack)));
-    result.textContent = terms.length
+    const searching = q.value.trim() !== '';
+    const shown = searching ? rank(q.value, docs).map((r) => r.doc.el) : bands.filter((b) => b.dataset.pack === pack);
+    const on = new Set(shown);
+    for (const b of bands) b.hidden = !on.has(b);
+    list.append(...shown, ...bands.filter((b) => !on.has(b)));
+    const n = shown.length;
+    tabs.forEach((t) => t.setAttribute('aria-pressed', String(!searching && t.dataset.pack === pack)));
+    result.textContent = searching
       ? (n ? `${n} ${n === 1 ? 'skill matches' : 'skills match'} across every pack` : 'Nothing on the wall for that yet. skillshed find searches skill-issue.in and skills.sh.')
       : '';
   }

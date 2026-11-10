@@ -17,7 +17,9 @@ That's it. (The same script is at `https://raw.githubusercontent.com/farmhutsoft
 
 The installer finishes by checking each tool it found: every pack installed, `core` and `matt` on, the rest off. It exits with an error, and says what is wrong, if any of that fails or no tool was found. Run the same check any time with `skillshed doctor`.
 
-Restart any open Claude Code or Codex sessions afterwards. Re-running the installer, or `skillshed update`, updates everything.
+Restart any open Claude Code or Codex sessions afterwards. Re-running the installer, or `skillshed update`, updates everything. It keeps your settings: the on/off defaults only apply to packs new to a tool, so a pack you turned on everywhere (or `matt` turned off) stays that way, and so does an `autoUpdate` you set yourself. It reads back every change it makes and fails if one didn't take. `skillshed doctor` warns, rather than fails, about a pack you switched from its default.
+
+To remove Skillshed, run `skillshed uninstall`. It lists what it would remove and changes nothing; `skillshed uninstall --yes` then removes the packs and marketplace from both tools, their entries in `~/.claude/settings.json` and `~/.codex/config.toml`, the `skillshed` command and `~/.skillshed`. Personal skills stay unless you add `--personal`. Packs turned on in a project with `skillshed use` stay in that project's files; find them with `git grep -l '@skillshed' -- .claude .codex`.
 
 <details>
 <summary>Install with the tools' own commands instead</summary>
@@ -43,6 +45,15 @@ codex plugin add core@skillshed
 You won't get the `skillshed` command this way.
 </details>
 
+## First run
+
+1. **Pick a pack for the task.** `core` and `matt` are already on. Row-level security, auth or migrations: `supabase`. An exploded drawing of a physical object: `interfaces`. EAS builds and store releases: `expo`. Durable background jobs: `inngest`. Next.js caching and bundles: `nextjs-vercel`. `skillshed packs` lists them all, and if you're unsure, just ask: the always-on `core:skill-router` names the pack and the command that turns it on.
+2. **Turn it on in the project:** `cd` into the project, then `skillshed use supabase`.
+3. **Restart** the Claude Code or Codex session. Packs load when a session starts.
+4. **Ask in plain words.** A skill triggers from its description, so you don't need its name. In Claude Code you can also call one directly, as `/supabase:supabase` or `/core:find-skill`.
+
+You should see the session name the skill it loaded, then work that follows it. Ask for row-level security with `supabase` on and the migration keeps its security-definer helpers out of the `public` schema, which Haiku missed in every run without the pack in [our benchmark](benchmarks/RESULTS.md). For a side-by-side of the same prompt with and without a pack, see [a PS5 torn down twice](https://skillshed.munyamakosa.com/blog/ps5-teardown/), plain Claude Code against the `interfaces` pack.
+
 ## What's in it
 
 | Pack | On by default | What it covers |
@@ -67,10 +78,14 @@ Agents read every enabled skill's description on every request, within a small b
 skillshed packs              # list packs
 skillshed use supabase       # turn a pack on for the project you're in
 skillshed off supabase       # and off again
+skillshed exclude supabase   # off, and never borrow its skills in this project
 skillshed find remotion      # search skill-issue.in + skills.sh for new skills
-skillshed update             # pull the latest and refresh both tools
+skillshed update             # pull the latest and refresh both tools; your on/off choices stay
 skillshed doctor             # check every pack is installed, and on or off as expected
+skillshed uninstall          # show what removing Skillshed would take away; --yes to do it
 ```
+
+Off means not loaded automatically, not forbidden: if a task clearly matches a skill in an off pack, `skill-router` reads that skill from disk, uses it, and tells you once. To rule a pack out in a project, use `skillshed exclude <pack>`. It turns the pack off and lists it in `.skillshed.json` at the project root (`{"exclude": ["supabase"]}`); commit that file. The router checks it first and leaves excluded packs alone. `skillshed use <pack>` takes a pack back off the list; `skillshed off` leaves the list as it is.
 
 ### Your own skills
 
@@ -83,6 +98,8 @@ skillshed vet owner/repo@skill                                 # scan without in
 ```
 
 Personal skills go into `~/.agents/skills` (Codex) with a link from `~/.claude/skills` (Claude Code). They are always on. Added skills are scanned before they install and pinned to a commit, but unlike the shared packs no person reviews them, and `skillshed update` moves them to the latest upstream commit that passes the scan unless you added them with `--pin`. The lock lives in `~/.config/skillshed/personal.lock.json`.
+
+Skillshed never deletes a personal skill. `remove`, and `add` or `update` replacing a skill, move the old folder to `~/.config/skillshed/backups/<name>-<time>/` and print the path; `remove` also prints the command to restore it. If you have edited an added skill's files, `add` and `update` skip it and list the changed files; pass `--force` to replace it anyway (your copy still goes to backups). `update` never touches skills you made with `new`. `new` refuses names over 64 characters, names containing "anthropic" or "claude", and names of skills already in a Skillshed pack, and needs a description of 1 to 1024 characters.
 
 ### Share a skill
 
@@ -117,6 +134,7 @@ licenses/                           upstream licenses for vendored skills
 scripts/
   bootstrap.sh                      add marketplace + packs to both tools
   doctor.sh                         check both tools have every pack, on or off as expected
+  uninstall.sh                      remove Skillshed (previews unless --yes)
   use-pack.sh                       per-project packs
   check.mjs                         lint, lock hashes, router index (--write)
   scan-skills.mjs                   prompt-injection / supply-chain scan
@@ -156,6 +174,9 @@ node scripts/sync-vendor.mjs review <name...> --by <github-handle>   # after rea
 node scripts/sync-vendor.mjs remove <name>
 ```
 
+- **Tree URLs** can name any branch, including ones with slashes (`/tree/feature/new-skill/skills/foo`), a tag or a commit SHA. A `/blob/.../SKILL.md` link works too.
+- **Ambiguous names** stop the import. If several folders in the repo are named `<skill>`, or carry it as their frontmatter name, the error lists every path. Re-run with `--path <dir>` to pick one.
+
 `add` and `update` record when content was fetched. Only `review` records that a person read it: the date, their handle and the content hash they read. The site shows "reviewed <date>" only while that hash matches the skill's current content, and "review pending" otherwise; `check.mjs` warns about every pending one.
 
 - **Tracked** (the default) means the weekly sync moves the skill to the latest commit on its `ref`.
@@ -168,7 +189,7 @@ Use pinned for skills you have vetted carefully and don't want to change underne
 1. Every Monday, `sync-vendor.yml` (needs *Settings → Actions → Allow GitHub Actions to create pull requests*) runs `sync-vendor.mjs update`.
 2. It then runs the checks and the scanner, and opens or refreshes a **`vendor-sync` PR**. The PR body includes the compare links, the check output and the scan report. Nothing reaches `main` without your merge.
 3. Read the diff. Then, on the PR branch, run `node scripts/sync-vendor.mjs review --all-changed --by <your-github-handle>` (or name the skills you read), commit `vendor.lock.json` and push. If you merge without it, the changed skills still ship, but the site says "review pending" for them instead of a review date.
-4. After you merge, Claude Code picks up the change on its own (auto-update). For Codex, or to update Claude Code now:
+4. After you merge, Claude Code picks up the change on its own (auto-update, unless you set `autoUpdate` to false for `skillshed` in `~/.claude/settings.json`). For Codex, or to update Claude Code now, run `skillshed update`, or:
 
 ```bash
 claude plugin marketplace update skillshed
