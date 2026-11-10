@@ -19,6 +19,8 @@ The installer finishes by checking each tool it found: every pack installed, `co
 
 Restart any open Claude Code or Codex sessions afterwards. Re-running the installer, or `skillshed update`, updates everything. It keeps your settings: the on/off defaults only apply to packs new to a tool, so a pack you turned on everywhere (or `matt` turned off) stays that way, and so does an `autoUpdate` you set yourself. It reads back every change it makes and fails if one didn't take. `skillshed doctor` warns, rather than fails, about a pack you switched from its default.
 
+To remove Skillshed, run `skillshed uninstall`. It lists what it would remove and changes nothing; `skillshed uninstall --yes` then removes the packs and marketplace from both tools, their entries in `~/.claude/settings.json` and `~/.codex/config.toml`, the `skillshed` command and `~/.skillshed`. Personal skills stay unless you add `--personal`. Packs turned on in a project with `skillshed use` stay in that project's files; find them with `git grep -l '@skillshed' -- .claude .codex`.
+
 <details>
 <summary>Install with the tools' own commands instead</summary>
 
@@ -80,6 +82,7 @@ skillshed exclude supabase   # off, and never borrow its skills in this project
 skillshed find remotion      # search skill-issue.in + skills.sh for new skills
 skillshed update             # pull the latest and refresh both tools; your on/off choices stay
 skillshed doctor             # check every pack is installed, and on or off as expected
+skillshed uninstall          # show what removing Skillshed would take away; --yes to do it
 ```
 
 Off means not loaded automatically, not forbidden: if a task clearly matches a skill in an off pack, `skill-router` reads that skill from disk, uses it, and tells you once. To rule a pack out in a project, use `skillshed exclude <pack>`. It turns the pack off and lists it in `.skillshed.json` at the project root (`{"exclude": ["supabase"]}`); commit that file. The router checks it first and leaves excluded packs alone. `skillshed use <pack>` takes a pack back off the list; `skillshed off` leaves the list as it is.
@@ -131,6 +134,7 @@ licenses/                           upstream licenses for vendored skills
 scripts/
   bootstrap.sh                      add marketplace + packs to both tools
   doctor.sh                         check both tools have every pack, on or off as expected
+  uninstall.sh                      remove Skillshed (previews unless --yes)
   use-pack.sh                       per-project packs
   check.mjs                         lint, lock hashes, router index (--write)
   scan-skills.mjs                   prompt-injection / supply-chain scan

@@ -16,6 +16,8 @@ usage: skillshed <command>
   find <keywords>     search skill-issue.in and skills.sh for new skills
   update              pull the latest skills and refresh Claude Code / Codex
   doctor              check every pack is installed, and on or off as expected
+  uninstall [--yes]   remove Skillshed from this machine (previews first;
+                      --personal also removes your personal skills)
 
 Your own skills (only on this machine, always on):
   add <source>        add a third-party skill for you only, scanned and pinned
@@ -52,6 +54,7 @@ case "$cmd" in
     "$ROOT/scripts/bootstrap.sh"
     exec node "$ROOT/scripts/personal.mjs" update ;;
   doctor) exec "$ROOT/scripts/doctor.sh" ;;
+  uninstall) exec "$ROOT/scripts/uninstall.sh" "$@" ;;
   dir) echo "$ROOT" ;;
   help|-h|--help) usage ;;
   *) usage; exit 1 ;;
