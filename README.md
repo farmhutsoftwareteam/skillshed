@@ -67,10 +67,13 @@ Agents read every enabled skill's description on every request, within a small b
 skillshed packs              # list packs
 skillshed use supabase       # turn a pack on for the project you're in
 skillshed off supabase       # and off again
+skillshed exclude supabase   # off, and never borrow its skills in this project
 skillshed find remotion      # search skill-issue.in + skills.sh for new skills
 skillshed update             # pull the latest and refresh both tools
 skillshed doctor             # check every pack is installed, and on or off as expected
 ```
+
+Off means not loaded automatically, not forbidden: if a task clearly matches a skill in an off pack, `skill-router` reads that skill from disk, uses it, and tells you once. To rule a pack out in a project, use `skillshed exclude <pack>`. It turns the pack off and lists it in `.skillshed.json` at the project root (`{"exclude": ["supabase"]}`); commit that file. The router checks it first and leaves excluded packs alone. `skillshed use <pack>` takes a pack back off the list; `skillshed off` leaves the list as it is.
 
 ### Your own skills
 

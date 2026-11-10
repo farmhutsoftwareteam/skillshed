@@ -13,14 +13,14 @@ Find the right skill for the task, even if its pack is not enabled in this proje
 
 1. Find the pack in the index below that covers the task, then read that pack's index file (`references/<pack>.md`, next to this file) and find the skill whose "Use when" matches.
 2. If that skill is already in your available skills list, invoke it normally and stop.
-3. If not, its pack is switched off here. Read its `SKILL.md` from the first of these locations that exists, and follow it for this task. `<path>` is the Path column in the pack index; `<pack>/.../<skill>` is the same path without `plugins/`.
+3. If not, its pack is switched off here. If `.skillshed.json` at the project root lists the pack under `exclude`, stop: do not read or follow the skill, and do not mention it unless the user asks. Continue without a skill.
+4. Otherwise read its `SKILL.md` from the first of these locations that exists, and follow it for this task. `<path>` is the Path column in the pack index; `<pack>/.../<skill>` is the same path without `plugins/`.
    - `~/.skillshed/<path>` (local checkout)
    - `~/.claude/plugins/marketplaces/skillshed/<path>` (Claude Code)
    - `~/.claude/plugins/cache/skillshed/<pack>/*/skills/<skill>/SKILL.md` (Claude Code)
    - `~/.codex/plugins/cache/skillshed/<pack>/*/skills/<skill>/SKILL.md` (Codex)
-4. Tell the user once that the pack is off for this project. They can turn it on with:
-   `skillshed use <pack>`
-5. If no row matches, say so and continue without a skill. Do not stretch a skill to fit.
+5. Tell the user once that the pack is off for this project. They can turn it on with `skillshed use <pack>`, or stop it being borrowed with `skillshed exclude <pack>`.
+6. If no row matches, say so and continue without a skill. Do not stretch a skill to fit.
 
 ## Index
 

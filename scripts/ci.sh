@@ -26,7 +26,9 @@ if node scripts/scan-skills.mjs tests/fixtures/injected-skill > /dev/null 2>&1; 
   fail "scanner passed tests/fixtures/injected-skill"
 fi
 
-step "Scan report keeps untrusted paths inside code spans"
-node tests/report-escaping.test.mjs || fail "report-escaping.test.mjs"
+step "Regression tests"
+for t in tests/*.test.mjs; do
+  node "$t" || fail "$t"
+done
 
 exit $failed
