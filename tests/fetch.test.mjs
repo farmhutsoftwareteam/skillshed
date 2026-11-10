@@ -1,7 +1,7 @@
 // Regression: imports must not guess. A branch with a slash in its name keeps
 // its whole name, and several skills sharing a name is an error, not a pick.
 // Serves bare repos over file:// through SKILLSHED_GIT_BASE; no network.
-import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { execFileSync } from 'node:child_process';
@@ -11,7 +11,7 @@ process.env.SKILLSHED_GIT_BASE = `file://${base}`;
 // Keep git away from the real home dir and its config.
 process.env.HOME = base;
 process.env.GIT_CONFIG_NOSYSTEM = '1';
-const { resolve, parseSource } = await import('../scripts/fetch.mjs');
+const { resolve, parseSource, resolveCommit, fetchCommit, findSkillPath } = await import('../scripts/fetch.mjs');
 
 const sh = (args, cwd) => execFileSync('git', args, { cwd, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
 const skill = (name) => `---\nname: ${name}\ndescription: Use when testing.\n---\n`;
@@ -22,14 +22,14 @@ function repo(name, branches) {
   mkdirSync(bare, { recursive: true });
   sh(['init', '-q', '--bare', '-b', 'main'], bare);
   sh(['config', 'uploadpack.allowFilter', 'true'], bare);
-  sh(['config', 'uploadpack.allowAnySHA1InWant', 'true'], bare);
   const work = mkdtempSync(join(base, 'work-'));
   sh(['init', '-q', '-b', 'main'], work);
   for (const [branch, files] of Object.entries(branches)) {
     sh(['checkout', '-q', '-B', branch], work);
     for (const [p, body] of Object.entries(files)) {
       mkdirSync(join(work, dirname(p)), { recursive: true });
-      writeFileSync(join(work, p), body);
+      // The path in the body keeps every blob distinct, so each is fetched on its own.
+      writeFileSync(join(work, p), `${body}\n${p}\n`);
     }
     sh(['add', '-A'], work);
     sh(['-c', 'user.name=t', '-c', 'user.email=t@t', 'commit', '-q', '-m', branch], work);
@@ -95,6 +95,19 @@ check('path picks one of several', () => eq(resolve(`${twins}@foo`, { path: 'b/f
 check('a single folder match still works', () => eq(resolve(`${single}@foo`).path, 'skills/foo'));
 check('a single frontmatter match still works', () => eq(resolve(`${single}@baz`).path, 'skills/renamed'));
 check('owner/repo@skill still parses', () => eq(parseSource('owner/repo@foo').skill, 'foo'));
+check('SKILL.md blobs arrive in one fetch, not one each', () => {
+  const tmp = fetchCommit(named, resolveCommit(named, 'main'));
+  const oid = sh(['rev-parse', 'FETCH_HEAD:z/bar/SKILL.md'], tmp);
+  try {
+    execFileSync('git', ['cat-file', '-e', oid], { cwd: tmp, stdio: 'ignore', env: { ...process.env, GIT_NO_LAZY_FETCH: '1' } });
+    throw new Error('blob was fetched up front; the blob-less fetch is not being exercised');
+  } catch (e) { if (e.message.startsWith('blob was')) throw e; }
+  const trace = join(base, 'trace.json');
+  process.env.GIT_TRACE2_EVENT = trace;
+  try { eq(findSkillPath(tmp, 'bar'), 'z/bar'); } finally { delete process.env.GIT_TRACE2_EVENT; }
+  const fetches = readFileSync(trace, 'utf8').split('\n').filter((l) => l.includes('"event":"start"') && l.includes('"fetch"'));
+  eq(fetches.length, 1);
+});
 
 rmSync(base, { recursive: true, force: true });
 process.exit(failed);

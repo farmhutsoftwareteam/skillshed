@@ -51,18 +51,41 @@ export function resolveCommit(repo, ref) {
 export function fetchCommit(repo, commit) {
   const dir = mkdtempSync(join(tmpdir(), 'skillshed-'));
   git(['init', '-q'], dir);
-  git(['fetch', '-q', '--depth', '1', '--filter=blob:none', url(repo), commit], dir);
+  git(['remote', 'add', 'origin', url(repo)], dir);
+  git(['fetch', '-q', '--depth', '1', '--filter=blob:none', '--no-tags', 'origin', commit], dir);
   return dir;
+}
+
+// Contents of every SKILL.md at FETCH_HEAD, keyed by path. The fetch was
+// blob-less, so pull all of them in one round trip rather than one each.
+function readSkillFiles(tmp) {
+  const entries = git(['ls-tree', '-r', 'FETCH_HEAD'], tmp).split('\n')
+    .map((l) => l.match(/^\d+ blob ([0-9a-f]+)\t(.+\/SKILL\.md)$/))
+    .filter(Boolean);
+  if (!entries.length) return new Map();
+  const oids = [...new Set(entries.map((e) => e[1]))];
+  git(['-c', 'fetch.negotiationAlgorithm=noop', 'fetch', '-q', '--no-tags', '--no-write-fetch-head', 'origin', ...oids], tmp);
+  // GIT_NO_LAZY_FETCH: if a blob is still missing, fail rather than fetch it alone.
+  const out = execFileSync('git', ['cat-file', '--batch'], { cwd: tmp, input: oids.join('\n') + '\n', env: { ...process.env, GIT_NO_LAZY_FETCH: '1' } });
+  const blobs = new Map();
+  for (let i = 0; i < out.length;) {
+    const nl = out.indexOf(10, i);
+    const [oid, type, size] = out.subarray(i, nl).toString().split(' ');
+    if (type !== 'blob') throw new Error(`could not fetch SKILL.md blob ${oid}`);
+    blobs.set(oid, out.subarray(nl + 1, nl + 1 + Number(size)).toString('utf8'));
+    i = nl + 2 + Number(size);
+  }
+  return new Map(entries.map(([, oid, p]) => [p, blobs.get(oid)]));
 }
 
 // Every folder named <skill>, plus every SKILL.md whose frontmatter name is
 // <skill> (skills.sh lists by name, which doesn't always match the folder).
 // Anything but exactly one match throws: a guess could vendor the wrong skill.
 export function findSkillPath(tmp, skill) {
-  const files = git(['ls-tree', '-r', '--name-only', 'FETCH_HEAD'], tmp).split('\n').filter((f) => f.endsWith('/SKILL.md'));
-  const hits = new Set(files.filter((p) => basename(dirname(p)) === skill).map(dirname));
-  for (const p of files) {
-    if (!hits.has(dirname(p)) && frontmatter(git(['show', `FETCH_HEAD:${p}`], tmp))?.name === skill) hits.add(dirname(p));
+  const files = readSkillFiles(tmp);
+  const hits = new Set();
+  for (const [p, text] of files) {
+    if (basename(dirname(p)) === skill || frontmatter(text)?.name === skill) hits.add(dirname(p));
   }
   if (!hits.size) throw new Error(`no skill named "${skill}" in this repo`);
   if (hits.size > 1) throw new Error(`several skills match "${skill}":\n${[...hits].sort().map((h) => `  ${h}`).join('\n')}\nchoose one with --path <dir>`);
