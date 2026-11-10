@@ -84,6 +84,8 @@ skillshed vet owner/repo@skill                                 # scan without in
 
 Personal skills go into `~/.agents/skills` (Codex) with a link from `~/.claude/skills` (Claude Code). They are always on. Added skills are scanned before they install and pinned to a commit, but unlike the shared packs no person reviews them, and `skillshed update` moves them to the latest upstream commit that passes the scan unless you added them with `--pin`. The lock lives in `~/.config/skillshed/personal.lock.json`.
 
+Skillshed never deletes a personal skill. `remove`, and `add` or `update` replacing a skill, move the old folder to `~/.config/skillshed/backups/<name>-<time>/` and print the path; `remove` also prints the command to restore it. If you have edited an added skill's files, `add` and `update` skip it and list the changed files; pass `--force` to replace it anyway (your copy still goes to backups). `update` never touches skills you made with `new`. `new` refuses names over 64 characters, names containing "anthropic" or "claude", and names of skills already in a Skillshed pack, and needs a description of 1 to 1024 characters.
+
 ### Share a skill
 
 [Submit it here](https://github.com/farmhutsoftwareteam/skillshed/issues/new?template=submit-skill.yml). A workflow scans it and replies on the issue, then a maintainer reviews it. See [CONTRIBUTING.md](CONTRIBUTING.md).

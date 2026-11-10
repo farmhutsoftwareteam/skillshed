@@ -7,7 +7,7 @@ import { join, basename, dirname } from 'node:path';
 import { frontmatter } from './lib.mjs';
 
 export const git = (args, cwd) => execFileSync('git', args, { cwd, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
-const url = (repo) => `https://github.com/${repo}.git`;
+const url = (repo) => `${process.env.SKILLSHED_GIT_BASE ?? 'https://github.com'}/${repo}.git`;
 
 // owner/repo@skill | https://skills.sh/owner/repo/skill | https://github.com/owner/repo[/tree/<ref>/<path>]
 export function parseSource(s) {
