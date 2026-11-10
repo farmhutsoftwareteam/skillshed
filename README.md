@@ -170,11 +170,14 @@ node scripts/sync-vendor.mjs add anthropics/skills@skill-creator --pack core --p
 node scripts/check.mjs --write          # refresh the router index
 
 node scripts/sync-vendor.mjs update     # pull upstream for tracked skills
+node scripts/sync-vendor.mjs review <name...> --by <github-handle>   # after reading every file
 node scripts/sync-vendor.mjs remove <name>
 ```
 
 - **Tree URLs** can name any branch, including ones with slashes (`/tree/feature/new-skill/skills/foo`), a tag or a commit SHA. A `/blob/.../SKILL.md` link works too.
 - **Ambiguous names** stop the import. If several folders in the repo are named `<skill>`, or carry it as their frontmatter name, the error lists every path. Re-run with `--path <dir>` to pick one.
+
+`add` and `update` record when content was fetched. Only `review` records that a person read it: the date, their handle and the content hash they read. The site shows "reviewed <date>" only while that hash matches the skill's current content, and "review pending" otherwise; `check.mjs` warns about every pending one.
 
 - **Tracked** (the default) means the weekly sync moves the skill to the latest commit on its `ref`.
 - **Pinned** (`--pin`) means it stays at its commit until you run `update <name> --force`.
@@ -185,7 +188,8 @@ Use pinned for skills you have vetted carefully and don't want to change underne
 
 1. Every Monday, `sync-vendor.yml` (needs *Settings → Actions → Allow GitHub Actions to create pull requests*) runs `sync-vendor.mjs update`.
 2. It then runs the checks and the scanner, and opens or refreshes a **`vendor-sync` PR**. The PR body includes the compare links, the check output and the scan report. Nothing reaches `main` without your merge.
-3. After you merge, Claude Code picks up the change on its own (auto-update, unless you set `autoUpdate` to false for `skillshed` in `~/.claude/settings.json`). For Codex, or to update Claude Code now, run `skillshed update`, or:
+3. Read the diff. Then, on the PR branch, run `node scripts/sync-vendor.mjs review --all-changed --by <your-github-handle>` (or name the skills you read), commit `vendor.lock.json` and push. If you merge without it, the changed skills still ship, but the site says "review pending" for them instead of a review date.
+4. After you merge, Claude Code picks up the change on its own (auto-update, unless you set `autoUpdate` to false for `skillshed` in `~/.claude/settings.json`). For Codex, or to update Claude Code now, run `skillshed update`, or:
 
 ```bash
 claude plugin marketplace update skillshed

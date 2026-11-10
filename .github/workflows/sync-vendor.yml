@@ -61,6 +61,8 @@ jobs:
             echo
             echo "Ask Claude: \`/core:vet-skill\` on this PR."
             echo
+            echo "After reading the diff, record your review on this branch: check it out, run \`node scripts/sync-vendor.mjs review --all-changed --by <your-github-handle>\` (or name the skills you read), commit \`vendor.lock.json\` and push. Until then the site shows these skills as review pending."
+            echo
             echo "Before merging, the \`check (sync)\` status on \`$sha\` must be green. A skipped or pending check is not a pass."
             echo
             echo "## Skill changes"

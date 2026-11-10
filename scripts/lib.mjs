@@ -89,3 +89,26 @@ export function writeLock(lock) {
   const sorted = Object.fromEntries(Object.entries(lock.skills).sort(([a], [b]) => a.localeCompare(b)));
   writeFileSync(LOCK_PATH, JSON.stringify({ ...lock, skills: sorted }, null, 2) + '\n');
 }
+
+// Review records. `fetched` is when the content last changed (add/update set
+// it); `review` is written only by `sync-vendor.mjs review`, by a person, and
+// names the content hash they read. A newer hash means the review is stale.
+export const isReviewed = (e) => Boolean(e.review) && e.review.hash === e.computedHash;
+
+export function reviewLabel(e, fmt = (d) => d) {
+  if (isReviewed(e)) return `reviewed ${fmt(e.review.date)}`;
+  return e.fetched ? `fetched ${fmt(e.fetched)}, review pending` : 'review pending';
+}
+
+// New content from upstream: the review record stays as it was.
+export const withContent = (e, commit, computedHash, date) => ({ ...e, commit, computedHash, fetched: date });
+
+export const withReview = (e, by, date) => ({ ...e, review: { date, by, hash: e.computedHash } });
+
+// One-off: old entries carried `reviewed: <date>`, set when a merged PR brought
+// the content in. Every such entry on main went through a person's merge.
+export function migrateEntry(e) {
+  if (!('reviewed' in e)) return e;
+  const { reviewed, ...rest } = e;
+  return { ...rest, fetched: reviewed, review: { date: reviewed, by: 'migrated', hash: e.computedHash } };
+}

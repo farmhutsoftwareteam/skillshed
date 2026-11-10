@@ -6,7 +6,7 @@
 import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { ROOT, skills, frontmatter, readLock } from '../scripts/lib.mjs';
+import { ROOT, skills, frontmatter, readLock, reviewLabel } from '../scripts/lib.mjs';
 
 const SITE = dirname(fileURLToPath(import.meta.url));
 const REPO = 'farmhutsoftwareteam/skillshed';
@@ -34,7 +34,7 @@ const all = skills()
       full,
       source: v ? v.source : 'Skillshed',
       commit: v ? v.commit.slice(0, 7) : '',
-      reviewed: v?.reviewed ?? '',
+      reviewed: v ? reviewLabel(v, day) : '',
       url: v
         ? `https://github.com/${v.source}/tree/${v.commit}/${v.path}`
         : `https://github.com/${REPO}/tree/main/plugins/${s.pack}/skills/${s.name}`,
@@ -63,7 +63,7 @@ const bands = all
   <a href="${esc(s.url)}" target="_blank" rel="noopener">
     <span class="band-name">${esc(s.name)}</span>
     <span class="band-desc">${esc(s.description)}</span>
-    <span class="band-src">${esc(s.source)}${s.commit ? ` at ${esc(s.commit)}` : ''}${s.reviewed ? `, reviewed ${esc(day(s.reviewed))}` : ''}</span>
+    <span class="band-src">${esc(s.source)}${s.commit ? ` at ${esc(s.commit)}` : ''}${s.reviewed ? `, ${esc(s.reviewed)}` : ''}</span>
   </a>
 </li>`,
   )
@@ -81,7 +81,7 @@ const faq = [
   ['What does Skillshed add?', 'It gathers vetted skills into one plugin marketplace that Claude Code and Codex both understand, installs it with one command, keeps the always-on list short so skills keep triggering, and pins every third-party skill to a commit after scanning it for prompt injection.'],
   ['Why are most packs off?', `Agents read every enabled skill's description on every request, within a budget of about 1 to 2% of context. Past that, skills quietly stop triggering. Core and Matt Pocock's skills stay on; stack packs switch on only in projects that use them, with \`skillshed use supabase\`.`],
   ['Can I add my own skills?', 'Yes. `skillshed new my-skill "Use when ..."` starts one, and `skillshed add owner/repo@skill` adds any skill from GitHub or skills.sh for you only. Both go into your own skill folders for Claude Code and Codex. Added skills are scanned before they install, but no person reviews them; see the next question.'],
-  ['What does vetted mean?', 'It depends on where a skill comes from. Skills in the shared packs are scanned, read file by file by a person before they are pinned, and only change through a pull request a person merges. Each one on the wall shows its source commit and the date that version was reviewed. Skills you add for yourself with `skillshed add` get the same automated scan, but no person reads them. They follow upstream by default, and `skillshed update` moves them forward whenever a new version passes the scan. Add `--pin` to keep one at the commit you checked.'],
+  ['What does vetted mean?', 'It depends on where a skill comes from. Skills in the shared packs are scanned, read file by file by a person before they are pinned, and only change through a pull request a person merges. Each one on the wall shows its source commit and the date a person reviewed that exact version; when upstream changes, it says review pending until someone reads the new files and records it. Skills you add for yourself with `skillshed add` get the same automated scan, but no person reads them. They follow upstream by default, and `skillshed update` moves them forward whenever a new version passes the scan. Add `--pin` to keep one at the commit you checked.'],
   ['How do I share a skill with everyone?', 'Check it with `skillshed vet owner/repo@skill`, then submit it on GitHub. A workflow scans it and replies on the issue; a person reads every file before pinning it into a pack.'],
   ['Is it safe?', 'No scanner can prove a skill is safe. Skillshed narrows the risk: every upstream skill is pinned to a commit and content hash, scanned for hidden text, override phrasing and data exfiltration, and only updated through pull requests a person merges.'],
   ['How do I update or remove it?', '`skillshed update` pulls the latest skills into both tools. `skillshed uninstall` shows everything it would remove, and `skillshed uninstall --yes` removes it: the packs and marketplace in both tools, their settings entries, the `skillshed` command and `~/.skillshed`. Your personal skills stay unless you add `--personal`. Packs you turned on in a project with `skillshed use` stay in that project\'s `.claude` and `.codex` files; it tells you how to find them.'],
